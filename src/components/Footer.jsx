@@ -1,173 +1,174 @@
 import React from 'react';
-import { ShieldCheck, MapPin, Mail, Phone, Printer } from 'lucide-react';
+import { Mail, Phone, Printer, MapPin } from 'lucide-react';
 
 const Footer = ({ setActivePage }) => {
   return (
     <footer style={{
-      backgroundColor: 'var(--bg-dark)',
-      color: 'var(--text-inverse)',
-      borderTop: '2px solid var(--border-strong)',
+      backgroundColor: '#162a1c',
+      color: '#ffffff',
+      borderTop: '2px solid #1b3323',
       padding: '48px 0 24px 0',
-      marginTop: '60px'
+      marginTop: '0'
     }}>
       <div className="container">
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: '40px',
+          gap: '48px',
           marginBottom: '40px'
         }}>
-          {/* Brand & Partner Statement */}
+          {/* Left Column: Brand & PART OF Logos */}
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
+            {/* Logo Header */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
               <div style={{
-                width: '36px',
-                height: '36px',
-                border: '1.5px solid #ffffff',
+                width: '38px',
+                height: '38px',
+                backgroundColor: 'var(--lampag-green)',
+                clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontFamily: 'var(--font-mono)',
-                fontWeight: 800,
-                fontSize: '1.1rem'
+                fontWeight: 900,
+                color: '#ffffff',
+                fontSize: '1.15rem',
+                fontFamily: 'var(--font-mono)'
               }}>
                 L
               </div>
-              <span style={{ fontWeight: 800, fontSize: '1.2rem', letterSpacing: '-0.02em' }}>
-                LAMPAG GmbH
+              <span style={{ fontWeight: 800, fontSize: '1.4rem', letterSpacing: '-0.02em', color: '#ffffff' }}>
+                LAMPAG
               </span>
             </div>
 
-            <p style={{ color: '#94a3b8', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '20px' }}>
+            <p style={{ color: '#a0aec0', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '24px', maxWidth: '340px' }}>
               Sustainable products for the future. Trust in quality through certified partnerships with leading system suppliers.
             </p>
 
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-              <div style={{ 
-                padding: '6px 12px', 
-                border: '1px dashed #475569', 
-                borderRadius: 'var(--radius-sm)',
-                fontSize: '0.78rem',
+            {/* PART OF Badges */}
+            <div>
+              <div style={{
+                fontSize: '0.75rem',
                 fontFamily: 'var(--font-mono)',
-                color: '#38bdf8',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '6px'
+                fontWeight: 700,
+                color: 'var(--lampag-green)',
+                letterSpacing: '0.08em',
+                marginBottom: '10px',
+                textTransform: 'uppercase'
               }}>
-                <ShieldCheck size={14} /> Schüco Partner
+                PART OF
               </div>
-              <div style={{ 
-                padding: '6px 12px', 
-                border: '1px dashed #475569', 
-                borderRadius: 'var(--radius-sm)',
-                fontSize: '0.78rem',
-                fontFamily: 'var(--font-mono)',
-                color: '#cbd5e1'
-              }}>
-                Part of Alu Group
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
+                <div style={{
+                  backgroundColor: 'var(--lampag-green)',
+                  color: '#ffffff',
+                  fontWeight: 700,
+                  fontSize: '0.85rem',
+                  fontFamily: 'var(--font-sans)',
+                  padding: '8px 18px',
+                  borderRadius: 'var(--radius-sm)',
+                  letterSpacing: '0.04em'
+                }}>
+                  LOGO SCHUCO
+                </div>
+                <div style={{
+                  backgroundColor: 'var(--lampag-green)',
+                  color: '#ffffff',
+                  fontWeight: 700,
+                  fontSize: '0.85rem',
+                  fontFamily: 'var(--font-sans)',
+                  padding: '8px 18px',
+                  borderRadius: 'var(--radius-sm)',
+                  letterSpacing: '0.04em'
+                }}>
+                  LOGO ALU
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Quick Sitemap */}
-          <div>
-            <h4 style={{ 
-              fontFamily: 'var(--font-mono)', 
-              fontSize: '0.85rem', 
-              color: '#38bdf8', 
-              textTransform: 'uppercase', 
-              marginBottom: '16px',
-              letterSpacing: '0.05em' 
-            }}>
-              [NAVIGATION WIREFRAME]
-            </h4>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              {[
-                { id: 'home', label: '1. Homepage (/)' },
-                { id: 'about', label: '2. About Us (/about)' },
-                { id: 'whatweoffer', label: '3. What We Offer (/whatweoffer)' },
-                { id: 'product', label: '4. Products (/product)' },
-                { id: 'portfolio', label: '5. Single-Page Portfolio (/portfolio)' },
-                { id: 'contact', label: '6. Contact (/contact)' },
-              ].map(link => (
-                <li key={link.id}>
-                  <button
-                    onClick={() => {
-                      setActivePage(link.id);
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }}
-                    style={{
-                      background: 'none',
-                      border: 'none',
-                      color: '#cbd5e1',
-                      fontSize: '0.88rem',
-                      cursor: 'pointer',
-                      textAlign: 'left',
-                      padding: 0
-                    }}
-                    onMouseOver={e => e.target.style.color = '#ffffff'}
-                    onMouseOut={e => e.target.style.color = '#cbd5e1'}
-                  >
-                    {link.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Direct Contact Specification */}
-          <div>
-            <h4 style={{ 
-              fontFamily: 'var(--font-mono)', 
-              fontSize: '0.85rem', 
-              color: '#38bdf8', 
-              textTransform: 'uppercase', 
-              marginBottom: '16px',
-              letterSpacing: '0.05em' 
-            }}>
-              [HEADQUARTERS & CONTACT]
-            </h4>
-            <div style={{ color: '#cbd5e1', fontSize: '0.88rem', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              <div style={{ display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
-                <MapPin size={16} color="#38bdf8" style={{ marginTop: '3px', flexShrink: 0 }} />
-                <div>
-                  <strong>LAMPAG GmbH</strong><br />
-                  Strümpenbusch 3, 44357 Dortmund<br />
-                  Neuer Wall 2-6, 20354 Hamburg
+          {/* Right Column: CONTACT & LOCATION */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '32px' }}>
+            {/* CONTACT block */}
+            <div>
+              <h4 style={{
+                fontFamily: 'var(--font-sans)',
+                fontSize: '0.9rem',
+                fontWeight: 800,
+                color: 'var(--lampag-green)',
+                textTransform: 'UPPERCASE',
+                marginBottom: '18px',
+                letterSpacing: '0.06em'
+              }}>
+                CONTACT
+              </h4>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', color: '#e2e8f0', fontSize: '0.88rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <div style={{ width: '28px', height: '28px', backgroundColor: 'var(--lampag-green)', borderRadius: 'var(--radius-sm)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <Phone size={14} color="#ffffff" />
+                  </div>
+                  <span>+49 040 571 996 390</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <div style={{ width: '28px', height: '28px', backgroundColor: 'var(--lampag-green)', borderRadius: 'var(--radius-sm)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <Printer size={14} color="#ffffff" />
+                  </div>
+                  <span>+49 040 571 996 381</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <div style={{ width: '28px', height: '28px', backgroundColor: 'var(--lampag-green)', borderRadius: 'var(--radius-sm)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <Mail size={14} color="#ffffff" />
+                  </div>
+                  <span>info@lampag.com</span>
                 </div>
               </div>
-              <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-                <Phone size={16} color="#38bdf8" style={{ flexShrink: 0 }} />
-                <span>T: +49 040 571 996 390</span>
-              </div>
-              <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-                <Printer size={16} color="#38bdf8" style={{ flexShrink: 0 }} />
-                <span>F: +49 040 571 996 381</span>
-              </div>
-              <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-                <Mail size={16} color="#38bdf8" style={{ flexShrink: 0 }} />
-                <span>E-mail: info@lampag.com</span>
+            </div>
+
+            {/* LOCATION block */}
+            <div>
+              <h4 style={{
+                fontFamily: 'var(--font-sans)',
+                fontSize: '0.9rem',
+                fontWeight: 800,
+                color: 'var(--lampag-green)',
+                textTransform: 'UPPERCASE',
+                marginBottom: '18px',
+                letterSpacing: '0.06em'
+              }}>
+                LOCATION
+              </h4>
+              <div style={{ color: '#e2e8f0', fontSize: '0.88rem', lineHeight: 1.6 }}>
+                <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+                  <div style={{ width: '28px', height: '28px', backgroundColor: 'var(--lampag-green)', borderRadius: 'var(--radius-sm)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
+                    <MapPin size={14} color="#ffffff" />
+                  </div>
+                  <div>
+                    <strong style={{ color: '#ffffff' }}>LAMPAG GmbH</strong><br />
+                    Neuer Wall 2-6<br />
+                    20354 Hamburg
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar & Legal Blueprint Notice */}
+        {/* Bottom Bar */}
         <div style={{
-          borderTop: '1px dashed #334155',
+          borderTop: '1px solid #23422d',
           paddingTop: '20px',
           display: 'flex',
           flexWrap: 'wrap',
           alignItems: 'center',
           justifyContent: 'space-between',
-          fontSize: '0.8rem',
-          color: '#64748b'
+          fontSize: '0.82rem',
+          color: '#718096'
         }}>
           <div>
-            © 2026 Lampag GmbH. All Rights Reserved.  |  Imprint  |  Privacy Policy
+            Imprint &nbsp; | &nbsp; Privacy Policy
           </div>
-          <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: '#94a3b8' }}>
-            [LAMPAG STRUCTURAL WIREFRAME PROTO V1.0]
+          <div>
+            © 2026 Lampag. All Rights Reserved
           </div>
         </div>
       </div>

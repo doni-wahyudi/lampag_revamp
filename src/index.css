@@ -6,11 +6,11 @@
   --bg-primary: #f8fafc;
   --bg-surface: #ffffff;
   --bg-subtle: #f1f5f9;
-  --bg-dark: #0f172a;
+  --bg-dark: #0d1a12;
   
   --border-dim: #cbd5e1;
   --border-strong: #64748b;
-  --border-accent: #0284c7;
+  --border-accent: #399e52;
   
   --text-main: #0f172a;
   --text-muted: #64748b;
@@ -20,9 +20,16 @@
   --blueprint-bg: #f0f9ff;
   --blueprint-line: rgba(2, 132, 199, 0.15);
   
+  /* Lampag Brand Green Color Palette */
+  --lampag-green: #399e52;
+  --lampag-green-hover: #2e8243;
+  --lampag-green-dark: #1b3323;
+  --lampag-green-subtle: #ebf7ee;
+  
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
+  --radius-pill: 9999px;
   
   --shadow-wf: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
   --shadow-overlay: 0 20px 25px -5px rgba(15, 23, 42, 0.2), 0 8px 10px -6px rgba(15, 23, 42, 0.1);
@@ -120,6 +127,53 @@ body.blueprint-mode .wf-box {
   text-decoration: none;
 }
 
+/* Green Pill Buttons (As per wireframe PDF) */
+.btn-pill-green {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 11px 24px;
+  border-radius: var(--radius-pill);
+  background-color: var(--lampag-green);
+  color: #ffffff;
+  border: 1.5px solid var(--lampag-green);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(57, 158, 82, 0.25);
+}
+
+.btn-pill-green:hover {
+  background-color: var(--lampag-green-hover);
+  border-color: var(--lampag-green-hover);
+  transform: translateY(-1px);
+}
+
+.btn-pill-green-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 11px 24px;
+  border-radius: var(--radius-pill);
+  background-color: transparent;
+  color: var(--lampag-green);
+  border: 1.5px solid var(--lampag-green);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-pill-green-outline:hover {
+  background-color: var(--lampag-green-subtle);
+  transform: translateY(-1px);
+}
+
 .btn-primary {
   background-color: var(--text-main);
   color: #ffffff;
@@ -152,6 +206,72 @@ body.blueprint-mode .wf-box {
 
 .btn-blueprint:hover {
   background-color: #bae6fd;
+}
+
+/* Nav Green Shape Hover */
+.nav-link-item {
+  position: relative;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  padding: 8px 16px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.nav-link-item:hover,
+.nav-link-item.active {
+  background-color: var(--lampag-green);
+  color: #ffffff !important;
+}
+
+/* Hover-to-reveal Product Card */
+.product-card-container {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  height: 240px;
+  cursor: pointer;
+  border: 1px solid var(--border-dim);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.product-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+}
+
+.product-card-container:hover .product-card-overlay {
+  opacity: 1;
+}
+
+/* Transparent 80% Container */
+.glass-overlay-80 {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-md);
+  padding: 32px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 /* Grid Layouts */

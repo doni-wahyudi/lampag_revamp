@@ -22,23 +22,45 @@ const ContactPage = ({ blueprintMode }) => {
   return (
     <div>
       {/* HERO BANNER */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--bg-surface)', borderBottom: '1px solid var(--border-dim)' }}>
+      <section style={{
+        backgroundColor: '#0a140e',
+        color: '#ffffff',
+        padding: '64px 0',
+        borderBottom: '1px solid #1b3323',
+        backgroundImage: 'linear-gradient(rgba(10, 20, 14, 0.85), rgba(10, 20, 14, 0.92)), url("https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=80")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+      }}>
         <div className="container">
-          <div className="wf-tag" style={{ marginBottom: '16px' }}>
-            [CONTACT - HERO BANNER]
-          </div>
-
           <div className="grid-2" style={{ alignItems: 'center', gap: '40px' }}>
             <div>
-              <h1 style={{ fontSize: '2.4rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '16px' }}>
+              <span style={{
+                color: 'var(--lampag-green)',
+                fontWeight: 700,
+                fontSize: '0.85rem',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                fontFamily: 'var(--font-mono)'
+              }}>
+                CONTACT US
+              </span>
+              <h1 style={{ fontSize: '2.6rem', fontWeight: 800, lineHeight: 1.2, margin: '12px 0 16px 0', color: '#ffffff' }}>
                 Get in Touch
               </h1>
-              <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
+              <p style={{ fontSize: '1.1rem', color: '#cbd5e1', lineHeight: 1.6 }}>
                 Let's discuss your upcoming architectural project or engineering requirements.
               </p>
 
-              <div className="spec-box" style={{ marginTop: '24px' }}>
-                <strong>Engineering Desk:</strong> Our technical drafting team is ready to analyze CAD/BIM specifications and issue project estimations.
+              <div style={{
+                marginTop: '24px',
+                padding: '12px 18px',
+                backgroundColor: 'rgba(57, 158, 82, 0.15)',
+                borderLeft: '3px solid var(--lampag-green)',
+                borderRadius: '0 var(--radius-sm) var(--radius-sm) 0',
+                fontSize: '0.9rem',
+                color: '#e2e8f0'
+              }}>
+                <strong style={{ color: 'var(--lampag-green)' }}>Engineering Desk:</strong> Our technical drafting team is ready to analyze CAD/BIM specifications and issue project estimations.
               </div>
             </div>
 
@@ -54,36 +76,38 @@ const ContactPage = ({ blueprintMode }) => {
       </section>
 
       {/* CONTACT FORM & DIRECT DETAILS SECTION */}
-      <section className="section-padding">
+      <section className="section-padding" style={{ backgroundColor: '#ffffff' }}>
         <div className="container">
-          <div className="wf-tag" style={{ marginBottom: '16px' }}>
-            [6.1 CONTACT FORM & DIRECT DETAILS WIREFRAME]
-          </div>
-
           <div className="grid-2" style={{ gap: '40px', alignItems: 'flex-start' }}>
             {/* Contact Form Box */}
-            <div className="wf-box" style={{ padding: '32px', backgroundColor: 'var(--bg-surface)' }}>
-              <h2 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '8px' }}>Send Us a Message</h2>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '24px' }}>
+            <div style={{
+              padding: '32px',
+              backgroundColor: '#ffffff',
+              border: '1px solid var(--border-dim)',
+              borderRadius: 'var(--radius-md)',
+              boxShadow: 'var(--shadow-wf)'
+            }}>
+              <h2 style={{ fontSize: '1.6rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '8px' }}>Send Us a Message</h2>
+              <p style={{ fontSize: '0.9rem', color: '#64748b', marginBottom: '24px' }}>
                 Fill in your project details below to request a technical consultation or quote.
               </p>
 
               {submitted ? (
                 <div style={{ 
-                  padding: '24px', 
-                  backgroundColor: 'var(--blueprint-bg)', 
-                  border: '1.5px solid var(--blueprint-blue)', 
-                  borderRadius: 'var(--radius-sm)',
+                  padding: '32px 24px', 
+                  backgroundColor: '#eaf5ed', 
+                  border: '1.5px solid var(--lampag-green)', 
+                  borderRadius: 'var(--radius-md)',
                   textAlign: 'center'
                 }}>
-                  <CheckCircle2 size={36} color="var(--blueprint-blue)" style={{ marginBottom: '12px' }} />
-                  <h3 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '6px' }}>Inquiry Submitted Successfully</h3>
-                  <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>
+                  <CheckCircle2 size={42} color="var(--lampag-green)" style={{ marginBottom: '12px' }} />
+                  <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: 'var(--lampag-green-dark)', marginBottom: '6px' }}>Inquiry Submitted Successfully</h3>
+                  <p style={{ fontSize: '0.92rem', color: '#334155' }}>
                     Thank you, {formData.fullName || 'Partner'}. Our engineering team will review your inquiry and contact you shortly.
                   </p>
                   <button 
-                    className="btn btn-outline" 
-                    style={{ marginTop: '16px' }}
+                    className="btn-pill-green" 
+                    style={{ marginTop: '20px', fontSize: '0.88rem' }}
                     onClick={() => setSubmitted(false)}
                   >
                     Submit Another Inquiry
@@ -92,7 +116,7 @@ const ContactPage = ({ blueprintMode }) => {
               ) : (
                 <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '6px' }}>
+                    <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, marginBottom: '6px', color: 'var(--text-main)' }}>
                       Full Name *
                     </label>
                     <input 
@@ -107,14 +131,15 @@ const ContactPage = ({ blueprintMode }) => {
                         borderRadius: 'var(--radius-sm)',
                         border: '1px solid var(--border-dim)',
                         fontSize: '0.92rem',
-                        fontFamily: 'var(--font-sans)'
+                        fontFamily: 'var(--font-sans)',
+                        outline: 'none'
                       }}
                     />
                   </div>
 
                   <div className="grid-2" style={{ gap: '16px' }}>
                     <div>
-                      <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '6px' }}>
+                      <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, marginBottom: '6px', color: 'var(--text-main)' }}>
                         Email Address *
                       </label>
                       <input 
@@ -128,13 +153,14 @@ const ContactPage = ({ blueprintMode }) => {
                           padding: '10px 14px',
                           borderRadius: 'var(--radius-sm)',
                           border: '1px solid var(--border-dim)',
-                          fontSize: '0.92rem'
+                          fontSize: '0.92rem',
+                          outline: 'none'
                         }}
                       />
                     </div>
 
                     <div>
-                      <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '6px' }}>
+                      <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, marginBottom: '6px', color: 'var(--text-main)' }}>
                         Company / Firm Name
                       </label>
                       <input 
@@ -147,14 +173,15 @@ const ContactPage = ({ blueprintMode }) => {
                           padding: '10px 14px',
                           borderRadius: 'var(--radius-sm)',
                           border: '1px solid var(--border-dim)',
-                          fontSize: '0.92rem'
+                          fontSize: '0.92rem',
+                          outline: 'none'
                         }}
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '6px' }}>
+                    <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, marginBottom: '6px', color: 'var(--text-main)' }}>
                       Project Type
                     </label>
                     <select
@@ -166,7 +193,7 @@ const ContactPage = ({ blueprintMode }) => {
                         borderRadius: 'var(--radius-sm)',
                         border: '1px solid var(--border-dim)',
                         fontSize: '0.92rem',
-                        backgroundColor: 'var(--bg-surface)'
+                        backgroundColor: '#ffffff'
                       }}
                     >
                       <option value="Residential">Residential Development</option>
@@ -177,7 +204,7 @@ const ContactPage = ({ blueprintMode }) => {
                   </div>
 
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '6px' }}>
+                    <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, marginBottom: '6px', color: 'var(--text-main)' }}>
                       Message / Project Inquiry *
                     </label>
                     <textarea 
@@ -192,30 +219,31 @@ const ContactPage = ({ blueprintMode }) => {
                         borderRadius: 'var(--radius-sm)',
                         border: '1px solid var(--border-dim)',
                         fontSize: '0.92rem',
-                        fontFamily: 'var(--font-sans)'
+                        fontFamily: 'var(--font-sans)',
+                        outline: 'none'
                       }}
                     />
                   </div>
 
-                  {/* File Attachment Placeholder */}
+                  {/* File Attachment */}
                   <div style={{
                     border: '1.5px dashed var(--border-strong)',
                     borderRadius: 'var(--radius-sm)',
-                    padding: '14px',
+                    padding: '16px',
                     textAlign: 'center',
-                    backgroundColor: 'var(--bg-subtle)'
+                    backgroundColor: '#f8fafc'
                   }}>
-                    <Upload size={20} color="var(--border-strong)" style={{ marginBottom: '4px' }} />
-                    <div style={{ fontSize: '0.85rem', fontWeight: 600 }}>
+                    <Upload size={20} color="var(--lampag-green)" style={{ marginBottom: '4px' }} />
+                    <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-main)' }}>
                       File Attachment Option
                     </div>
-                    <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
+                    <div style={{ fontSize: '0.78rem', color: '#64748b' }}>
                       Upload CAD drawings / project specifications PDF (Max 25MB)
                     </div>
                   </div>
 
-                  <button type="submit" className="btn btn-primary" style={{ marginTop: '8px' }}>
-                    Send Project Inquiry <Send size={15} />
+                  <button type="submit" className="btn-pill-green" style={{ marginTop: '8px', width: '100%' }}>
+                    Send Project Inquiry <Send size={16} />
                   </button>
                 </form>
               )}
@@ -223,52 +251,96 @@ const ContactPage = ({ blueprintMode }) => {
 
             {/* Direct Contact Info Box */}
             <div>
-              <div className="wf-box" style={{ padding: '28px', backgroundColor: 'var(--bg-surface)', marginBottom: '24px' }}>
-                <div className="wf-tag" style={{ marginBottom: '12px' }}>DIRECT CONTACT SPECIFICATIONS</div>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '16px' }}>LAMPAG GmbH Contact Desk</h3>
+              <div style={{
+                padding: '28px',
+                backgroundColor: '#f8fafc',
+                border: '1px solid var(--border-dim)',
+                borderRadius: 'var(--radius-md)',
+                marginBottom: '24px'
+              }}>
+                <span style={{
+                  fontSize: '0.75rem',
+                  fontFamily: 'var(--font-mono)',
+                  fontWeight: 700,
+                  color: 'var(--lampag-green)',
+                  letterSpacing: '0.06em',
+                  textTransform: 'uppercase'
+                }}>
+                  DIRECT CONTACT SPECIFICATIONS
+                </span>
+                <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: 'var(--text-main)', marginTop: '4px', marginBottom: '20px' }}>
+                  LAMPAG GmbH Contact Desk
+                </h3>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', fontSize: '0.92rem' }}>
-                  <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-                    <MapPin size={18} color="var(--blueprint-blue)" style={{ marginTop: '2px', flexShrink: 0 }} />
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '18px', fontSize: '0.92rem' }}>
+                  <div style={{ display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
+                    <div style={{ width: '32px', height: '32px', backgroundColor: 'var(--lampag-green)', borderRadius: 'var(--radius-sm)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
+                      <MapPin size={16} color="#ffffff" />
+                    </div>
                     <div>
-                      <strong>Office Locations:</strong><br />
-                      Strümpenbusch 3, 44357 Dortmund<br />
+                      <strong style={{ color: 'var(--text-main)' }}>Office Location:</strong><br />
                       Neuer Wall 2-6, 20354 Hamburg
                     </div>
                   </div>
 
-                  <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-                    <Mail size={18} color="var(--blueprint-blue)" style={{ flexShrink: 0 }} />
+                  <div style={{ display: 'flex', gap: '14px', alignItems: 'center' }}>
+                    <div style={{ width: '32px', height: '32px', backgroundColor: 'var(--lampag-green)', borderRadius: 'var(--radius-sm)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <Phone size={16} color="#ffffff" />
+                    </div>
                     <div>
-                      <strong>Email:</strong> info@lampag.com
+                      <strong style={{ color: 'var(--text-main)' }}>Telephone:</strong> +49 040 571 996 390
                     </div>
                   </div>
 
-                  <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-                    <Phone size={18} color="var(--blueprint-blue)" style={{ flexShrink: 0 }} />
+                  <div style={{ display: 'flex', gap: '14px', alignItems: 'center' }}>
+                    <div style={{ width: '32px', height: '32px', backgroundColor: 'var(--lampag-green)', borderRadius: 'var(--radius-sm)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <Printer size={16} color="#ffffff" />
+                    </div>
                     <div>
-                      <strong>Telephone:</strong> +49 040 571 996 390
+                      <strong style={{ color: 'var(--text-main)' }}>Fax:</strong> +49 040 571 996 381
                     </div>
                   </div>
 
-                  <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-                    <Printer size={18} color="var(--blueprint-blue)" style={{ flexShrink: 0 }} />
+                  <div style={{ display: 'flex', gap: '14px', alignItems: 'center' }}>
+                    <div style={{ width: '32px', height: '32px', backgroundColor: 'var(--lampag-green)', borderRadius: 'var(--radius-sm)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <Mail size={16} color="#ffffff" />
+                    </div>
                     <div>
-                      <strong>Fax:</strong> +49 040 571 996 381
+                      <strong style={{ color: 'var(--text-main)' }}>Email:</strong> info@lampag.com
                     </div>
                   </div>
                 </div>
 
                 <div style={{ marginTop: '24px', paddingTop: '16px', borderTop: '1px dashed var(--border-dim)' }}>
-                  <div style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--text-muted)', marginBottom: '8px' }}>
-                    SOCIAL MEDIA SPECIFICATIONS:
+                  <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#64748b', marginBottom: '10px', textTransform: 'uppercase' }}>
+                    ONLINE CHANNELS:
                   </div>
-                  <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                    <span className="wf-tag" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                      <Globe size={12} /> linkedin.com/company/lampag-gmbh
+                  <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                    <span style={{
+                      backgroundColor: 'var(--lampag-green-subtle)',
+                      color: 'var(--lampag-green-dark)',
+                      fontSize: '0.78rem',
+                      fontWeight: 700,
+                      padding: '4px 10px',
+                      borderRadius: 'var(--radius-sm)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '6px'
+                    }}>
+                      <Globe size={13} /> linkedin.com/company/lampag-gmbh
                     </span>
-                    <span className="wf-tag" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                      <Share2 size={12} /> @lampagcom
+                    <span style={{
+                      backgroundColor: 'var(--lampag-green-subtle)',
+                      color: 'var(--lampag-green-dark)',
+                      fontSize: '0.78rem',
+                      fontWeight: 700,
+                      padding: '4px 10px',
+                      borderRadius: 'var(--radius-sm)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '6px'
+                    }}>
+                      <Share2 size={13} /> @lampagcom
                     </span>
                   </div>
                 </div>
@@ -277,9 +349,9 @@ const ContactPage = ({ blueprintMode }) => {
               {/* Map Wireframe Placeholder */}
               <WireframePlaceholder
                 title="GEOGRAPHIC LOCATION MAP WIREFRAME"
-                direction="Interactive map placeholder showing Hamburg and Dortmund facilities."
+                direction="Interactive map placeholder showing Hamburg headquarters."
                 aspectRatio="16/9"
-                height="200px"
+                height="190px"
                 blueprintMode={blueprintMode}
               />
             </div>

@@ -1,113 +1,140 @@
-import React from 'react';
+import React, { useState } from 'react';
 import WireframePlaceholder from '../components/WireframePlaceholder';
-import { ArrowRight, ShieldCheck, Cpu, Layers, CheckCircle2, Building2 } from 'lucide-react';
+import { ArrowUpRight, ChevronLeft, ChevronRight, Cpu, ShieldCheck, Layers } from 'lucide-react';
 
 const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject, blueprintMode }) => {
+  // Solutions data for Section 2 (2x2 grid as per wireframe)
   const solutions = [
     {
       id: 'windows',
-      title: 'Aluminium Windows',
+      title: 'ALUMINIUM WINDOW',
       desc: 'High-performance window systems designed to provide excellent thermal insulation, durability, security, and contemporary aesthetics.',
-      cat: 'Windows'
+      cat: 'Windows',
+      bgImg: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'
     },
     {
       id: 'doors',
-      title: 'Aluminium Doors',
+      title: 'ALUMINIUM DOORS',
       desc: 'Entrance, sliding, folding, and commercial door systems that combine functionality, safety, and elegant design.',
-      cat: 'Doors'
+      cat: 'Doors',
+      bgImg: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80'
     },
     {
       id: 'facades',
-      title: 'Curtain Wall & Façade Systems',
+      title: 'CURTAIN WALL & FACADE SYSTEM',
       desc: 'Modern façade solutions that maximize natural light while delivering structural performance, energy efficiency, and architectural flexibility.',
-      cat: 'Façades'
+      cat: 'Façades',
+      bgImg: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80'
     },
     {
       id: 'customized',
-      title: 'Customized Solutions',
+      title: 'CUSTOMIZED SOLUTION',
       desc: 'Tailor-made systems developed to meet unique architectural concepts and project-specific technical requirements.',
-      cat: 'Custom'
-    },
-    {
-      id: 'acm',
-      title: 'ACM & Decorative Panels',
-      desc: 'High-quality aluminium composite materials and decorative cladding solutions designed to enhance architectural aesthetics, durability, and building performance.',
-      cat: 'Cladding'
+      cat: 'Custom',
+      bgImg: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80'
     }
   ];
 
-  const highlights = [
+  // Portfolio items (4 items for Section 4)
+  const portfolioProjects = [
     {
-      title: 'Hamburg Commercial Office Hub',
-      location: 'Hamburg, Germany',
-      sector: 'Commercial',
-      systems: 'Curtain Wall Systems & Custom Sliding Doors',
-      summary: 'Integrated slim profile sliding doors maximizing natural light while maintaining high thermal performance.'
+      id: 1,
+      title: '26 COTTAGE ST. JEYSEY CITY NJ, USA',
+      location: 'Jersey City, USA',
+      sector: 'Residential Complex',
+      image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80'
     },
     {
-      title: 'Dortmund Modern Residential Complex',
-      location: 'Dortmund, Germany',
-      sector: 'Residential',
-      systems: 'Schüco AWS 75.SI+ & AD 75 FD',
-      summary: 'Energy-efficient triple-glazed aluminium window profiles engineered for acoustic and thermal comfort.'
+      id: 2,
+      title: '26 COTTAGE ST. JEYSEY CITY NJ, USA',
+      location: 'Jersey City, USA',
+      sector: 'Commercial Tower',
+      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80'
+    },
+    {
+      id: 3,
+      title: '26 COTTAGE ST. JEYSEY CITY NJ, USA',
+      location: 'Jersey City, USA',
+      sector: 'Mixed-Use Development',
+      image: 'https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=600&q=80'
+    },
+    {
+      id: 4,
+      title: '26 COTTAGE ST. JEYSEY CITY NJ, USA',
+      location: 'Jersey City, USA',
+      sector: 'Luxury Apartments',
+      image: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=600&q=80'
     }
   ];
+
+  const [portfolioIndex, setPortfolioIndex] = useState(0);
+
+  const handlePrevProject = () => {
+    setPortfolioIndex((prev) => (prev === 0 ? portfolioProjects.length - 1 : prev - 1));
+  };
+
+  const handleNextProject = () => {
+    setPortfolioIndex((prev) => (prev === portfolioProjects.length - 1 ? 0 : prev + 1));
+  };
 
   return (
     <div>
       {/* HERO BANNER SECTION */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--bg-surface)', borderBottom: '1px solid var(--border-dim)' }}>
+      <section style={{
+        backgroundColor: '#0a140e',
+        color: '#ffffff',
+        padding: '72px 0',
+        borderBottom: '1px solid #1b3323',
+        backgroundImage: 'linear-gradient(rgba(10, 20, 14, 0.82), rgba(10, 20, 14, 0.92)), url("https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=80")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+      }}>
         <div className="container">
-          <div className="wf-tag" style={{ marginBottom: '16px' }}>
-            [HERO BANNER SECTION - STICKY HEADER CONCEPT]
-          </div>
-          
-          <div className="grid-2" style={{ alignItems: 'center', gap: '40px' }}>
+          <div className="grid-2" style={{ alignItems: 'center', gap: '48px' }}>
             <div>
-              <span style={{ 
-                fontFamily: 'var(--font-mono)', 
-                fontSize: '0.8rem', 
-                color: 'var(--blueprint-blue)', 
-                fontWeight: 700, 
-                textTransform: 'uppercase',
-                letterSpacing: '0.05em' 
-              }}>
-                Willkommen in der Zukunft des Bauens
-              </span>
-              <h1 style={{ 
-                fontSize: '2.5rem', 
-                fontWeight: 800, 
-                lineHeight: 1.15, 
-                color: 'var(--text-main)', 
-                margin: '12px 0 16px 0',
-                letterSpacing: '-0.03em' 
+              <h1 style={{
+                fontSize: '3rem',
+                fontWeight: 800,
+                lineHeight: 1.12,
+                color: '#ffffff',
+                marginBottom: '20px',
+                letterSpacing: '-0.03em'
               }}>
                 Precision Aluminium Systems for Modern Architecture
               </h1>
-              <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '28px' }}>
-                Precision-engineered windows, doors, and curtain wall systems delivering energy efficiency, durability, and lasting performance.
+              <p style={{
+                fontSize: '1.15rem',
+                color: '#cbd5e1',
+                lineHeight: 1.6,
+                marginBottom: '36px',
+                maxWidth: '540px'
+              }}>
+                Premium windows, doors, and curtain wall solutions engineered for durability, performance, and contemporary design.
               </p>
 
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px' }}>
-                <button className="btn btn-primary" onClick={() => setActivePage('product')}>
-                  Explore Our Solutions <ArrowRight size={16} />
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
+                <button
+                  className="btn-pill-green"
+                  onClick={() => setActivePage('whatweoffer')}
+                >
+                  Explore Our Solution <ArrowUpRight size={18} />
                 </button>
-                <button className="btn btn-outline" onClick={() => setActivePage('contact')}>
-                  Get in Touch
+                <button
+                  className="btn-pill-green-outline"
+                  onClick={() => setActivePage('contact')}
+                  style={{ color: '#ffffff', borderColor: 'var(--lampag-green)' }}
+                >
+                  Get in Touch <ArrowUpRight size={18} />
                 </button>
-              </div>
-
-              <div className="spec-box" style={{ marginTop: '28px' }}>
-                <strong>Blueprint Spec Notice:</strong> Certified Schüco System Partner | Part of Alu Group German Manufacturing Network.
               </div>
             </div>
 
             <div>
               <WireframePlaceholder
-                title="HERO BANNER VISUAL"
-                direction="High-resolution background image or subtle video of a modern building featuring floor-to-ceiling glass and sleek aluminium frames."
-                aspectRatio="16/9"
-                height="340px"
+                title="HERO ARCHITECTURAL BUILDING"
+                direction="Modern glass building with precision aluminium curtain wall facade."
+                aspectRatio="4/3"
+                height="360px"
                 blueprintMode={blueprintMode}
               />
             </div>
@@ -115,204 +142,408 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject, bluep
         </div>
       </section>
 
-      {/* SECTION 1: INTRODUCTION (ABOUT LAMPAG) */}
-      <section className="section-padding" style={{ borderBottom: '1px solid var(--border-dim)' }}>
-        <div className="container">
-          <div className="wf-tag" style={{ marginBottom: '12px' }}>
-            [SECTION 1: INTRODUCTION - ABOUT LAMPAG]
-          </div>
-          
-          <div className="section-header" style={{ maxWidth: '800px' }}>
-            <h2>Engineering Quality. Elevating Architecture.</h2>
-            <p style={{ marginTop: '14px', fontSize: '1.1rem', color: 'var(--text-main)', lineHeight: 1.7 }}>
-              Lampag specializes in premium aluminium window, door, and façade systems for modern architectural projects. We deliver innovative solutions that combine engineering expertise, quality craftsmanship, and contemporary design to meet the needs of residential, commercial, and mixed-use developments.
-            </p>
-          </div>
-
-          <div className="grid-3" style={{ marginTop: '32px' }}>
-            <div className="wf-box" style={{ padding: '24px' }}>
-              <div className="wf-tag" style={{ marginBottom: '10px' }}>700+ COMPLETED PROJECTS</div>
-              <h3 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '8px' }}>Global Execution</h3>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Over 700 successfully executed projects across residential, commercial, and municipal developments worldwide.</p>
-            </div>
-
-            <div className="wf-box" style={{ padding: '24px' }}>
-              <div className="wf-tag" style={{ marginBottom: '10px' }}>70,000 M² CAPACITY</div>
-              <h3 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '8px' }}>German Manufacturing</h3>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Annual production capacity exceeding 70,000 m² powered by advanced Schüco CNC machinery.</p>
-            </div>
-
-            <div className="wf-box" style={{ padding: '24px' }}>
-              <div className="wf-tag" style={{ marginBottom: '10px' }}>50+ YEARS EXPERIENCE</div>
-              <h3 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '8px' }}>Industry Expertise</h3>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Strengthened by a regional engineering team with over 50 years of specialized aluminium construction mastery.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 2: SOLUTIONS OVERVIEW */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--bg-surface)', borderBottom: '1px solid var(--border-dim)' }}>
-        <div className="container">
-          <div className="wf-tag" style={{ marginBottom: '12px' }}>
-            [SECTION 2: OUR SOLUTIONS OVERVIEW - GRID CARDS]
+      {/* SECTION 1: ABOUT LAMPAG */}
+      <section className="section-padding" style={{ backgroundColor: '#ffffff', borderBottom: '1px solid var(--border-dim)' }}>
+        <div className="container" style={{ textAlign: 'center' }}>
+          <div style={{
+            fontSize: '1.5rem',
+            fontWeight: 800,
+            letterSpacing: '0.08em',
+            color: 'var(--text-main)',
+            marginBottom: '32px',
+            textTransform: 'uppercase'
+          }}>
+            ABOUT LAMPAG
           </div>
 
-          <div className="section-header">
-            <h2>Comprehensive Aluminium Systems</h2>
-            <p>Engineered to meet demanding architectural and building-performance requirements.</p>
-          </div>
-
-          <div className="grid-3">
-            {solutions.map((item) => (
-              <div 
-                key={item.id} 
-                className="wf-box" 
-                style={{ 
-                  padding: '24px', 
-                  display: 'flex', 
-                  flexDirection: 'column', 
-                  justifyContent: 'space-between',
-                  cursor: 'pointer' 
-                }}
-                onClick={() => setActivePage('product')}
-              >
-                <div>
-                  <div className="wf-tag" style={{ marginBottom: '12px' }}>{item.cat}</div>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '10px' }}>{item.title}</h3>
-                  <p style={{ fontSize: '0.92rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>{item.desc}</p>
-                </div>
-                <div style={{ marginTop: '20px', display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem', fontWeight: 700, color: 'var(--blueprint-blue)' }}>
-                  View Systems & Specs <ArrowRight size={14} />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 3: END-TO-END ENGINEERING SUPPORT */}
-      <section className="section-padding" style={{ borderBottom: '1px solid var(--border-dim)' }}>
-        <div className="container">
-          <div className="wf-tag" style={{ marginBottom: '12px' }}>
-            [SECTION 3: END-TO-END ENGINEERING SUPPORT]
-          </div>
-
-          <div className="grid-2" style={{ alignItems: 'center', gap: '40px' }}>
-            <div>
-              <h2 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '16px' }}>
-                Supporting Your Project at Every Lifecycle Stage
-              </h2>
-              <p style={{ fontSize: '1.05rem', color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '24px' }}>
-                Working closely with architects, developers, contractors, and project partners, we support projects from the early planning stage through engineering, production, and project execution. Our goal is to deliver reliable, customized solutions that seamlessly blend aesthetics, functionality, and long-term performance.
-              </p>
-              <button className="btn btn-outline" onClick={() => setActivePage('whatweoffer')}>
-                Explore Our Process & Services <ArrowRight size={16} />
-              </button>
-            </div>
-
+          <div style={{ maxWidth: '820px', margin: '0 auto 40px auto' }}>
             <WireframePlaceholder
-              title="ENGINEERING LIFECYCLE DIAGRAM"
-              direction="Technical diagram illustrating early planning, CAD/BIM drafting, Schüco CNC production, and site coordination."
-              aspectRatio="4/3"
-              height="280px"
+              title="ABOUT LAMPAG ARCHITECTURAL COMPLEX"
+              direction="High quality architectural exterior photo showing aluminium systems."
+              aspectRatio="16/9"
+              height="320px"
               blueprintMode={blueprintMode}
             />
           </div>
+
+          <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+            <h2 style={{ fontSize: '2.1rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '16px' }}>
+              Engineering Quality. Elevating Architecture.
+            </h2>
+            <p style={{ fontSize: '1.08rem', color: '#475569', lineHeight: 1.75 }}>
+              Lampag specializes in premium aluminium window, door, and façade systems for modern architectural projects. We deliver innovative solutions that combine engineering expertise, quality craftsmanship, and contemporary design to meet the needs of residential, commercial, and mixed-use developments.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* SECTION 4: PORTFOLIO SHOWCASE HIGHLIGHT */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--bg-surface)', borderBottom: '1px solid var(--border-dim)' }}>
+      {/* SECTION 2: COMPREHENSIVE ALUMINIUM SYSTEM */}
+      <section className="section-padding" style={{ backgroundColor: '#f4f8f5', borderBottom: '1px solid var(--border-dim)' }}>
         <div className="container">
-          <div className="wf-tag" style={{ marginBottom: '12px' }}>
-            [SECTION 4: PORTFOLIO SHOWCASE HIGHLIGHT]
-          </div>
-
-          <div className="section-header" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-end', gap: '16px' }}>
-            <div>
-              <h2>Selected Architectural References</h2>
-              <p>A glimpse of our expertise in action across residential, commercial, and public developments.</p>
-            </div>
-            <button className="btn btn-outline" onClick={() => setActivePage('portfolio')}>
-              View All Projects <ArrowRight size={16} />
-            </button>
-          </div>
-
-          <div className="grid-2">
-            {highlights.map((proj, idx) => (
-              <div 
-                key={idx} 
-                className="wf-box" 
-                style={{ padding: '20px', cursor: 'pointer' }}
-                onClick={() => setSelectedProject(proj)}
+          <div className="grid-2" style={{ gap: '48px', alignItems: 'flex-start' }}>
+            {/* Left Column: Heading + Action */}
+            <div style={{ sticky: true, top: '100px' }}>
+              <h2 style={{
+                fontSize: '2.4rem',
+                fontWeight: 900,
+                color: 'var(--text-main)',
+                lineHeight: 1.15,
+                textTransform: 'uppercase',
+                marginBottom: '28px'
+              }}>
+                COMPREHENSIVE<br />ALUMINIUM<br />SYSTEM
+              </h2>
+              <button
+                className="btn-pill-green"
+                onClick={() => setActivePage('contact')}
               >
-                <WireframePlaceholder
-                  title={`PORTFOLIO: ${proj.title}`}
-                  direction="High-resolution photo of completed architectural reference."
-                  aspectRatio="16/9"
-                  height="200px"
-                  blueprintMode={blueprintMode}
-                />
-                <div style={{ marginTop: '16px' }}>
-                  <div className="wf-tag" style={{ marginBottom: '8px' }}>{proj.sector} • {proj.location}</div>
-                  <h3 style={{ fontSize: '1.2rem', fontWeight: 700 }}>{proj.title}</h3>
-                  <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', marginTop: '6px' }}>{proj.summary}</p>
+                Get in Touch <ArrowUpRight size={18} />
+              </button>
+            </div>
+
+            {/* Right Column: 2x2 Cards Grid with Hover Reveal */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+              gap: '20px'
+            }}>
+              {solutions.map((item) => (
+                <div
+                  key={item.id}
+                  className="product-card-container"
+                  onClick={() => {
+                    setSelectedProduct(item);
+                    setActivePage('product');
+                  }}
+                  style={{
+                    backgroundColor: '#ffffff',
+                    backgroundImage: `linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.65)), url("${item.bgImg}")`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    display: 'flex',
+                    alignItems: 'flex-end',
+                    padding: '20px'
+                  }}
+                >
+                  <h3 style={{
+                    fontSize: '1.25rem',
+                    fontWeight: 800,
+                    color: '#ffffff',
+                    textTransform: 'uppercase',
+                    lineHeight: 1.25,
+                    textShadow: '0 2px 6px rgba(0,0,0,0.6)'
+                  }}>
+                    {item.title}
+                  </h3>
+
+                  {/* Hover reveal overlay containing description */}
+                  <div className="product-card-overlay">
+                    <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--lampag-green)', marginBottom: '10px' }}>
+                      {item.title}
+                    </h3>
+                    <p style={{ fontSize: '0.88rem', color: '#e2e8f0', lineHeight: 1.5 }}>
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 3: LIFECYCLE STAGE SUPPORT */}
+      <section style={{
+        position: 'relative',
+        padding: '96px 0',
+        backgroundImage: 'url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        borderBottom: '1px solid var(--border-dim)'
+      }}>
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundColor: 'rgba(0, 0, 0, 0.45)'
+        }} />
+
+        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+          {/* Floating Left Container with 80% Transparency */}
+          <div className="glass-overlay-80" style={{ maxWidth: '560px' }}>
+            <h2 style={{
+              fontSize: '1.8rem',
+              fontWeight: 900,
+              color: 'var(--text-main)',
+              lineHeight: 1.2,
+              marginBottom: '20px',
+              textTransform: 'uppercase'
+            }}>
+              WE ARE SUPPORTING YOUR PROJECT AT<br />
+              <span style={{ color: 'var(--lampag-green)' }}>EVERY LIFECYCLE STAGE</span>
+            </h2>
+
+            <p style={{ fontSize: '0.98rem', color: '#334155', lineHeight: 1.65, marginBottom: '16px' }}>
+              Working closely with architects, developers, contractors, and project partners, <strong>we support projects from the early planning stage through engineering, production, and project execution.</strong>
+            </p>
+
+            <p style={{ fontSize: '0.98rem', color: '#334155', lineHeight: 1.65 }}>
+              Our goal is to deliver reliable, customized solutions that seamlessly blend aesthetics, functionality, and long-term performance.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 4: SELECTED ARCHITECTURAL REFERENCES */}
+      <section className="section-padding" style={{ backgroundColor: '#ffffff', borderBottom: '1px solid var(--border-dim)' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+            <h2 style={{ fontSize: '2.1rem', fontWeight: 900, color: 'var(--text-main)', textTransform: 'uppercase', marginBottom: '10px' }}>
+              SELECTED ARCHITECTURAL REFERENCES
+            </h2>
+            <p style={{ fontSize: '1.05rem', color: '#64748b' }}>
+              A glimpse of our expertise in action across residential, commercial, and public developments.
+            </p>
+          </div>
+
+          {/* Grid of 4 portfolio items with pagination support */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+            gap: '20px',
+            marginBottom: '36px'
+          }}>
+            {portfolioProjects.map((proj) => (
+              <div
+                key={proj.id}
+                style={{
+                  border: '1px solid var(--border-dim)',
+                  borderRadius: 'var(--radius-md)',
+                  overflow: 'hidden',
+                  backgroundColor: '#ffffff',
+                  display: 'flex',
+                  flexDirection: 'column'
+                }}
+              >
+                <div style={{
+                  height: '180px',
+                  backgroundImage: `url("${proj.image}")`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center'
+                }} />
+                <div style={{ padding: '18px', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'space-between' }}>
+                  <h4 style={{ fontSize: '0.92rem', fontWeight: 800, color: 'var(--text-main)', lineHeight: 1.3, marginBottom: '16px' }}>
+                    {proj.title}
+                  </h4>
+                  <button
+                    className="btn-pill-green"
+                    onClick={() => {
+                      setSelectedProject(proj);
+                      setActivePage('portfolio');
+                    }}
+                    style={{ width: '100%', fontSize: '0.85rem', padding: '8px 14px' }}
+                  >
+                    View More <ArrowUpRight size={15} />
+                  </button>
                 </div>
               </div>
             ))}
           </div>
+
+          {/* Controls: Next/Prev Carousel Buttons & View All Projects CTA */}
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '20px' }}>
+            <div style={{ display: 'flex', gap: '8px' }}>
+              <button
+                onClick={handlePrevProject}
+                style={{
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '50%',
+                  border: '1.5px solid var(--border-strong)',
+                  backgroundColor: '#ffffff',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer'
+                }}
+              >
+                <ChevronLeft size={20} color="var(--text-main)" />
+              </button>
+              <button
+                onClick={handleNextProject}
+                style={{
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '50%',
+                  border: '1.5px solid var(--border-strong)',
+                  backgroundColor: '#ffffff',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer'
+                }}
+              >
+                <ChevronRight size={20} color="var(--text-main)" />
+              </button>
+            </div>
+
+            <button
+              className="btn-pill-green"
+              onClick={() => setActivePage('portfolio')}
+            >
+              View All Projects <ArrowUpRight size={18} />
+            </button>
+          </div>
         </div>
       </section>
 
-      {/* SECTION 5: WHY LAMPAG */}
-      <section className="section-padding" style={{ borderBottom: '1px solid var(--border-dim)' }}>
+      {/* SECTION 5: WHY LEADING PARTNERS CHOOSE LAMPAG */}
+      <section className="section-padding" style={{ backgroundColor: '#f8fafc', borderBottom: '1px solid var(--border-dim)' }}>
         <div className="container">
-          <div className="wf-tag" style={{ marginBottom: '12px' }}>
-            [SECTION 5: WHY LAMPAG]
-          </div>
+          <div className="grid-2" style={{ gap: '40px', alignItems: 'stretch' }}>
+            {/* Left Column: Stack of 3 Visual Cards */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <div style={{
+                backgroundColor: '#ffffff',
+                border: '1px solid var(--border-dim)',
+                borderRadius: 'var(--radius-md)',
+                padding: '24px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '20px',
+                boxShadow: 'var(--shadow-wf)'
+              }}>
+                <div style={{
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: 'var(--radius-md)',
+                  backgroundColor: 'var(--lampag-green-subtle)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0
+                }}>
+                  <Cpu size={24} color="var(--lampag-green)" />
+                </div>
+                <div>
+                  <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-main)' }}>Engineering-Driven</h3>
+                  <p style={{ fontSize: '0.88rem', color: '#64748b' }}>Tailored technical support from concept to execution.</p>
+                </div>
+              </div>
 
-          <div className="section-header">
-            <h2>Why Leading Partners Choose Lampag</h2>
-            <p>At Lampag, we are committed to delivering more than aluminium systems—we provide reliable project solutions built on quality, expertise, and partnership.</p>
-          </div>
+              <div style={{
+                backgroundColor: '#ffffff',
+                border: '1px solid var(--border-dim)',
+                borderRadius: 'var(--radius-md)',
+                padding: '24px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '20px',
+                boxShadow: 'var(--shadow-wf)'
+              }}>
+                <div style={{
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: 'var(--radius-md)',
+                  backgroundColor: 'var(--lampag-green-subtle)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0
+                }}>
+                  <ShieldCheck size={24} color="var(--lampag-green)" />
+                </div>
+                <div>
+                  <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-main)' }}>High Quality Standards</h3>
+                  <p style={{ fontSize: '0.88rem', color: '#64748b' }}>Precision materials built for long-term durability.</p>
+                </div>
+              </div>
 
-          <div className="grid-3">
-            <div className="wf-box" style={{ padding: '24px' }}>
-              <Cpu size={28} color="var(--blueprint-blue)" style={{ marginBottom: '12px' }} />
-              <h3 style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: '8px' }}>Engineering-Driven</h3>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Tailored technical support from early concept design to final project execution.</p>
+              <div style={{
+                backgroundColor: '#ffffff',
+                border: '1px solid var(--border-dim)',
+                borderRadius: 'var(--radius-md)',
+                padding: '24px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '20px',
+                boxShadow: 'var(--shadow-wf)'
+              }}>
+                <div style={{
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: 'var(--radius-md)',
+                  backgroundColor: 'var(--lampag-green-subtle)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0
+                }}>
+                  <Layers size={24} color="var(--lampag-green)" />
+                </div>
+                <div>
+                  <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-main)' }}>Sustainable Performance</h3>
+                  <p style={{ fontSize: '0.88rem', color: '#64748b' }}>Energy-efficient systems designed for future-ready buildings.</p>
+                </div>
+              </div>
             </div>
 
-            <div className="wf-box" style={{ padding: '24px' }}>
-              <ShieldCheck size={28} color="var(--blueprint-blue)" style={{ marginBottom: '12px' }} />
-              <h3 style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: '8px' }}>High Quality Standards</h3>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Precision materials built for uncompromised long-term durability and safety.</p>
-            </div>
-
-            <div className="wf-box" style={{ padding: '24px' }}>
-              <Layers size={28} color="var(--blueprint-blue)" style={{ marginBottom: '12px' }} />
-              <h3 style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: '8px' }}>Sustainable Performance</h3>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Energy-efficient thermal insulation systems designed for future-ready buildings.</p>
+            {/* Right Column: Light Greenish Card Block */}
+            <div style={{
+              backgroundColor: '#eaf5ed',
+              border: '1px solid #c6e6cd',
+              borderRadius: 'var(--radius-md)',
+              padding: '40px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center'
+            }}>
+              <h2 style={{
+                fontSize: '2rem',
+                fontWeight: 900,
+                color: 'var(--lampag-green-dark)',
+                lineHeight: 1.25,
+                marginBottom: '20px',
+                textTransform: 'uppercase'
+              }}>
+                WHY LEADING PARTNERS CHOOSE LAMPAG
+              </h2>
+              <p style={{ fontSize: '1.05rem', color: '#2d4a34', lineHeight: 1.7 }}>
+                At Lampag, we are committed to delivering more than aluminium systems. We provide reliable project solutions built on quality, expertise, and partnership.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* SECTION 6: BOTTOM CALL TO ACTION */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--bg-dark)', color: '#ffffff' }}>
-        <div className="container" style={{ textAlign: 'center', maxWidth: '720px' }}>
-          <div className="wf-tag" style={{ marginBottom: '16px', backgroundColor: '#1e293b', color: '#38bdf8', borderColor: '#334155' }}>
-            [SECTION 6: BOTTOM CTA BANNER]
-          </div>
-          <h2 style={{ fontSize: '2.2rem', fontWeight: 800, marginBottom: '12px' }}>
-            Ready to bring your architectural vision to life?
+      {/* SECTION 6: READY TO BRING YOUR ARCHITECTURAL VISION TO LIFE */}
+      <section style={{
+        padding: '80px 0',
+        backgroundColor: '#0a140e',
+        color: '#ffffff',
+        backgroundImage: 'linear-gradient(rgba(10, 20, 14, 0.85), rgba(10, 20, 14, 0.85)), url("https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=80")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        textAlign: 'center'
+      }}>
+        <div className="container" style={{ maxWidth: '780px' }}>
+          <h2 style={{
+            fontSize: '2.4rem',
+            fontWeight: 900,
+            color: '#ffffff',
+            lineHeight: 1.2,
+            marginBottom: '16px',
+            textTransform: 'uppercase'
+          }}>
+            READY TO BRING YOUR ARCHITECTURAL VISION TO LIFE?
           </h2>
-          <p style={{ color: '#94a3b8', fontSize: '1.1rem', marginBottom: '28px' }}>
-            Contact our engineering team to discuss your project requirements.
+          <p style={{ fontSize: '1.1rem', color: '#cbd5e1', marginBottom: '32px' }}>
+            Contact our engineering team to discuss your project requirements
           </p>
-          <button className="btn btn-primary" style={{ backgroundColor: '#ffffff', color: 'var(--text-main)' }} onClick={() => setActivePage('contact')}>
-            Start Your Project <ArrowRight size={16} />
+          <button
+            className="btn-pill-green"
+            onClick={() => setActivePage('contact')}
+          >
+            Start Your Project <ArrowUpRight size={18} />
           </button>
         </div>
       </section>

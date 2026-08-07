@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import WireframePlaceholder from '../components/WireframePlaceholder';
-import { MapPin, Building, Wrench, ExternalLink } from 'lucide-react';
+import { MapPin, ArrowUpRight } from 'lucide-react';
 
 const PortfolioPage = ({ setSelectedProject, blueprintMode }) => {
   const [filter, setFilter] = useState('All');
@@ -65,23 +65,45 @@ const PortfolioPage = ({ setSelectedProject, blueprintMode }) => {
   return (
     <div>
       {/* HERO BANNER */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--bg-surface)', borderBottom: '1px solid var(--border-dim)' }}>
+      <section style={{
+        backgroundColor: '#0a140e',
+        color: '#ffffff',
+        padding: '64px 0',
+        borderBottom: '1px solid #1b3323',
+        backgroundImage: 'linear-gradient(rgba(10, 20, 14, 0.85), rgba(10, 20, 14, 0.92)), url("https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=80")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+      }}>
         <div className="container">
-          <div className="wf-tag" style={{ marginBottom: '16px' }}>
-            [PORTFOLIO - HERO BANNER]
-          </div>
-
           <div className="grid-2" style={{ alignItems: 'center', gap: '40px' }}>
             <div>
-              <h1 style={{ fontSize: '2.4rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '16px' }}>
+              <span style={{
+                color: 'var(--lampag-green)',
+                fontWeight: 700,
+                fontSize: '0.85rem',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                fontFamily: 'var(--font-mono)'
+              }}>
+                PORTFOLIO
+              </span>
+              <h1 style={{ fontSize: '2.6rem', fontWeight: 800, lineHeight: 1.2, margin: '12px 0 16px 0', color: '#ffffff' }}>
                 Our Project Portfolio
               </h1>
-              <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
+              <p style={{ fontSize: '1.1rem', color: '#cbd5e1', lineHeight: 1.6 }}>
                 Explore our selection of completed aluminium window, door, and façade implementations.
               </p>
 
-              <div className="spec-box" style={{ marginTop: '24px' }}>
-                <strong>Architectural Track Record:</strong> 700+ completed projects engineered across Europe and worldwide.
+              <div style={{
+                marginTop: '24px',
+                padding: '12px 18px',
+                backgroundColor: 'rgba(57, 158, 82, 0.15)',
+                borderLeft: '3px solid var(--lampag-green)',
+                borderRadius: '0 var(--radius-sm) var(--radius-sm) 0',
+                fontSize: '0.9rem',
+                color: '#e2e8f0'
+              }}>
+                <strong style={{ color: 'var(--lampag-green)' }}>Architectural Track Record:</strong> 700+ completed projects engineered across Europe and worldwide.
               </div>
             </div>
 
@@ -97,19 +119,20 @@ const PortfolioPage = ({ setSelectedProject, blueprintMode }) => {
       </section>
 
       {/* PORTFOLIO GRID SHOWCASE */}
-      <section className="section-padding">
+      <section className="section-padding" style={{ backgroundColor: '#ffffff' }}>
         <div className="container">
-          <div className="wf-tag" style={{ marginBottom: '16px' }}>
-            [5.1 PROJECT SHOWCASE GRID & CATEGORY TABS]
-          </div>
-
           {/* Filter Buttons */}
-          <div className="filter-tabs">
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '36px' }}>
             {categories.map(cat => (
               <button
                 key={cat}
-                className={`filter-tab ${filter === cat ? 'active' : ''}`}
                 onClick={() => setFilter(cat)}
+                className={`btn-pill-green-outline ${filter === cat ? 'btn-pill-green' : ''}`}
+                style={{
+                  fontSize: '0.88rem',
+                  padding: '8px 18px',
+                  ...(filter === cat ? { color: '#ffffff' } : { color: 'var(--text-main)', borderColor: 'var(--border-dim)' })
+                }}
               >
                 {cat}
               </button>
@@ -121,8 +144,14 @@ const PortfolioPage = ({ setSelectedProject, blueprintMode }) => {
             {filteredProjects.map(proj => (
               <div 
                 key={proj.id} 
-                className="wf-box" 
-                style={{ padding: '20px', cursor: 'pointer' }}
+                style={{
+                  padding: '24px',
+                  backgroundColor: '#ffffff',
+                  border: '1px solid var(--border-dim)',
+                  borderRadius: 'var(--radius-md)',
+                  cursor: 'pointer',
+                  transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+                }}
                 onClick={() => setSelectedProject(proj)}
               >
                 <WireframePlaceholder
@@ -133,31 +162,47 @@ const PortfolioPage = ({ setSelectedProject, blueprintMode }) => {
                   blueprintMode={blueprintMode}
                 />
 
-                <div style={{ marginTop: '16px' }}>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '8px' }}>
-                    <span className="wf-tag">{proj.sector}</span>
-                    <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                      <MapPin size={12} /> {proj.location}
+                <div style={{ marginTop: '20px' }}>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '10px', alignItems: 'center' }}>
+                    <span style={{
+                      backgroundColor: 'var(--lampag-green-subtle)',
+                      color: 'var(--lampag-green-dark)',
+                      fontSize: '0.72rem',
+                      fontWeight: 700,
+                      padding: '2px 8px',
+                      borderRadius: 'var(--radius-sm)'
+                    }}>
+                      {proj.sector}
+                    </span>
+                    <span style={{ fontSize: '0.82rem', color: '#64748b', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                      <MapPin size={13} color="var(--lampag-green)" /> {proj.location}
                     </span>
                   </div>
 
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text-main)', marginBottom: '8px' }}>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '8px' }}>
                     {proj.title}
                   </h3>
 
-                  <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.5, marginBottom: '12px' }}>
+                  <p style={{ fontSize: '0.9rem', color: '#64748b', lineHeight: 1.5, marginBottom: '16px' }}>
                     {proj.summary}
                   </p>
 
                   <div style={{ 
-                    padding: '10px 12px', 
-                    backgroundColor: 'var(--bg-subtle)', 
+                    padding: '12px 14px', 
+                    backgroundColor: '#f8fafc', 
                     borderRadius: 'var(--radius-sm)',
-                    border: '1px dashed var(--border-dim)',
-                    fontSize: '0.82rem'
+                    border: '1px solid var(--border-dim)',
+                    fontSize: '0.82rem',
+                    marginBottom: '16px'
                   }}>
                     <strong style={{ color: 'var(--text-main)' }}>Systems Used:</strong>{' '}
-                    <span style={{ color: 'var(--blueprint-blue)' }}>{proj.systems}</span>
+                    <span style={{ color: 'var(--lampag-green-dark)', fontWeight: 700 }}>{proj.systems}</span>
+                  </div>
+
+                  <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                    <button className="btn-pill-green" style={{ fontSize: '0.82rem', padding: '6px 14px' }}>
+                      View Project Details <ArrowUpRight size={14} />
+                    </button>
                   </div>
                 </div>
               </div>

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import WireframePlaceholder from '../components/WireframePlaceholder';
-import { Sliders, ShieldCheck, ArrowRight, Layers, Box, Check } from 'lucide-react';
+import { ShieldCheck, ArrowUpRight } from 'lucide-react';
 
 const ProductsPage = ({ setSelectedProduct, blueprintMode }) => {
   const [activeCategory, setActiveCategory] = useState('all');
 
   const catalog = {
     windows: {
-      categoryName: '4.1 Aluminium Windows',
+      categoryName: 'Aluminium Windows',
       tagline: 'High-performance systems for modern architectural spaces.',
       desc: 'High-performance window systems designed to provide excellent thermal insulation, durability, security, and contemporary aesthetics. Designed for both residential and commercial applications, our window systems combine slim sightlines with exceptional weather resistance.',
       items: [
@@ -21,7 +21,7 @@ const ProductsPage = ({ setSelectedProduct, blueprintMode }) => {
       ]
     },
     doors: {
-      categoryName: '4.2 Aluminium Doors',
+      categoryName: 'Aluminium Doors',
       tagline: 'Combining functionality, security, and architectural elegance.',
       desc: 'Entrance, sliding, folding, and commercial door systems that combine functionality, safety, and elegant design. Engineered for smooth operation and long-lasting durability.',
       items: [
@@ -39,7 +39,7 @@ const ProductsPage = ({ setSelectedProduct, blueprintMode }) => {
       ]
     },
     facades: {
-      categoryName: '4.3 Curtain Wall & Façade Systems',
+      categoryName: 'Curtain Wall & Façade Systems',
       tagline: 'Maximizing natural light while optimizing thermal and structural performance.',
       desc: 'Modern façade solutions that maximize natural light while delivering structural performance, energy efficiency, and architectural flexibility. Our curtain wall systems allow for ambitious exterior designs.',
       items: [
@@ -55,7 +55,7 @@ const ProductsPage = ({ setSelectedProduct, blueprintMode }) => {
       ]
     },
     custom: {
-      categoryName: '4.4 Customized Aluminium Solutions',
+      categoryName: 'Customized Aluminium Solutions',
       tagline: 'Bespoke systems tailored to complex architectural challenges.',
       desc: 'Tailor-made systems developed to meet unique architectural concepts and project-specific technical requirements. When standard profiles are insufficient, our engineering team collaborates directly with designers.',
       items: [
@@ -85,23 +85,45 @@ const ProductsPage = ({ setSelectedProduct, blueprintMode }) => {
   return (
     <div>
       {/* HERO BANNER */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--bg-surface)', borderBottom: '1px solid var(--border-dim)' }}>
+      <section style={{
+        backgroundColor: '#0a140e',
+        color: '#ffffff',
+        padding: '64px 0',
+        borderBottom: '1px solid #1b3323',
+        backgroundImage: 'linear-gradient(rgba(10, 20, 14, 0.85), rgba(10, 20, 14, 0.92)), url("https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=80")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+      }}>
         <div className="container">
-          <div className="wf-tag" style={{ marginBottom: '16px' }}>
-            [PRODUCT CATALOG - HERO BANNER]
-          </div>
-
           <div className="grid-2" style={{ alignItems: 'center', gap: '40px' }}>
             <div>
-              <h1 style={{ fontSize: '2.4rem', fontWeight: 800, lineHeight: 1.2, marginBottom: '16px' }}>
+              <span style={{
+                color: 'var(--lampag-green)',
+                fontWeight: 700,
+                fontSize: '0.85rem',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                fontFamily: 'var(--font-mono)'
+              }}>
+                PRODUCTS CATALOG
+              </span>
+              <h1 style={{ fontSize: '2.6rem', fontWeight: 800, lineHeight: 1.2, margin: '12px 0 16px 0', color: '#ffffff' }}>
                 Precision-Engineered Aluminium Systems
               </h1>
-              <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
+              <p style={{ fontSize: '1.1rem', color: '#cbd5e1', lineHeight: 1.6 }}>
                 Engineered for high thermal insulation, structural safety, and seamless design integration.
               </p>
 
-              <div className="spec-box" style={{ marginTop: '24px' }}>
-                <strong>Certified Profiles:</strong> Official Schüco Partner systems manufactured with high-precision CNC machining.
+              <div style={{
+                marginTop: '24px',
+                padding: '12px 18px',
+                backgroundColor: 'rgba(57, 158, 82, 0.15)',
+                borderLeft: '3px solid var(--lampag-green)',
+                borderRadius: '0 var(--radius-sm) var(--radius-sm) 0',
+                fontSize: '0.9rem',
+                color: '#e2e8f0'
+              }}>
+                <strong style={{ color: 'var(--lampag-green)' }}>Certified Profiles:</strong> Official Schüco Partner systems manufactured with high-precision CNC machining.
               </div>
             </div>
 
@@ -109,7 +131,7 @@ const ProductsPage = ({ setSelectedProduct, blueprintMode }) => {
               title="ALUMINIUM PRODUCTION FACILITY VISUAL"
               direction="Bright, modern aluminium production facility showcasing precision manufacturing, CNC machining, and technicians assembling window & façade systems."
               aspectRatio="16/9"
-              height="290px"
+              height="280px"
               blueprintMode={blueprintMode}
             />
           </div>
@@ -117,19 +139,20 @@ const ProductsPage = ({ setSelectedProduct, blueprintMode }) => {
       </section>
 
       {/* CATALOG FILTER & DISPLAY */}
-      <section className="section-padding">
+      <section className="section-padding" style={{ backgroundColor: '#ffffff' }}>
         <div className="container">
-          <div className="wf-tag" style={{ marginBottom: '16px' }}>
-            [CATALOG NAVIGATION & PRODUCT CARDS WIREFRAME]
-          </div>
-
           {/* Category Filter Tabs */}
-          <div className="filter-tabs">
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '40px' }}>
             {categories.map(cat => (
               <button
                 key={cat.id}
-                className={`filter-tab ${activeCategory === cat.id ? 'active' : ''}`}
                 onClick={() => setActiveCategory(cat.id)}
+                className={`btn-pill-green-outline ${activeCategory === cat.id ? 'btn-pill-green' : ''}`}
+                style={{
+                  fontSize: '0.88rem',
+                  padding: '8px 18px',
+                  ...(activeCategory === cat.id ? { color: '#ffffff' } : { color: 'var(--text-main)', borderColor: 'var(--border-dim)' })
+                }}
               >
                 {cat.label}
               </button>
@@ -142,55 +165,68 @@ const ProductsPage = ({ setSelectedProduct, blueprintMode }) => {
             return (
               <div key={catKey} style={{ marginBottom: '56px' }}>
                 <div style={{
-                  borderBottom: '2px solid var(--text-main)',
+                  borderBottom: '2px solid var(--lampag-green)',
                   paddingBottom: '12px',
-                  marginBottom: '20px'
+                  marginBottom: '24px'
                 }}>
-                  <div className="wf-tag" style={{ marginBottom: '6px' }}>{section.categoryName}</div>
-                  <h2 style={{ fontSize: '1.6rem', fontWeight: 800, color: 'var(--text-main)' }}>{section.categoryName.replace(/[\d\.]+\s/, '')}</h2>
-                  <p style={{ color: 'var(--blueprint-blue)', fontWeight: 600, fontSize: '0.95rem' }}>{section.tagline}</p>
-                  <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', marginTop: '6px', maxWidth: '900px' }}>{section.desc}</p>
+                  <h2 style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--text-main)' }}>{section.categoryName}</h2>
+                  <p style={{ color: 'var(--lampag-green-dark)', fontWeight: 700, fontSize: '0.98rem', marginTop: '4px' }}>{section.tagline}</p>
+                  <p style={{ color: '#64748b', fontSize: '0.92rem', marginTop: '6px', maxWidth: '900px', lineHeight: 1.6 }}>{section.desc}</p>
                 </div>
 
                 <div className="grid-3">
                   {section.items.map((item, idx) => (
                     <div 
                       key={idx}
-                      className="wf-box"
                       style={{ 
-                        padding: '20px', 
+                        padding: '22px',
+                        backgroundColor: '#ffffff',
+                        border: '1px solid var(--border-dim)',
+                        borderRadius: 'var(--radius-md)',
                         display: 'flex', 
                         flexDirection: 'column', 
                         justifyContent: 'space-between',
-                        cursor: 'pointer'
+                        cursor: 'pointer',
+                        transition: 'transform 0.2s ease, box-shadow 0.2s ease'
                       }}
                       onClick={() => setSelectedProduct({ ...item, category: section.categoryName })}
                     >
                       <div>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--blueprint-blue)', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', marginBottom: '8px' }}>
-                          <ShieldCheck size={14} /> SCHÜCO SPEC PROFILE
+                        <div style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '6px',
+                          backgroundColor: 'var(--lampag-green-subtle)',
+                          color: 'var(--lampag-green-dark)',
+                          fontSize: '0.72rem',
+                          fontWeight: 700,
+                          padding: '2px 8px',
+                          borderRadius: 'var(--radius-sm)',
+                          marginBottom: '10px'
+                        }}>
+                          <ShieldCheck size={13} /> SCHÜCO SPEC PROFILE
                         </div>
-                        <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: 'var(--text-main)', marginBottom: '8px' }}>
+                        <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '8px' }}>
                           {item.name}
                         </h3>
-                        <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
+                        <p style={{ fontSize: '0.88rem', color: '#64748b', lineHeight: 1.5 }}>
                           {item.spec}
                         </p>
                       </div>
 
                       <div style={{ 
-                        marginTop: '16px', 
+                        marginTop: '20px', 
                         paddingTop: '12px',
                         borderTop: '1px dashed var(--border-dim)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'space-between',
                         fontSize: '0.82rem',
-                        fontWeight: 600,
-                        color: 'var(--text-main)'
+                        fontWeight: 700,
+                        color: 'var(--lampag-green)'
                       }}>
-                        <span>Click for CAD & Specs</span>
-                        <ArrowRight size={14} color="var(--blueprint-blue)" />
+                        <span>View CAD & Specifications</span>
+                        <ArrowUpRight size={15} color="var(--lampag-green)" />
                       </div>
                     </div>
                   ))}
