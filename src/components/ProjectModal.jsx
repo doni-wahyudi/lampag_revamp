@@ -12,20 +12,29 @@ const ProjectModal = ({ project, onClose, blueprintMode }) => {
           <X size={18} />
         </button>
 
-        <div className="wf-tag" style={{ marginBottom: '12px' }}>
+        <span style={{
+          fontSize: '0.75rem',
+          fontFamily: 'var(--font-mono)',
+          fontWeight: 700,
+          color: 'var(--lampag-green)',
+          letterSpacing: '0.06em',
+          textTransform: 'uppercase',
+          marginBottom: '10px',
+          display: 'inline-block'
+        }}>
           [ARCHITECTURAL REFERENCE LIGHTBOX]
-        </div>
+        </span>
 
         <h3 style={{ fontSize: '1.6rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '8px' }}>
           {project.title}
         </h3>
 
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '20px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-            <MapPin size={14} color="var(--border-strong)" /> <strong>Location:</strong> {project.location}
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', fontSize: '0.85rem', color: '#64748b', marginBottom: '20px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <MapPin size={15} color="var(--lampag-green)" /> <strong>Location:</strong> {project.location}
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-            <Building size={14} color="var(--border-strong)" /> <strong>Sector:</strong> {project.sector}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <Building size={15} color="var(--lampag-green)" /> <strong>Sector:</strong> {project.sector}
           </div>
         </div>
 
@@ -39,31 +48,31 @@ const ProjectModal = ({ project, onClose, blueprintMode }) => {
         />
 
         <div style={{ margin: '20px 0' }}>
-          <h4 style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <Layers size={16} /> Engineering Summary:
+          <h4 style={{ fontSize: '0.95rem', fontWeight: 800, marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--text-main)' }}>
+            <Layers size={16} color="var(--lampag-green)" /> Engineering Summary:
           </h4>
-          <p style={{ fontSize: '0.95rem', color: 'var(--text-main)', lineHeight: 1.6 }}>
+          <p style={{ fontSize: '0.95rem', color: '#334155', lineHeight: 1.6 }}>
             {project.summary}
           </p>
         </div>
 
         <div style={{ 
-          backgroundColor: 'var(--bg-subtle)', 
+          backgroundColor: '#eaf5ed', 
           padding: '16px', 
-          borderRadius: 'var(--radius-sm)',
-          border: '1px dashed var(--border-strong)',
+          borderRadius: 'var(--radius-md)',
+          border: '1px solid #c6e6cd',
           marginBottom: '20px'
         }}>
-          <div style={{ fontSize: '0.82rem', fontFamily: 'var(--font-mono)', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '6px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <Wrench size={14} /> Systems & Profiles Deployed:
+          <div style={{ fontSize: '0.8rem', fontFamily: 'var(--font-mono)', fontWeight: 700, color: 'var(--lampag-green-dark)', textTransform: 'uppercase', marginBottom: '6px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <Wrench size={14} color="var(--lampag-green)" /> Systems & Profiles Deployed:
           </div>
-          <div style={{ fontSize: '0.92rem', fontWeight: 600, color: 'var(--blueprint-blue)' }}>
+          <div style={{ fontSize: '0.92rem', fontWeight: 700, color: 'var(--lampag-green-dark)' }}>
             {project.systems}
           </div>
         </div>
 
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-          <button className="btn btn-primary" onClick={onClose}>
+          <button className="btn-pill-green" onClick={onClose} style={{ padding: '8px 18px', fontSize: '0.85rem' }}>
             Close Portfolio View
           </button>
         </div>

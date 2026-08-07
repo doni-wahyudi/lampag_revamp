@@ -125,6 +125,7 @@ body.blueprint-mode .wf-box {
   transition: all 0.15s ease;
   border: 1.5px solid transparent;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 /* Green Pill Buttons (As per wireframe PDF) */
@@ -144,6 +145,8 @@ body.blueprint-mode .wf-box {
   cursor: pointer;
   transition: all 0.2s ease;
   box-shadow: 0 4px 12px rgba(57, 158, 82, 0.25);
+  white-space: nowrap;
+  max-width: 100%;
 }
 
 .btn-pill-green:hover {
@@ -167,6 +170,8 @@ body.blueprint-mode .wf-box {
   border: 1.5px solid var(--lampag-green);
   cursor: pointer;
   transition: all 0.2s ease;
+  white-space: nowrap;
+  max-width: 100%;
 }
 
 .btn-pill-green-outline:hover {
@@ -178,6 +183,7 @@ body.blueprint-mode .wf-box {
   background-color: var(--text-main);
   color: #ffffff;
   border-color: var(--text-main);
+  white-space: nowrap;
 }
 
 .btn-primary:hover {
@@ -189,6 +195,7 @@ body.blueprint-mode .wf-box {
   background-color: transparent;
   color: var(--text-main);
   border-color: var(--border-strong);
+  white-space: nowrap;
 }
 
 .btn-outline:hover {
@@ -202,6 +209,7 @@ body.blueprint-mode .wf-box {
   border: 1.5px solid var(--blueprint-blue);
   font-family: var(--font-mono);
   font-size: 0.8rem;
+  white-space: nowrap;
 }
 
 .btn-blueprint:hover {
@@ -214,7 +222,7 @@ body.blueprint-mode .wf-box {
   background: transparent;
   border: 1px solid transparent;
   border-radius: var(--radius-pill);
-  padding: 8px 16px;
+  padding: 8px 14px;
   font-size: 0.88rem;
   font-weight: 600;
   color: var(--text-muted);
@@ -222,6 +230,7 @@ body.blueprint-mode .wf-box {
   transition: all 0.2s ease;
   text-transform: uppercase;
   letter-spacing: 0.03em;
+  white-space: nowrap;
 }
 
 .nav-link-item:hover,
@@ -249,15 +258,16 @@ body.blueprint-mode .wf-box {
 .product-card-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(15, 23, 42, 0.85);
+  background: rgba(15, 23, 42, 0.88);
   backdrop-filter: blur(4px);
   color: #ffffff;
-  padding: 24px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   opacity: 0;
   transition: opacity 0.25s ease-in-out;
+  overflow-y: auto;
 }
 
 .product-card-container:hover .product-card-overlay {
