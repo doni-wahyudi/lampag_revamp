@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Menu, X, Globe, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
+import { FlagDE, FlagEN } from './FlagIcons';
 
 const Navbar = ({ activePage, setActivePage }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -8,9 +9,8 @@ const Navbar = ({ activePage, setActivePage }) => {
   const { langCode, setLangCode, t } = useLanguage();
 
   const languages = [
-    { code: 'DE', name: 'Deutschland', flag: '🇩🇪' },
-    { code: 'EN', name: 'English', flag: '🇬🇧' },
-    { code: 'NL', name: 'Nederlands', flag: '🇳🇱' }
+    { code: 'DE', name: 'Deutschland', flagComp: <FlagDE width={20} height={14} /> },
+    { code: 'EN', name: 'English', flagComp: <FlagEN width={20} height={14} /> }
   ];
 
   const navItems = [
@@ -110,7 +110,7 @@ const Navbar = ({ activePage, setActivePage }) => {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '6px',
+                gap: '8px',
                 backgroundColor: 'rgba(255, 255, 255, 0.08)',
                 border: '1px solid rgba(255, 255, 255, 0.15)',
                 color: '#ffffff',
@@ -121,8 +121,10 @@ const Navbar = ({ activePage, setActivePage }) => {
                 cursor: 'pointer'
               }}
             >
-              <Globe size={14} color="var(--lampag-green)" />
-              <span>{currentLangObj.flag} {currentLangObj.code}</span>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                {currentLangObj.flagComp}
+              </div>
+              <span style={{ fontWeight: 700 }}>{currentLangObj.code}</span>
               <ChevronDown size={14} />
             </button>
 
@@ -149,7 +151,7 @@ const Navbar = ({ activePage, setActivePage }) => {
                     style={{
                       display: 'flex',
                       alignItems: 'center',
-                      gap: '8px',
+                      gap: '10px',
                       width: '100%',
                       padding: '10px 14px',
                       backgroundColor: langCode === lang.code ? 'rgba(57, 158, 82, 0.35)' : 'transparent',
@@ -161,7 +163,9 @@ const Navbar = ({ activePage, setActivePage }) => {
                       textAlign: 'left'
                     }}
                   >
-                    <span>{lang.flag}</span>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                      {lang.flagComp}
+                    </div>
                     <span>{lang.name}</span>
                   </button>
                 ))}
