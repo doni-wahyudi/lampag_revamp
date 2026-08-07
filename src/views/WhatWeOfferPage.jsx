@@ -124,30 +124,6 @@ const WhatWeOfferPage = ({ setActivePage }) => {
         </div>
       </section>
 
-              <div style={{
-                marginTop: '24px',
-                padding: '12px 18px',
-                backgroundColor: 'rgba(57, 158, 82, 0.15)',
-                borderLeft: '3px solid var(--lampag-green)',
-                borderRadius: '0 var(--radius-sm) var(--radius-sm) 0',
-                fontSize: '0.9rem',
-                color: '#e2e8f0'
-              }}>
-                <strong style={{ color: 'var(--lampag-green)' }}>Lifecycle Support:</strong> End-to-end technical guidance, CAD/BIM engineering, CNC manufacturing & installation oversight.
-              </div>
-            </div>
-
-            <WireframePlaceholder
-              title="TECHNICAL DRAWINGS & BLUEPRINTS HERO"
-              direction="Technical drawings/blueprints overlaid with an engineering team reviewing glass/aluminium installation."
-              aspectRatio="16/9"
-              height="280px"
-              blueprintMode={blueprintMode}
-            />
-          </div>
-        </div>
-      </section>
-
       {/* SERVICE OVERVIEW & BREAKDOWN */}
       <section className="section-padding" style={{ backgroundColor: '#ffffff', borderBottom: '1px solid var(--border-dim)' }}>
         <div className="container">
