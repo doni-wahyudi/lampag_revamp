@@ -1,7 +1,10 @@
 import React from 'react';
 import { Mail, Phone, Printer, MapPin } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const Footer = ({ setActivePage }) => {
+  const { t } = useLanguage();
+
   return (
     <footer style={{
       backgroundColor: '#162a1c',
@@ -42,7 +45,7 @@ const Footer = ({ setActivePage }) => {
             </div>
 
             <p style={{ color: '#a0aec0', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '24px', maxWidth: '340px' }}>
-              Sustainable products for the future. Trust in quality through certified partnerships with leading system suppliers.
+              {t.footer.aboutDesc}
             </p>
 
             {/* PART OF Badges */}
@@ -56,7 +59,7 @@ const Footer = ({ setActivePage }) => {
                 marginBottom: '10px',
                 textTransform: 'uppercase'
               }}>
-                PART OF
+                {t.footer.partOf}
               </div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
                 <div style={{
@@ -69,7 +72,7 @@ const Footer = ({ setActivePage }) => {
                   borderRadius: 'var(--radius-sm)',
                   letterSpacing: '0.04em'
                 }}>
-                  LOGO SCHUCO
+                  LOGO SCHÜCO
                 </div>
                 <div style={{
                   backgroundColor: 'var(--lampag-green)',
@@ -96,30 +99,30 @@ const Footer = ({ setActivePage }) => {
                 fontSize: '0.9rem',
                 fontWeight: 800,
                 color: 'var(--lampag-green)',
-                textTransform: 'UPPERCASE',
+                textTransform: 'uppercase',
                 marginBottom: '18px',
                 letterSpacing: '0.06em'
               }}>
-                CONTACT
+                {t.footer.contactTitle}
               </h4>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', color: '#e2e8f0', fontSize: '0.88rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <div style={{ width: '28px', height: '28px', backgroundColor: 'var(--lampag-green)', borderRadius: 'var(--radius-sm)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <Phone size={14} color="#ffffff" />
                   </div>
-                  <span>+49 040 571 996 390</span>
+                  <span style={{ whiteSpace: 'nowrap' }}>+49 040 571 996 390</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <div style={{ width: '28px', height: '28px', backgroundColor: 'var(--lampag-green)', borderRadius: 'var(--radius-sm)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <Printer size={14} color="#ffffff" />
                   </div>
-                  <span>+49 040 571 996 381</span>
+                  <span style={{ whiteSpace: 'nowrap' }}>+49 040 571 996 381</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <div style={{ width: '28px', height: '28px', backgroundColor: 'var(--lampag-green)', borderRadius: 'var(--radius-sm)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <Mail size={14} color="#ffffff" />
                   </div>
-                  <span>info@lampag.com</span>
+                  <span style={{ whiteSpace: 'nowrap' }}>info@lampag.com</span>
                 </div>
               </div>
             </div>
@@ -131,7 +134,7 @@ const Footer = ({ setActivePage }) => {
                 fontSize: '0.9rem',
                 fontWeight: 800,
                 color: 'var(--lampag-green)',
-                textTransform: 'UPPERCASE',
+                textTransform: 'uppercase',
                 marginBottom: '18px',
                 letterSpacing: '0.06em'
               }}>
@@ -168,7 +171,7 @@ const Footer = ({ setActivePage }) => {
             Imprint &nbsp; | &nbsp; Privacy Policy
           </div>
           <div>
-            © 2026 Lampag. All Rights Reserved
+            © 2026 {t.footer.rights}
           </div>
         </div>
       </div>

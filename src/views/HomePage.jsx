@@ -1,35 +1,38 @@
 import React, { useState } from 'react';
 import WireframePlaceholder from '../components/WireframePlaceholder';
 import { ArrowUpRight, ChevronLeft, ChevronRight, Cpu, ShieldCheck, Layers } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
 
-const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject, blueprintMode }) => {
+const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => {
+  const { t } = useLanguage();
+
   // Solutions data for Section 2 (2x2 grid as per wireframe)
   const solutions = [
     {
       id: 'windows',
-      title: 'ALUMINIUM WINDOW',
-      desc: 'High-performance window systems designed to provide excellent thermal insulation, durability, security, and contemporary aesthetics.',
+      title: t.home.catWindows,
+      desc: t.home.catWindowsDesc,
       cat: 'Windows',
       bgImg: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'
     },
     {
       id: 'doors',
-      title: 'ALUMINIUM DOORS',
-      desc: 'Entrance, sliding, folding, and commercial door systems that combine functionality, safety, and elegant design.',
+      title: t.home.catDoors,
+      desc: t.home.catDoorsDesc,
       cat: 'Doors',
       bgImg: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80'
     },
     {
       id: 'facades',
-      title: 'CURTAIN WALL & FACADE SYSTEM',
-      desc: 'Modern façade solutions that maximize natural light while delivering structural performance, energy efficiency, and architectural flexibility.',
+      title: t.home.catFacades,
+      desc: t.home.catFacadesDesc,
       cat: 'Façades',
       bgImg: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80'
     },
     {
       id: 'customized',
-      title: 'CUSTOMIZED SOLUTION',
-      desc: 'Tailor-made systems developed to meet unique architectural concepts and project-specific technical requirements.',
+      title: t.home.catCustom,
+      desc: t.home.catCustomDesc,
       cat: 'Custom',
       bgImg: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80'
     }
@@ -92,15 +95,25 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject, bluep
         <div className="container">
           <div className="grid-2" style={{ alignItems: 'center', gap: '48px' }}>
             <div>
+              <span style={{
+                color: 'var(--lampag-green)',
+                fontWeight: 700,
+                fontSize: '0.85rem',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                fontFamily: 'var(--font-mono)'
+              }}>
+                {t.hero.subtitle}
+              </span>
               <h1 style={{
                 fontSize: '3rem',
                 fontWeight: 800,
                 lineHeight: 1.12,
                 color: '#ffffff',
-                marginBottom: '20px',
+                margin: '12px 0 20px 0',
                 letterSpacing: '-0.03em'
               }}>
-                Precision Aluminium Systems for Modern Architecture
+                {t.hero.title}
               </h1>
               <p style={{
                 fontSize: '1.15rem',
@@ -109,7 +122,7 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject, bluep
                 marginBottom: '36px',
                 maxWidth: '540px'
               }}>
-                Premium windows, doors, and curtain wall solutions engineered for durability, performance, and contemporary design.
+                {t.hero.desc}
               </p>
 
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
@@ -117,14 +130,14 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject, bluep
                   className="btn-pill-green"
                   onClick={() => setActivePage('whatweoffer')}
                 >
-                  Explore Our Solution <ArrowUpRight size={18} />
+                  {t.hero.btnExplore} <ArrowUpRight size={18} />
                 </button>
                 <button
                   className="btn-pill-green-outline"
                   onClick={() => setActivePage('contact')}
                   style={{ color: '#ffffff', borderColor: 'var(--lampag-green)' }}
                 >
-                  Get in Touch <ArrowUpRight size={18} />
+                  {t.hero.btnContact} <ArrowUpRight size={18} />
                 </button>
               </div>
             </div>
@@ -135,7 +148,6 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject, bluep
                 direction="Modern glass building with precision aluminium curtain wall facade."
                 aspectRatio="4/3"
                 height="360px"
-                blueprintMode={blueprintMode}
               />
             </div>
           </div>
@@ -153,7 +165,7 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject, bluep
             marginBottom: '32px',
             textTransform: 'uppercase'
           }}>
-            ABOUT LAMPAG
+            {t.home.aboutTag}
           </div>
 
           <div style={{ maxWidth: '820px', margin: '0 auto 40px auto' }}>
@@ -162,17 +174,19 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject, bluep
               direction="High quality architectural exterior photo showing aluminium systems."
               aspectRatio="16/9"
               height="320px"
-              blueprintMode={blueprintMode}
             />
           </div>
 
           <div style={{ maxWidth: '800px', margin: '0 auto' }}>
             <h2 style={{ fontSize: '2.1rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '16px' }}>
-              Engineering Quality. Elevating Architecture.
+              {t.home.aboutTitle}
             </h2>
-            <p style={{ fontSize: '1.08rem', color: '#475569', lineHeight: 1.75 }}>
-              Lampag specializes in premium aluminium window, door, and façade systems for modern architectural projects. We deliver innovative solutions that combine engineering expertise, quality craftsmanship, and contemporary design to meet the needs of residential, commercial, and mixed-use developments.
+            <p style={{ fontSize: '1.08rem', color: '#475569', lineHeight: 1.75, marginBottom: '24px' }}>
+              {t.home.aboutDesc}
             </p>
+            <button className="btn-pill-green-outline" onClick={() => setActivePage('about')}>
+              {t.home.aboutBtn} <ArrowUpRight size={16} />
+            </button>
           </div>
         </div>
       </section>
@@ -191,13 +205,16 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject, bluep
                 textTransform: 'uppercase',
                 marginBottom: '28px'
               }}>
-                COMPREHENSIVE<br />ALUMINIUM<br />SYSTEM
+                {t.home.productsTitle}
               </h2>
+              <p style={{ color: '#475569', fontSize: '1.05rem', lineHeight: 1.6, marginBottom: '28px' }}>
+                {t.home.productsDesc}
+              </p>
               <button
                 className="btn-pill-green"
                 onClick={() => setActivePage('contact')}
               >
-                Get in Touch <ArrowUpRight size={18} />
+                {t.hero.btnContact} <ArrowUpRight size={18} />
               </button>
             </div>
 
@@ -269,7 +286,19 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject, bluep
 
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           {/* Floating Left Container with 80% Transparency */}
-          <div className="glass-overlay-80" style={{ maxWidth: '560px' }}>
+          <div className="glass-overlay-80" style={{ maxWidth: '580px' }}>
+            <span style={{
+              fontSize: '0.75rem',
+              fontFamily: 'var(--font-mono)',
+              fontWeight: 700,
+              color: 'var(--lampag-green)',
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              marginBottom: '8px',
+              display: 'block'
+            }}>
+              {t.home.lifecycleTag}
+            </span>
             <h2 style={{
               fontSize: '1.8rem',
               fontWeight: 900,
@@ -278,16 +307,11 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject, bluep
               marginBottom: '20px',
               textTransform: 'uppercase'
             }}>
-              WE ARE SUPPORTING YOUR PROJECT AT<br />
-              <span style={{ color: 'var(--lampag-green)' }}>EVERY LIFECYCLE STAGE</span>
+              {t.home.lifecycleTitle}
             </h2>
 
             <p style={{ fontSize: '0.98rem', color: '#334155', lineHeight: 1.65, marginBottom: '16px' }}>
-              Working closely with architects, developers, contractors, and project partners, <strong>we support projects from the early planning stage through engineering, production, and project execution.</strong>
-            </p>
-
-            <p style={{ fontSize: '0.98rem', color: '#334155', lineHeight: 1.65 }}>
-              Our goal is to deliver reliable, customized solutions that seamlessly blend aesthetics, functionality, and long-term performance.
+              {t.home.lifecycleDesc}
             </p>
           </div>
         </div>
@@ -297,15 +321,22 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject, bluep
       <section className="section-padding" style={{ backgroundColor: '#ffffff', borderBottom: '1px solid var(--border-dim)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-            <h2 style={{ fontSize: '2.1rem', fontWeight: 900, color: 'var(--text-main)', textTransform: 'uppercase', marginBottom: '10px' }}>
-              SELECTED ARCHITECTURAL REFERENCES
+            <span style={{
+              fontSize: '0.78rem',
+              fontFamily: 'var(--font-mono)',
+              fontWeight: 700,
+              color: 'var(--lampag-green)',
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase'
+            }}>
+              {t.home.portfolioTag}
+            </span>
+            <h2 style={{ fontSize: '2.1rem', fontWeight: 900, color: 'var(--text-main)', textTransform: 'uppercase', marginTop: '6px' }}>
+              {t.home.portfolioTitle}
             </h2>
-            <p style={{ fontSize: '1.05rem', color: '#64748b' }}>
-              A glimpse of our expertise in action across residential, commercial, and public developments.
-            </p>
           </div>
 
-          {/* Grid of 4 portfolio items with pagination support */}
+          {/* Grid of 4 portfolio items */}
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
@@ -342,14 +373,14 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject, bluep
                     }}
                     style={{ width: '100%', fontSize: '0.85rem', padding: '8px 14px' }}
                   >
-                    View More <ArrowUpRight size={15} />
+                    {t.portfolio.btnDetails} <ArrowUpRight size={15} />
                   </button>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Controls: Next/Prev Carousel Buttons & View All Projects CTA */}
+          {/* Controls */}
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '20px' }}>
             <div style={{ display: 'flex', gap: '8px' }}>
               <button
@@ -390,7 +421,7 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject, bluep
               className="btn-pill-green"
               onClick={() => setActivePage('portfolio')}
             >
-              View All Projects <ArrowUpRight size={18} />
+              {t.home.portfolioBtn} <ArrowUpRight size={18} />
             </button>
           </div>
         </div>
@@ -425,8 +456,8 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject, bluep
                   <Cpu size={24} color="var(--lampag-green)" />
                 </div>
                 <div>
-                  <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-main)' }}>Engineering-Driven</h3>
-                  <p style={{ fontSize: '0.88rem', color: '#64748b' }}>Tailored technical support from concept to execution.</p>
+                  <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-main)' }}>{t.home.whyPillar1Title}</h3>
+                  <p style={{ fontSize: '0.88rem', color: '#64748b' }}>{t.home.whyPillar1Desc}</p>
                 </div>
               </div>
 
@@ -453,8 +484,8 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject, bluep
                   <ShieldCheck size={24} color="var(--lampag-green)" />
                 </div>
                 <div>
-                  <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-main)' }}>High Quality Standards</h3>
-                  <p style={{ fontSize: '0.88rem', color: '#64748b' }}>Precision materials built for long-term durability.</p>
+                  <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-main)' }}>{t.home.whyPillar2Title}</h3>
+                  <p style={{ fontSize: '0.88rem', color: '#64748b' }}>{t.home.whyPillar2Desc}</p>
                 </div>
               </div>
 
@@ -481,13 +512,13 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject, bluep
                   <Layers size={24} color="var(--lampag-green)" />
                 </div>
                 <div>
-                  <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-main)' }}>Sustainable Performance</h3>
-                  <p style={{ fontSize: '0.88rem', color: '#64748b' }}>Energy-efficient systems designed for future-ready buildings.</p>
+                  <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-main)' }}>{t.home.whyPillar3Title}</h3>
+                  <p style={{ fontSize: '0.88rem', color: '#64748b' }}>{t.home.whyPillar3Desc}</p>
                 </div>
               </div>
             </div>
 
-            {/* Right Column: Light Greenish Card Block */}
+            {/* Right Column: Light Greenish Card Container */}
             <div style={{
               backgroundColor: '#eaf5ed',
               border: '1px solid #c6e6cd',

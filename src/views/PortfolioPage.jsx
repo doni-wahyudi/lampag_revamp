@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import WireframePlaceholder from '../components/WireframePlaceholder';
 import { MapPin, ArrowUpRight } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
 
-const PortfolioPage = ({ setSelectedProject, blueprintMode }) => {
+const PortfolioPage = ({ setSelectedProject }) => {
+  const { t } = useLanguage();
   const [filter, setFilter] = useState('All');
 
   const projects = [
@@ -10,7 +12,7 @@ const PortfolioPage = ({ setSelectedProject, blueprintMode }) => {
       id: 1,
       title: 'Hamburg Commercial Office Hub',
       location: 'Hamburg, Germany',
-      sector: 'Commercial & Office',
+      sector: t.portfolio.tabCom,
       systems: 'Schüco UCC 65 SG Curtain Wall & Custom Sliding Doors',
       summary: 'Integrated slim profile sliding doors maximizing natural light while maintaining high thermal performance and structural rigidity for high-wind loads.'
     },
@@ -18,7 +20,7 @@ const PortfolioPage = ({ setSelectedProject, blueprintMode }) => {
       id: 2,
       title: 'Dortmund Modern Residential Complex',
       location: 'Dortmund, Germany',
-      sector: 'Residential',
+      sector: t.portfolio.tabRes,
       systems: 'Schüco AWS 75.SI+ & AD 75 FD Folding Doors',
       summary: 'Energy-efficient triple-glazed aluminium window profiles engineered for acoustic sound insulation and Passive House thermal efficiency.'
     },
@@ -26,7 +28,7 @@ const PortfolioPage = ({ setSelectedProject, blueprintMode }) => {
       id: 3,
       title: 'Frankfurt Grand Hospitality Tower',
       location: 'Frankfurt, Germany',
-      sector: 'Hospitality & Public',
+      sector: t.portfolio.tabHosp,
       systems: 'Schüco AF UDC 80 Unitized Façade & AWS 75.PD',
       summary: 'Panoramic all-glass unitized façade panels pre-assembled offsite for fast architectural cladding and noise reduction in central business district.'
     },
@@ -34,7 +36,7 @@ const PortfolioPage = ({ setSelectedProject, blueprintMode }) => {
       id: 4,
       title: 'Bremen Municipal Technical Institute',
       location: 'Bremen, Germany',
-      sector: 'Hospitality & Public',
+      sector: t.portfolio.tabHosp,
       systems: 'Schüco FWS 60.SG & AWS 70.HI Windows',
       summary: 'High-durability structural glazing curtain wall installed with automated ventilation actuators and solar shading integration.'
     },
@@ -42,7 +44,7 @@ const PortfolioPage = ({ setSelectedProject, blueprintMode }) => {
       id: 5,
       title: 'Munich Luxury Villa Residence',
       location: 'Munich, Germany',
-      sector: 'Residential',
+      sector: t.portfolio.tabRes,
       systems: 'Schüco ASE 67 PD Sliding Doors & Glass Railings',
       summary: 'Floor-to-ceiling panoramic sliding doors with flush sill thresholds creating seamless indoor-outdoor transitions.'
     },
@@ -50,15 +52,15 @@ const PortfolioPage = ({ setSelectedProject, blueprintMode }) => {
       id: 6,
       title: 'Cologne Corporate Headquarters',
       location: 'Cologne, Germany',
-      sector: 'Commercial & Office',
+      sector: t.portfolio.tabCom,
       systems: 'Schüco FWS 50.SG & ADS 75.SI Entrance Systems',
       summary: 'Custom heavy-traffic entrance system with burglar resistance RC3 and structural glazing glass fins.'
     }
   ];
 
-  const categories = ['All', 'Residential', 'Commercial & Office', 'Hospitality & Public'];
+  const categories = [t.portfolio.tabAll, t.portfolio.tabRes, t.portfolio.tabCom, t.portfolio.tabHosp];
 
-  const filteredProjects = filter === 'All' 
+  const filteredProjects = filter === t.portfolio.tabAll || filter === 'All'
     ? projects 
     : projects.filter(p => p.sector === filter);
 
@@ -85,13 +87,13 @@ const PortfolioPage = ({ setSelectedProject, blueprintMode }) => {
                 textTransform: 'uppercase',
                 fontFamily: 'var(--font-mono)'
               }}>
-                PORTFOLIO
+                {t.portfolio.heroTag}
               </span>
               <h1 style={{ fontSize: '2.6rem', fontWeight: 800, lineHeight: 1.2, margin: '12px 0 16px 0', color: '#ffffff' }}>
-                Our Project Portfolio
+                {t.portfolio.heroTitle}
               </h1>
               <p style={{ fontSize: '1.1rem', color: '#cbd5e1', lineHeight: 1.6 }}>
-                Explore our selection of completed aluminium window, door, and façade implementations.
+                {t.portfolio.heroDesc}
               </p>
 
               <div style={{
@@ -112,7 +114,6 @@ const PortfolioPage = ({ setSelectedProject, blueprintMode }) => {
               direction="Grid or hero photo showcasing completed residential & commercial building projects."
               aspectRatio="16/9"
               height="280px"
-              blueprintMode={blueprintMode}
             />
           </div>
         </div>

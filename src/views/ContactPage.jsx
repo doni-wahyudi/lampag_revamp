@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import WireframePlaceholder from '../components/WireframePlaceholder';
 import { Mail, Phone, Printer, MapPin, Globe, Share2, Upload, CheckCircle2, Send } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
 
-const ContactPage = ({ blueprintMode }) => {
+const ContactPage = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -42,13 +44,13 @@ const ContactPage = ({ blueprintMode }) => {
                 textTransform: 'uppercase',
                 fontFamily: 'var(--font-mono)'
               }}>
-                CONTACT US
+                {t.contact.heroTag}
               </span>
               <h1 style={{ fontSize: '2.6rem', fontWeight: 800, lineHeight: 1.2, margin: '12px 0 16px 0', color: '#ffffff' }}>
-                Get in Touch
+                {t.contact.heroTitle}
               </h1>
               <p style={{ fontSize: '1.1rem', color: '#cbd5e1', lineHeight: 1.6 }}>
-                Let's discuss your upcoming architectural project or engineering requirements.
+                {t.contact.heroDesc}
               </p>
 
               <div style={{
@@ -69,7 +71,6 @@ const ContactPage = ({ blueprintMode }) => {
               direction="Clean, welcoming contact hero banner with subtle branding elements and structural profile cross-section."
               aspectRatio="16/9"
               height="260px"
-              blueprintMode={blueprintMode}
             />
           </div>
         </div>
@@ -87,9 +88,9 @@ const ContactPage = ({ blueprintMode }) => {
               borderRadius: 'var(--radius-md)',
               boxShadow: 'var(--shadow-wf)'
             }}>
-              <h2 style={{ fontSize: '1.6rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '8px' }}>Send Us a Message</h2>
+              <h2 style={{ fontSize: '1.6rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '8px' }}>{t.contact.formTitle}</h2>
               <p style={{ fontSize: '0.9rem', color: '#64748b', marginBottom: '24px' }}>
-                Fill in your project details below to request a technical consultation or quote.
+                {t.contact.formSubtitle}
               </p>
 
               {submitted ? (
@@ -101,23 +102,23 @@ const ContactPage = ({ blueprintMode }) => {
                   textAlign: 'center'
                 }}>
                   <CheckCircle2 size={42} color="var(--lampag-green)" style={{ marginBottom: '12px' }} />
-                  <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: 'var(--lampag-green-dark)', marginBottom: '6px' }}>Inquiry Submitted Successfully</h3>
+                  <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: 'var(--lampag-green-dark)', marginBottom: '6px' }}>{t.contact.successTitle}</h3>
                   <p style={{ fontSize: '0.92rem', color: '#334155' }}>
-                    Thank you, {formData.fullName || 'Partner'}. Our engineering team will review your inquiry and contact you shortly.
+                    {t.contact.successDesc}
                   </p>
                   <button 
                     className="btn-pill-green" 
                     style={{ marginTop: '20px', fontSize: '0.88rem' }}
                     onClick={() => setSubmitted(false)}
                   >
-                    Submit Another Inquiry
+                    {t.contact.btnAnother}
                   </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                   <div>
                     <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, marginBottom: '6px', color: 'var(--text-main)' }}>
-                      Full Name *
+                      {t.contact.fieldName}
                     </label>
                     <input 
                       type="text"

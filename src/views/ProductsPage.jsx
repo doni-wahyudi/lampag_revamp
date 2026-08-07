@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import WireframePlaceholder from '../components/WireframePlaceholder';
 import { ShieldCheck, ArrowUpRight } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
 
-const ProductsPage = ({ setSelectedProduct, blueprintMode }) => {
+const ProductsPage = ({ setSelectedProduct }) => {
+  const { t } = useLanguage();
   const [activeCategory, setActiveCategory] = useState('all');
 
   const catalog = {
     windows: {
-      categoryName: 'Aluminium Windows',
+      categoryName: t.products.tabWindows,
       tagline: 'High-performance systems for modern architectural spaces.',
       desc: 'High-performance window systems designed to provide excellent thermal insulation, durability, security, and contemporary aesthetics. Designed for both residential and commercial applications, our window systems combine slim sightlines with exceptional weather resistance.',
       items: [
@@ -21,7 +23,7 @@ const ProductsPage = ({ setSelectedProduct, blueprintMode }) => {
       ]
     },
     doors: {
-      categoryName: 'Aluminium Doors',
+      categoryName: t.products.tabDoors,
       tagline: 'Combining functionality, security, and architectural elegance.',
       desc: 'Entrance, sliding, folding, and commercial door systems that combine functionality, safety, and elegant design. Engineered for smooth operation and long-lasting durability.',
       items: [
@@ -39,7 +41,7 @@ const ProductsPage = ({ setSelectedProduct, blueprintMode }) => {
       ]
     },
     facades: {
-      categoryName: 'Curtain Wall & Façade Systems',
+      categoryName: t.products.tabFacades,
       tagline: 'Maximizing natural light while optimizing thermal and structural performance.',
       desc: 'Modern façade solutions that maximize natural light while delivering structural performance, energy efficiency, and architectural flexibility. Our curtain wall systems allow for ambitious exterior designs.',
       items: [
@@ -55,7 +57,7 @@ const ProductsPage = ({ setSelectedProduct, blueprintMode }) => {
       ]
     },
     custom: {
-      categoryName: 'Customized Aluminium Solutions',
+      categoryName: t.products.tabCustom,
       tagline: 'Bespoke systems tailored to complex architectural challenges.',
       desc: 'Tailor-made systems developed to meet unique architectural concepts and project-specific technical requirements. When standard profiles are insufficient, our engineering team collaborates directly with designers.',
       items: [
@@ -71,11 +73,11 @@ const ProductsPage = ({ setSelectedProduct, blueprintMode }) => {
   };
 
   const categories = [
-    { id: 'all', label: 'All Systems' },
-    { id: 'windows', label: 'Aluminium Windows' },
-    { id: 'doors', label: 'Aluminium Doors' },
-    { id: 'facades', label: 'Curtain Wall & Façades' },
-    { id: 'custom', label: 'Customized Solutions' }
+    { id: 'all', label: t.products.tabAll },
+    { id: 'windows', label: t.products.tabWindows },
+    { id: 'doors', label: t.products.tabDoors },
+    { id: 'facades', label: t.products.tabFacades },
+    { id: 'custom', label: t.products.tabCustom }
   ];
 
   const keysToDisplay = activeCategory === 'all' 
@@ -105,13 +107,13 @@ const ProductsPage = ({ setSelectedProduct, blueprintMode }) => {
                 textTransform: 'uppercase',
                 fontFamily: 'var(--font-mono)'
               }}>
-                PRODUCTS CATALOG
+                {t.products.heroTag}
               </span>
               <h1 style={{ fontSize: '2.6rem', fontWeight: 800, lineHeight: 1.2, margin: '12px 0 16px 0', color: '#ffffff' }}>
-                Precision-Engineered Aluminium Systems
+                {t.products.heroTitle}
               </h1>
               <p style={{ fontSize: '1.1rem', color: '#cbd5e1', lineHeight: 1.6 }}>
-                Engineered for high thermal insulation, structural safety, and seamless design integration.
+                {t.products.heroDesc}
               </p>
 
               <div style={{
@@ -132,7 +134,6 @@ const ProductsPage = ({ setSelectedProduct, blueprintMode }) => {
               direction="Bright, modern aluminium production facility showcasing precision manufacturing, CNC machining, and technicians assembling window & façade systems."
               aspectRatio="16/9"
               height="280px"
-              blueprintMode={blueprintMode}
             />
           </div>
         </div>

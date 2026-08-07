@@ -1,23 +1,27 @@
 import React, { useState } from 'react';
-import { Menu, X, Layers, Globe, ChevronDown } from 'lucide-react';
+import { Menu, X, Globe, ChevronDown } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
 
-const Navbar = ({ activePage, setActivePage, blueprintMode, setBlueprintMode }) => {
+const Navbar = ({ activePage, setActivePage }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
-  const [currentLang, setCurrentLang] = useState({ code: 'DE', name: 'Deutschland', flag: '🇩🇪' });
+  const { langCode, setLangCode, t } = useLanguage();
 
   const languages = [
     { code: 'DE', name: 'Deutschland', flag: '🇩🇪' },
-    { code: 'EN', name: 'English', flag: '🇬🇧' }
+    { code: 'EN', name: 'English', flag: '🇬🇧' },
+    { code: 'NL', name: 'Nederlands', flag: '🇳🇱' }
   ];
 
   const navItems = [
-    { id: 'about', label: 'ABOUT', path: '/about' },
-    { id: 'whatweoffer', label: 'WHAT WE OFFER', path: '/whatweoffer' },
-    { id: 'product', label: 'PRODUCT', path: '/product' },
-    { id: 'portfolio', label: 'PORTFOLIO', path: '/portfolio' },
-    { id: 'contact', label: 'CONTACT', path: '/contact' },
+    { id: 'about', label: t.nav.about, path: '/about' },
+    { id: 'whatweoffer', label: t.nav.whatweoffer, path: '/whatweoffer' },
+    { id: 'product', label: t.nav.product, path: '/product' },
+    { id: 'portfolio', label: t.nav.portfolio, path: '/portfolio' },
+    { id: 'contact', label: t.nav.contact, path: '/contact' },
   ];
+
+  const currentLangObj = languages.find(l => l.code === langCode) || languages[0];
 
   const handleNavClick = (id) => {
     setActivePage(id);
@@ -83,7 +87,7 @@ const Navbar = ({ activePage, setActivePage, blueprintMode, setBlueprintMode }) 
             className={`nav-link-item ${activePage === 'home' ? 'active' : ''}`}
             style={{ color: activePage === 'home' ? '#ffffff' : '#cbd5e1' }}
           >
-            HOME
+            {t.nav.home}
           </button>
           {navItems.map((item) => (
             <button
@@ -97,7 +101,7 @@ const Navbar = ({ activePage, setActivePage, blueprintMode, setBlueprintMode }) 
           ))}
         </nav>
 
-        {/* Right Section: Language Switcher Dropdown & Blueprint Toggle */}
+        {/* Right Section: Language Switcher Dropdown */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
           {/* Language Selector Dropdown */}
           <div style={{ position: 'relative' }}>
@@ -110,15 +114,15 @@ const Navbar = ({ activePage, setActivePage, blueprintMode, setBlueprintMode }) 
                 backgroundColor: 'rgba(255, 255, 255, 0.08)',
                 border: '1px solid rgba(255, 255, 255, 0.15)',
                 color: '#ffffff',
-                padding: '6px 12px',
+                padding: '6px 14px',
                 borderRadius: 'var(--radius-pill)',
-                fontSize: '0.82rem',
+                fontSize: '0.85rem',
                 fontWeight: 600,
                 cursor: 'pointer'
               }}
             >
               <Globe size={14} color="var(--lampag-green)" />
-              <span>{currentLang.flag} {currentLang.code}</span>
+              <span>{currentLangObj.flag} {currentLangObj.code}</span>
               <ChevronDown size={14} />
             </button>
 
@@ -131,7 +135,7 @@ const Navbar = ({ activePage, setActivePage, blueprintMode, setBlueprintMode }) 
                 border: '1px solid var(--lampag-green)',
                 borderRadius: 'var(--radius-md)',
                 boxShadow: '0 10px 25px rgba(0,0,0,0.4)',
-                minWidth: '150px',
+                minWidth: '160px',
                 overflow: 'hidden',
                 zIndex: 1000
               }}>
@@ -139,7 +143,7 @@ const Navbar = ({ activePage, setActivePage, blueprintMode, setBlueprintMode }) 
                   <button
                     key={lang.code}
                     onClick={() => {
-                      setCurrentLang(lang);
+                      setLangCode(lang.code);
                       setLangOpen(false);
                     }}
                     style={{
@@ -148,10 +152,11 @@ const Navbar = ({ activePage, setActivePage, blueprintMode, setBlueprintMode }) 
                       gap: '8px',
                       width: '100%',
                       padding: '10px 14px',
-                      backgroundColor: currentLang.code === lang.code ? 'rgba(57, 158, 82, 0.25)' : 'transparent',
+                      backgroundColor: langCode === lang.code ? 'rgba(57, 158, 82, 0.35)' : 'transparent',
                       border: 'none',
                       color: '#ffffff',
                       fontSize: '0.85rem',
+                      fontWeight: langCode === lang.code ? 700 : 500,
                       cursor: 'pointer',
                       textAlign: 'left'
                     }}
@@ -163,17 +168,6 @@ const Navbar = ({ activePage, setActivePage, blueprintMode, setBlueprintMode }) 
               </div>
             )}
           </div>
-
-          {/* Grid Toggle */}
-          <button
-            onClick={() => setBlueprintMode(!blueprintMode)}
-            className="btn btn-blueprint"
-            title="Toggle Structural Blueprint Annotations"
-            style={{ padding: '6px 12px', borderRadius: 'var(--radius-pill)' }}
-          >
-            <Layers size={14} />
-            <span>{blueprintMode ? 'Grid: ON' : 'Grid: OFF'}</span>
-          </button>
 
           {/* Mobile Hamburger Toggle */}
           <button
@@ -209,7 +203,7 @@ const Navbar = ({ activePage, setActivePage, blueprintMode, setBlueprintMode }) 
             className={`nav-link-item ${activePage === 'home' ? 'active' : ''}`}
             style={{ textAlign: 'left', color: '#ffffff' }}
           >
-            HOME
+            {t.nav.home}
           </button>
           {navItems.map((item) => (
             <button

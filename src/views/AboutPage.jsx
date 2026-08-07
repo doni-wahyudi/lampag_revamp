@@ -1,47 +1,50 @@
 import React from 'react';
 import WireframePlaceholder from '../components/WireframePlaceholder';
 import { ShieldCheck, CheckCircle2, Factory, Award, Building, Wrench, RefreshCw, Handshake } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
 
-const AboutPage = ({ blueprintMode }) => {
+const AboutPage = () => {
+  const { t } = useLanguage();
+
   const strengths = [
     {
       icon: <ShieldCheck size={24} color="var(--lampag-green)" />,
-      title: 'High-Performance Schüco Systems',
+      title: t.about.pillar1,
       desc: 'Engineered to meet demanding architectural and building-performance requirements.'
     },
     {
       icon: <Wrench size={24} color="var(--lampag-green)" />,
-      title: 'Design-to-Fabrication Engineering',
+      title: t.about.pillar2,
       desc: 'Technical expertise integrated into every stage from draft to assembly.'
     },
     {
       icon: <Building size={24} color="var(--lampag-green)" />,
-      title: 'Project-Specific Solutions',
+      title: t.about.pillar3,
       desc: 'Tailored advice and custom profile developments to meet specific project needs.'
     },
     {
       icon: <Award size={24} color="var(--lampag-green)" />,
-      title: 'Building Performance Engineering',
+      title: t.about.pillar4,
       desc: 'Optimising thermal, acoustic, air-tightness and weather performance for long-lasting systems.'
     },
     {
       icon: <Factory size={24} color="var(--lampag-green)" />,
-      title: 'Precision Manufacturing',
+      title: t.about.pillar5,
       desc: 'Powered by advanced Schüco CNC machinery, delivering exceptional consistency.'
     },
     {
       icon: <CheckCircle2 size={24} color="var(--lampag-green)" />,
-      title: 'Rigorous Quality Assurance',
+      title: t.about.pillar6,
       desc: 'Uncompromised quality control from materials inspection to final installation.'
     },
     {
       icon: <RefreshCw size={24} color="var(--lampag-green)" />,
-      title: 'Reliable Project Coordination',
+      title: t.about.pillar7,
       desc: 'On-time delivery and structured coordination with site contractors.'
     },
     {
       icon: <Handshake size={24} color="var(--lampag-green)" />,
-      title: 'Long-Term Service & Partnership',
+      title: t.about.pillar8,
       desc: 'Building trusted relationships built on reliability, service, and performance.'
     }
   ];
@@ -69,13 +72,13 @@ const AboutPage = ({ blueprintMode }) => {
                 textTransform: 'uppercase',
                 fontFamily: 'var(--font-mono)'
               }}>
-                ABOUT LAMPAG
+                {t.about.heroTag}
               </span>
               <h1 style={{ fontSize: '2.6rem', fontWeight: 800, lineHeight: 1.2, margin: '12px 0 16px 0', color: '#ffffff' }}>
-                Building Trust Through Precision & Innovation
+                {t.about.heroTitle}
               </h1>
               <p style={{ fontSize: '1.1rem', color: '#cbd5e1', lineHeight: 1.6 }}>
-                Dedicated to supporting modern architectural projects with end-to-end aluminium engineering solutions.
+                {t.about.heroDesc}
               </p>
 
               <div style={{
@@ -96,7 +99,6 @@ const AboutPage = ({ blueprintMode }) => {
               direction="Architectural close-up highlighting precision engineering, curtain wall glass joints, and clean structural lines."
               aspectRatio="16/9"
               height="280px"
-              blueprintMode={blueprintMode}
             />
           </div>
         </div>

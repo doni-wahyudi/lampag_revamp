@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ProductModal from './components/ProductModal';
 import ProjectModal from './components/ProjectModal';
+import { LanguageProvider } from './i18n/LanguageContext';
 
 import HomePage from './views/HomePage';
 import AboutPage from './views/AboutPage';
@@ -11,19 +12,10 @@ import ProductsPage from './views/ProductsPage';
 import PortfolioPage from './views/PortfolioPage';
 import ContactPage from './views/ContactPage';
 
-function App() {
+function AppContent() {
   const [activePage, setActivePage] = useState('home');
-  const [blueprintMode, setBlueprintMode] = useState(true);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedProject, setSelectedProject] = useState(null);
-
-  useEffect(() => {
-    if (blueprintMode) {
-      document.body.classList.add('blueprint-mode');
-    } else {
-      document.body.classList.remove('blueprint-mode');
-    }
-  }, [blueprintMode]);
 
   const renderView = () => {
     switch (activePage) {
@@ -33,26 +25,24 @@ function App() {
             setActivePage={setActivePage} 
             setSelectedProduct={setSelectedProduct}
             setSelectedProject={setSelectedProject}
-            blueprintMode={blueprintMode}
           />
         );
       case 'about':
-        return <AboutPage blueprintMode={blueprintMode} />;
+        return <AboutPage />;
       case 'whatweoffer':
-        return <WhatWeOfferPage setActivePage={setActivePage} blueprintMode={blueprintMode} />;
+        return <WhatWeOfferPage setActivePage={setActivePage} />;
       case 'product':
-        return <ProductsPage setSelectedProduct={setSelectedProduct} blueprintMode={blueprintMode} />;
+        return <ProductsPage setSelectedProduct={setSelectedProduct} />;
       case 'portfolio':
-        return <PortfolioPage setSelectedProject={setSelectedProject} blueprintMode={blueprintMode} />;
+        return <PortfolioPage setSelectedProject={setSelectedProject} />;
       case 'contact':
-        return <ContactPage blueprintMode={blueprintMode} />;
+        return <ContactPage />;
       default:
         return (
           <HomePage 
             setActivePage={setActivePage} 
             setSelectedProduct={setSelectedProduct}
             setSelectedProject={setSelectedProject}
-            blueprintMode={blueprintMode}
           />
         );
     }
@@ -63,8 +53,6 @@ function App() {
       <Navbar 
         activePage={activePage} 
         setActivePage={setActivePage}
-        blueprintMode={blueprintMode}
-        setBlueprintMode={setBlueprintMode}
       />
 
       <main style={{ flex: 1 }}>
@@ -77,15 +65,21 @@ function App() {
       <ProductModal 
         product={selectedProduct} 
         onClose={() => setSelectedProduct(null)} 
-        blueprintMode={blueprintMode}
       />
 
       <ProjectModal 
         project={selectedProject} 
         onClose={() => setSelectedProject(null)} 
-        blueprintMode={blueprintMode}
       />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <LanguageProvider>
+      <AppContent />
+    </LanguageProvider>
   );
 }
 

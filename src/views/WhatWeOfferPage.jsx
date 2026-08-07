@@ -1,28 +1,31 @@
 import React from 'react';
 import WireframePlaceholder from '../components/WireframePlaceholder';
 import { FileCode, Settings, Users, ShieldCheck, Home, Building2, Hotel, GraduationCap, Stethoscope, Landmark, ArrowUpRight } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
 
-const WhatWeOfferPage = ({ setActivePage, blueprintMode }) => {
+const WhatWeOfferPage = ({ setActivePage }) => {
+  const { t } = useLanguage();
+
   const services = [
     {
       icon: <FileCode size={24} color="var(--lampag-green)" />,
-      title: 'Technical Consultation',
-      desc: 'Early-stage technical guidance to define project requirements, structural feasibility, and system profiles.'
+      title: t.whatweoffer.service1Title,
+      desc: t.whatweoffer.service1Desc
     },
     {
       icon: <Settings size={24} color="var(--lampag-green)" />,
-      title: 'Engineering & Drafting',
-      desc: 'Detailed CAD/BIM drawings, structural calculations, thermal and acoustic performance data, and technical specifications.'
+      title: t.whatweoffer.service2Title,
+      desc: t.whatweoffer.service2Desc
     },
     {
       icon: <Users size={24} color="var(--lampag-green)" />,
-      title: 'Project Coordination',
-      desc: 'Seamless collaboration with contractors and project managers for smooth on-site execution and logistics.'
+      title: t.whatweoffer.service3Title,
+      desc: t.whatweoffer.service3Desc
     },
     {
       icon: <ShieldCheck size={24} color="var(--lampag-green)" />,
-      title: 'Installation Support',
-      desc: 'Expert installation and technical oversight provided by our in-house crews and trusted external partners to ensure system integrity.'
+      title: t.about.pillar6,
+      desc: 'Expert installation and technical oversight provided by our in-house crews and trusted external partners.'
     }
   ];
 
@@ -60,11 +63,10 @@ const WhatWeOfferPage = ({ setActivePage, blueprintMode }) => {
   ];
 
   const deliveryProcess = [
-    { step: '01', title: 'Initial Contact', desc: 'Reaching out & submitting project inquiry specifications.' },
-    { step: '02', title: 'Project Consultation', desc: 'Aligning on technical & architectural goals and budget constraints.' },
-    { step: '03', title: 'Technical Drafting', desc: 'Preparing detailed CAD/BIM shop drawings & structural math.' },
-    { step: '04', title: 'Production Approval', desc: 'Final sign-off & client technical verification.' },
-    { step: '05', title: 'Manufacturing & Fabrication', desc: 'Precision crafting of aluminium systems with Schüco CNC machinery.' }
+    { step: '01', title: t.whatweoffer.step1, desc: 'Reaching out & submitting project inquiry specifications.' },
+    { step: '02', title: t.whatweoffer.step2, desc: 'Aligning on technical & architectural goals and budget constraints.' },
+    { step: '03', title: t.whatweoffer.step3, desc: 'Preparing detailed CAD/BIM shop drawings & structural math.' },
+    { step: '04', title: t.whatweoffer.step4, desc: 'Final sign-off & client technical verification.' }
   ];
 
   return (
@@ -90,14 +92,37 @@ const WhatWeOfferPage = ({ setActivePage, blueprintMode }) => {
                 textTransform: 'uppercase',
                 fontFamily: 'var(--font-mono)'
               }}>
-                WHAT WE OFFER
+                {t.whatweoffer.heroTag}
               </span>
               <h1 style={{ fontSize: '2.6rem', fontWeight: 800, lineHeight: 1.2, margin: '12px 0 16px 0', color: '#ffffff' }}>
-                Comprehensive Project Support
+                {t.whatweoffer.heroTitle}
               </h1>
               <p style={{ fontSize: '1.1rem', color: '#cbd5e1', lineHeight: 1.6 }}>
-                Partnering with you from early planning through design, engineering, and final execution.
+                {t.whatweoffer.heroDesc}
               </p>
+
+              <div style={{
+                marginTop: '24px',
+                padding: '12px 18px',
+                backgroundColor: 'rgba(57, 158, 82, 0.15)',
+                borderLeft: '3px solid var(--lampag-green)',
+                borderRadius: '0 var(--radius-sm) var(--radius-sm) 0',
+                fontSize: '0.9rem',
+                color: '#e2e8f0'
+              }}>
+                <strong style={{ color: 'var(--lampag-green)' }}>Turnkey Engineering:</strong> From initial CAD drafting to site installation and handover.
+              </div>
+            </div>
+
+            <WireframePlaceholder
+              title="WHAT WE OFFER VISUAL"
+              direction="Architectural drawing board & profile engineering visual."
+              aspectRatio="16/9"
+              height="280px"
+            />
+          </div>
+        </div>
+      </section>
 
               <div style={{
                 marginTop: '24px',
