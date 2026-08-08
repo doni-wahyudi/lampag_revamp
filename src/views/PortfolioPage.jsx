@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import WireframePlaceholder from '../components/WireframePlaceholder';
-import { MapPin, ArrowUpRight } from 'lucide-react';
+import { MapPin, ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 
 const PortfolioPage = ({ setSelectedProject }) => {
   const { t } = useLanguage();
   const [filter, setFilter] = useState('all');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
+  const gridTopRef = useRef(null);
 
   const categories = [
     { id: 'all', label: t.portfolio.tabAll },
@@ -68,12 +71,85 @@ const PortfolioPage = ({ setSelectedProject }) => {
       sector: t.portfolio.tabCom,
       systems: 'Schüco FWS 50.SG & ADS 75.SI Entrance Systems',
       summary: 'Custom heavy-traffic entrance system with burglar resistance RC3 and structural glazing glass fins.'
+    },
+    {
+      id: 7,
+      title: 'Stuttgart Innovation & Tech Campus',
+      location: 'Stuttgart, Germany',
+      sectorId: 'commercial',
+      sector: t.portfolio.tabCom,
+      systems: 'Schüco FWS 60.CV & AWS 90.SI+ Windows',
+      summary: 'Concealed vent façade elements delivering maximum architectural transparency, thermal acoustic comfort, and integrated building automation.'
+    },
+    {
+      id: 8,
+      title: 'Düsseldorf Lakeside Luxury Penthouse',
+      location: 'Düsseldorf, Germany',
+      sectorId: 'residential',
+      sector: t.portfolio.tabRes,
+      systems: 'Schüco ASE 80.HI & Panoramic Glass Balustrades',
+      summary: 'High thermal insulation sliding systems with motorized drive and zero-threshold flush accessibility facing open water views.'
+    },
+    {
+      id: 9,
+      title: 'Berlin Central Boutique Hotel',
+      location: 'Berlin, Germany',
+      sectorId: 'hospitality',
+      sector: t.portfolio.tabHosp,
+      systems: 'Schüco AWS 75 BS.SI+ & ADS 90.SI Doors',
+      summary: 'Acoustic-rated soundproof block window systems engineered for urban center tranquility and Class RC3 burglar resistance.'
+    },
+    {
+      id: 10,
+      title: 'Hanover Medical Research Pavilion',
+      location: 'Hanover, Germany',
+      sectorId: 'hospitality',
+      sector: t.portfolio.tabHosp,
+      systems: 'Schüco FWS 50 & AWS 70.HI Antibacterial Profiles',
+      summary: 'Hygienic structural glazing façade with custom solar shading louvres and precision thermal insulation for specialized research facilities.'
+    },
+    {
+      id: 11,
+      title: 'Nuremberg Green Energy Headquarters',
+      location: 'Nuremberg, Germany',
+      sectorId: 'commercial',
+      sector: t.portfolio.tabCom,
+      systems: 'Schüco UCC 65 SG & Integrated Photovoltaic BIPV',
+      summary: 'Sustainable unitized glass envelope with custom BAPV panels achieving net-zero building energy targets and solar control efficiency.'
+    },
+    {
+      id: 12,
+      title: 'Leipzig Urban Residential Quarter',
+      location: 'Leipzig, Germany',
+      sectorId: 'residential',
+      sector: t.portfolio.tabRes,
+      systems: 'Schüco AWS 65 & ADS 65 Entry Systems',
+      summary: 'Modern multi-family residential development featuring durable aluminium balcony doors and energy-efficient double glazing.'
     }
   ];
 
   const filteredProjects = filter === 'all' 
     ? projects 
     : projects.filter(p => p.sectorId === filter);
+
+  const totalPages = Math.max(1, Math.ceil(filteredProjects.length / itemsPerPage));
+  const validCurrentPage = Math.min(currentPage, totalPages);
+  const startIndex = (validCurrentPage - 1) * itemsPerPage;
+  const paginatedProjects = filteredProjects.slice(startIndex, startIndex + itemsPerPage);
+
+  const handleFilterChange = (categoryId) => {
+    setFilter(categoryId);
+    setCurrentPage(1);
+  };
+
+  const handlePageChange = (page) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+      if (gridTopRef.current) {
+        gridTopRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  };
 
   return (
     <div>
@@ -143,29 +219,52 @@ const PortfolioPage = ({ setSelectedProject }) => {
       </section>
 
       {/* PORTFOLIO GRID SHOWCASE */}
-      <section className="section-padding" style={{ backgroundColor: '#ffffff' }}>
+      <section className="section-padding" style={{ backgroundColor: '#ffffff' }} ref={gridTopRef}>
         <div className="container">
-          {/* Filter Buttons */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '36px' }}>
-            {categories.map(cat => (
-              <button
-                key={cat.id}
-                onClick={() => setFilter(cat.id)}
-                className={`btn-pill-green-outline ${filter === cat.id ? 'btn-pill-green' : ''}`}
-                style={{
-                  fontSize: '0.88rem',
-                  padding: '8px 18px',
-                  ...(filter === cat.id ? { color: '#ffffff' } : { color: 'var(--text-main)', borderColor: 'var(--border-dim)' })
-                }}
-              >
-                {cat.label}
-              </button>
-            ))}
+          {/* Header Controls: Filters + Count */}
+          <div style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '16px',
+            marginBottom: '36px'
+          }}>
+            {/* Filter Buttons */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+              {categories.map(cat => (
+                <button
+                  key={cat.id}
+                  onClick={() => handleFilterChange(cat.id)}
+                  className={`btn-pill-green-outline ${filter === cat.id ? 'btn-pill-green' : ''}`}
+                  style={{
+                    fontSize: '0.88rem',
+                    padding: '8px 18px',
+                    ...(filter === cat.id ? { color: '#ffffff' } : { color: 'var(--text-main)', borderColor: 'var(--border-dim)' })
+                  }}
+                >
+                  {cat.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Results Count Badge */}
+            <div style={{
+              fontSize: '0.85rem',
+              color: '#64748b',
+              fontWeight: 600,
+              backgroundColor: '#f8fafc',
+              padding: '6px 14px',
+              borderRadius: 'var(--radius-pill)',
+              border: '1px solid var(--border-dim)'
+            }}>
+              Showing {filteredProjects.length === 0 ? 0 : startIndex + 1}–{Math.min(startIndex + itemsPerPage, filteredProjects.length)} of {filteredProjects.length} projects
+            </div>
           </div>
 
           {/* Project Grid */}
           <div className="grid-2" style={{ gap: '28px', alignItems: 'stretch' }}>
-            {filteredProjects.map(proj => (
+            {paginatedProjects.map(proj => (
               <div 
                 key={proj.id} 
                 style={{
@@ -245,6 +344,92 @@ const PortfolioPage = ({ setSelectedProject }) => {
               </div>
             ))}
           </div>
+
+          {/* Clean Interactive Pagination Controls */}
+          {totalPages > 1 && (
+            <div style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: '10px',
+              marginTop: '48px',
+              paddingTop: '24px',
+              borderTop: '1px solid var(--border-dim)'
+            }}>
+              {/* Prev Button */}
+              <button
+                onClick={() => handlePageChange(validCurrentPage - 1)}
+                disabled={validCurrentPage === 1}
+                aria-label="Previous Page"
+                style={{
+                  width: '42px',
+                  height: '42px',
+                  borderRadius: 'var(--radius-sm)',
+                  border: '1px solid var(--border-dim)',
+                  backgroundColor: validCurrentPage === 1 ? '#f1f5f9' : '#ffffff',
+                  color: validCurrentPage === 1 ? '#94a3b8' : 'var(--text-main)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: validCurrentPage === 1 ? 'not-allowed' : 'pointer',
+                  transition: 'all 0.2s ease',
+                  opacity: validCurrentPage === 1 ? 0.6 : 1
+                }}
+              >
+                <ChevronLeft size={18} />
+              </button>
+
+              {/* Numbered Page Buttons */}
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
+                <button
+                  key={pageNum}
+                  onClick={() => handlePageChange(pageNum)}
+                  style={{
+                    width: '42px',
+                    height: '42px',
+                    borderRadius: 'var(--radius-sm)',
+                    border: '1px solid',
+                    borderColor: validCurrentPage === pageNum ? 'var(--lampag-green)' : 'var(--border-dim)',
+                    backgroundColor: validCurrentPage === pageNum ? 'var(--lampag-green)' : '#ffffff',
+                    color: validCurrentPage === pageNum ? '#ffffff' : 'var(--text-main)',
+                    fontWeight: 700,
+                    fontSize: '0.92rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease',
+                    boxShadow: validCurrentPage === pageNum ? '0 4px 12px rgba(57, 158, 82, 0.25)' : 'none'
+                  }}
+                >
+                  {pageNum}
+                </button>
+              ))}
+
+              {/* Next Button */}
+              <button
+                onClick={() => handlePageChange(validCurrentPage + 1)}
+                disabled={validCurrentPage === totalPages}
+                aria-label="Next Page"
+                style={{
+                  width: '42px',
+                  height: '42px',
+                  borderRadius: 'var(--radius-sm)',
+                  border: '1px solid var(--border-dim)',
+                  backgroundColor: validCurrentPage === totalPages ? '#f1f5f9' : '#ffffff',
+                  color: validCurrentPage === totalPages ? '#94a3b8' : 'var(--text-main)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: validCurrentPage === totalPages ? 'not-allowed' : 'pointer',
+                  transition: 'all 0.2s ease',
+                  opacity: validCurrentPage === totalPages ? 0.6 : 1
+                }}
+              >
+                <ChevronRight size={18} />
+              </button>
+            </div>
+          )}
         </div>
       </section>
     </div>
