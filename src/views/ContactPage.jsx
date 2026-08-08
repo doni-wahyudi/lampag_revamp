@@ -27,14 +27,17 @@ const ContactPage = () => {
       <section style={{
         backgroundColor: '#0a140e',
         color: '#ffffff',
-        padding: '64px 0',
+        padding: '72px 0',
         borderBottom: '1px solid #1b3323',
-        backgroundImage: 'linear-gradient(rgba(10, 20, 14, 0.85), rgba(10, 20, 14, 0.92)), url("https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=80")',
+        backgroundImage: 'linear-gradient(rgba(10, 20, 14, 0.82), rgba(10, 20, 14, 0.92)), url("https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80")',
         backgroundSize: 'cover',
-        backgroundPosition: 'center'
+        backgroundPosition: 'center',
+        minHeight: '480px',
+        display: 'flex',
+        alignItems: 'center'
       }}>
         <div className="container">
-          <div className="grid-2" style={{ alignItems: 'center', gap: '40px' }}>
+          <div className="grid-2" style={{ alignItems: 'center', gap: '48px' }}>
             <div>
               <span style={{
                 color: 'var(--lampag-green)',
@@ -46,15 +49,28 @@ const ContactPage = () => {
               }}>
                 {t.contact.heroTag}
               </span>
-              <h1 style={{ fontSize: '2.6rem', fontWeight: 800, lineHeight: 1.2, margin: '12px 0 16px 0', color: '#ffffff' }}>
+              <h1 style={{
+                fontSize: '3rem',
+                fontWeight: 800,
+                lineHeight: 1.12,
+                color: '#ffffff',
+                margin: '12px 0 20px 0',
+                letterSpacing: '-0.03em'
+              }}>
                 {t.contact.heroTitle}
               </h1>
-              <p style={{ fontSize: '1.1rem', color: '#cbd5e1', lineHeight: 1.6 }}>
+              <p style={{
+                fontSize: '1.15rem',
+                color: '#cbd5e1',
+                lineHeight: 1.6,
+                marginBottom: '24px',
+                maxWidth: '540px'
+              }}>
                 {t.contact.heroDesc}
               </p>
 
               <div style={{
-                marginTop: '24px',
+                marginTop: '20px',
                 padding: '12px 18px',
                 backgroundColor: 'rgba(57, 158, 82, 0.15)',
                 borderLeft: '3px solid var(--lampag-green)',
@@ -66,12 +82,14 @@ const ContactPage = () => {
               </div>
             </div>
 
-            <WireframePlaceholder
-              title="CONTACT HERO BRANDING"
-              direction="Clean, welcoming contact hero banner with subtle branding elements and structural profile cross-section."
-              aspectRatio="16/9"
-              height="260px"
-            />
+            <div>
+              <WireframePlaceholder
+                title="CONTACT HERO BRANDING"
+                direction="Clean, welcoming contact hero banner with subtle branding elements and structural profile cross-section."
+                aspectRatio="4/3"
+                height="360px"
+              />
+            </div>
           </div>
         </div>
       </section>
