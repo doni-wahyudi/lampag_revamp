@@ -10,7 +10,7 @@ export const translations = {
     },
     hero: {
       subtitle: 'Precision Aluminium Systems for Modern Architecture',
-      title: 'Precision Aluminium Systems for Modern Architecture',
+      title: 'Willkommen in der Zukunft des Bauens',
       desc: 'Precision-engineered windows, doors, and curtain wall systems delivering energy efficiency, durability, and lasting performance.',
       btnExplore: 'Explore Our Solutions',
       btnContact: 'Get in Touch',
