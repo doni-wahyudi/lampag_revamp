@@ -18,55 +18,71 @@ const WhatWeOfferPage = ({ setActivePage }) => {
       desc: t.whatweoffer.service2Desc
     },
     {
-      icon: <Users size={24} color="var(--lampag-green)" />,
+      icon: <Layers size={24} color="var(--lampag-green)" />,
       title: t.whatweoffer.service3Title,
       desc: t.whatweoffer.service3Desc
     },
     {
+      icon: <Cpu size={24} color="var(--lampag-green)" />,
+      title: t.whatweoffer.service4Title,
+      desc: t.whatweoffer.service4Desc
+    },
+    {
+      icon: <FileCode size={24} color="var(--lampag-green)" />,
+      title: t.whatweoffer.service5Title,
+      desc: t.whatweoffer.service5Desc
+    },
+    {
+      icon: <Users size={24} color="var(--lampag-green)" />,
+      title: t.whatweoffer.service6Title,
+      desc: t.whatweoffer.service6Desc
+    },
+    {
       icon: <ShieldCheck size={24} color="var(--lampag-green)" />,
-      title: t.about.pillar6,
-      desc: 'Expert installation and technical oversight provided by our in-house crews and trusted external partners.'
+      title: t.whatweoffer.service7Title,
+      desc: t.whatweoffer.service7Desc
     }
   ];
 
   const industries = [
     {
       icon: <Home size={20} color="var(--lampag-green)" />,
-      title: 'Residential Developments',
-      desc: 'Premium window and door solutions focused on thermal comfort, acoustic insulation, and modern living.'
+      title: t.whatweoffer.sector1Title,
+      desc: t.whatweoffer.sector1Desc
     },
     {
       icon: <Building2 size={20} color="var(--lampag-green)" />,
-      title: 'Commercial & Office Buildings',
-      desc: 'High-durability façade and entrance systems optimized for heavy usage and energy efficiency.'
+      title: t.whatweoffer.sector2Title,
+      desc: t.whatweoffer.sector2Desc
     },
     {
       icon: <Hotel size={20} color="var(--lampag-green)" />,
-      title: 'Hotels & Hospitality',
-      desc: 'Elegant, noise-reducing architectural systems that enhance guest experience and aesthetic appeal.'
+      title: t.whatweoffer.sector3Title,
+      desc: t.whatweoffer.sector3Desc
     },
     {
       icon: <GraduationCap size={20} color="var(--lampag-green)" />,
-      title: 'Educational Facilities',
-      desc: 'Safe, durable, and low-maintenance systems built to withstand high activity while maximizing daylight.'
+      title: t.whatweoffer.sector4Title,
+      desc: t.whatweoffer.sector4Desc
     },
     {
       icon: <Stethoscope size={20} color="var(--lampag-green)" />,
-      title: 'Healthcare Facilities',
-      desc: 'Hygienic, functional, and secure window and door solutions designed for specialized environments.'
+      title: t.whatweoffer.sector5Title,
+      desc: t.whatweoffer.sector5Desc
     },
     {
       icon: <Landmark size={20} color="var(--lampag-green)" />,
-      title: 'Public Buildings & Mixed-Use',
-      desc: 'Versatile curtain wall and custom solutions tailored to large-scale municipal architecture.'
+      title: t.whatweoffer.sector6Title,
+      desc: t.whatweoffer.sector6Desc
     }
   ];
 
   const deliveryProcess = [
-    { step: '01', title: t.whatweoffer.step1, desc: 'Reaching out & submitting project inquiry specifications.' },
-    { step: '02', title: t.whatweoffer.step2, desc: 'Aligning on technical & architectural goals and budget constraints.' },
-    { step: '03', title: t.whatweoffer.step3, desc: 'Preparing detailed CAD/BIM shop drawings & structural math.' },
-    { step: '04', title: t.whatweoffer.step4, desc: 'Final sign-off & client technical verification.' }
+    { step: '01', title: t.whatweoffer.step1Title, desc: t.whatweoffer.step1Desc },
+    { step: '02', title: t.whatweoffer.step2Title, desc: t.whatweoffer.step2Desc },
+    { step: '03', title: t.whatweoffer.step3Title, desc: t.whatweoffer.step3Desc },
+    { step: '04', title: t.whatweoffer.step4Title, desc: t.whatweoffer.step4Desc },
+    { step: '05', title: t.whatweoffer.step5Title, desc: t.whatweoffer.step5Desc }
   ];
 
   return (

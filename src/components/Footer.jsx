@@ -138,17 +138,28 @@ const Footer = ({ setActivePage }) => {
                 marginBottom: '18px',
                 letterSpacing: '0.06em'
               }}>
-                LOCATION
+                LOCATIONS
               </h4>
               <div style={{ color: '#e2e8f0', fontSize: '0.88rem', lineHeight: 1.6 }}>
+                <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', marginBottom: '12px' }}>
+                  <div style={{ width: '28px', height: '28px', backgroundColor: 'var(--lampag-green)', borderRadius: 'var(--radius-sm)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
+                    <MapPin size={14} color="#ffffff" />
+                  </div>
+                  <div>
+                    <strong style={{ color: '#ffffff' }}>Hamburg Office:</strong><br />
+                    Neuer Wall 2-6<br />
+                    20354 Hamburg
+                  </div>
+                </div>
+
                 <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
                   <div style={{ width: '28px', height: '28px', backgroundColor: 'var(--lampag-green)', borderRadius: 'var(--radius-sm)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
                     <MapPin size={14} color="#ffffff" />
                   </div>
                   <div>
-                    <strong style={{ color: '#ffffff' }}>LAMPAG GmbH</strong><br />
-                    Neuer Wall 2-6<br />
-                    20354 Hamburg
+                    <strong style={{ color: '#ffffff' }}>Dortmund Facility:</strong><br />
+                    Strümpenbusch 3<br />
+                    44357 Dortmund
                   </div>
                 </div>
               </div>
@@ -171,7 +182,7 @@ const Footer = ({ setActivePage }) => {
             Imprint &nbsp; | &nbsp; Privacy Policy
           </div>
           <div>
-            © 2026 {t.footer.rights}
+            {t.footer.rights}
           </div>
         </div>
       </div>
