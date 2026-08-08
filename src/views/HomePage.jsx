@@ -1,88 +1,93 @@
 import React, { useState } from 'react';
 import WireframePlaceholder from '../components/WireframePlaceholder';
-import { ArrowUpRight, ChevronLeft, ChevronRight, Cpu, ShieldCheck, Layers } from 'lucide-react';
+import { ShieldCheck, Cpu, Layers, ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 
 const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => {
   const { t } = useLanguage();
+  const [portfolioIndex, setPortfolioIndex] = useState(0);
 
-  // Solutions data for Section 2 (2x2 grid as per wireframe)
   const solutions = [
     {
       id: 'windows',
-      title: t.home.catWindows,
-      desc: t.home.catWindowsDesc,
-      cat: 'Windows',
-      bgImg: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'
+      title: t.home.sol1,
+      desc: t.home.sol1Desc,
+      bgImg: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80',
+      specs: 'Schüco AWS 75.SI+ & AWS 90.SI+'
     },
     {
       id: 'doors',
-      title: t.home.catDoors,
-      desc: t.home.catDoorsDesc,
-      cat: 'Doors',
-      bgImg: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80'
+      title: t.home.sol2,
+      desc: t.home.sol2Desc,
+      bgImg: 'https://images.unsplash.com/photo-1509644851169-2acc08aa25b5?auto=format&fit=crop&w=800&q=80',
+      specs: 'Schüco ADS 75.SI & AD UP 90'
     },
     {
       id: 'facades',
-      title: t.home.catFacades,
-      desc: t.home.catFacadesDesc,
-      cat: 'Façades',
-      bgImg: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80'
+      title: t.home.sol3,
+      desc: t.home.sol3Desc,
+      bgImg: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
+      specs: 'Schüco FWS 50 / FWS 60'
     },
     {
-      id: 'customized',
-      title: t.home.catCustom,
-      desc: t.home.catCustomDesc,
-      cat: 'Custom',
-      bgImg: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80'
+      id: 'sliding',
+      title: t.home.sol4,
+      desc: t.home.sol4Desc,
+      bgImg: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
+      specs: 'Schüco ASE 60 / ASE 80.HI'
     }
   ];
 
-  // Portfolio items (4 items for Section 4)
   const portfolioProjects = [
     {
       id: 1,
-      title: '26 COTTAGE ST. JEYSEY CITY NJ, USA',
-      location: 'Jersey City, USA',
-      sector: 'Residential Complex',
-      image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80'
+      title: 'Hamburg Commercial Hub',
+      sector: t.portfolio.tabCom,
+      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80'
     },
     {
       id: 2,
-      title: '26 COTTAGE ST. JEYSEY CITY NJ, USA',
-      location: 'Jersey City, USA',
-      sector: 'Commercial Tower',
-      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80'
+      title: 'Dortmund Residential Complex',
+      sector: t.portfolio.tabRes,
+      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'
     },
     {
       id: 3,
-      title: '26 COTTAGE ST. JEYSEY CITY NJ, USA',
-      location: 'Jersey City, USA',
-      sector: 'Mixed-Use Development',
-      image: 'https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=600&q=80'
+      title: 'Frankfurt Hospitality Tower',
+      sector: t.portfolio.tabHosp,
+      image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80'
     },
     {
       id: 4,
-      title: '26 COTTAGE ST. JEYSEY CITY NJ, USA',
-      location: 'Jersey City, USA',
-      sector: 'Luxury Apartments',
-      image: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=600&q=80'
+      title: 'Bremen Technical Institute',
+      sector: t.portfolio.tabHosp,
+      image: 'https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=800&q=80'
+    },
+    {
+      id: 5,
+      title: 'Munich Luxury Villa Residence',
+      sector: t.portfolio.tabRes,
+      image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80'
+    },
+    {
+      id: 6,
+      title: 'Cologne Corporate Headquarters',
+      sector: t.portfolio.tabCom,
+      image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80'
     }
   ];
-
-  const [portfolioIndex, setPortfolioIndex] = useState(0);
 
   const handlePrevProject = () => {
     setPortfolioIndex((prev) => (prev === 0 ? portfolioProjects.length - 1 : prev - 1));
   };
 
   const handleNextProject = () => {
-    setPortfolioIndex((prev) => (prev === portfolioProjects.length - 1 ? 0 : prev + 1));
+    setPortfolioIndex((prev) => (prev + 1) % portfolioProjects.length);
   };
 
   return (
     <div>
-      {/* HERO BANNER SECTION */}
+      {/* HERO BANNER - FULL SCREEN 1 */}
       <section 
         className="hero-full-banner"
         style={{
@@ -95,131 +100,142 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
               <span style={{
                 color: 'var(--lampag-green)',
                 fontWeight: 700,
-                fontSize: '0.85rem',
+                fontSize: '0.82rem',
                 letterSpacing: '0.08em',
                 textTransform: 'uppercase',
                 fontFamily: 'var(--font-mono)'
               }}>
-                {t.hero.subtitle}
+                {t.hero.tag}
               </span>
               <h1 style={{
                 fontSize: '3rem',
                 fontWeight: 800,
                 lineHeight: 1.12,
                 color: '#ffffff',
-                margin: '12px 0 20px 0',
+                margin: '10px 0 16px 0',
                 letterSpacing: '-0.03em'
               }}>
                 {t.hero.title}
               </h1>
               <p style={{
-                fontSize: '1.15rem',
+                fontSize: '1.1rem',
                 color: '#cbd5e1',
                 lineHeight: 1.6,
-                marginBottom: '36px',
-                maxWidth: '540px'
+                marginBottom: '24px',
+                maxWidth: '520px'
               }}>
                 {t.hero.desc}
               </p>
 
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
-                <button
+              <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
+                <button 
                   className="btn-pill-green"
-                  onClick={() => setActivePage('whatweoffer')}
-                >
-                  {t.hero.btnExplore} <ArrowUpRight size={18} />
-                </button>
-                <button
-                  className="btn-pill-green-outline"
                   onClick={() => setActivePage('contact')}
-                  style={{ color: '#ffffff', borderColor: 'var(--lampag-green)' }}
                 >
                   {t.hero.btnContact} <ArrowUpRight size={18} />
+                </button>
+                <button 
+                  className="btn-pill-green-outline"
+                  onClick={() => setActivePage('portfolio')}
+                >
+                  {t.hero.btnPortfolio}
                 </button>
               </div>
             </div>
 
             <div>
               <WireframePlaceholder
-                title="HERO ARCHITECTURAL BUILDING"
-                direction="Modern glass building with precision aluminium curtain wall facade."
+                title="HERO FACADE MOCKUP"
+                direction="Curtain wall / commercial glass exterior visual showing precision engineered aluminium systems."
                 aspectRatio="4/3"
-                height="360px"
+                height="320px"
               />
             </div>
           </div>
         </div>
       </section>
 
-      {/* SECTION 1: ABOUT LAMPAG */}
-      <section className="section-padding" style={{ backgroundColor: '#ffffff', borderBottom: '1px solid var(--border-dim)' }}>
-        <div className="container" style={{ textAlign: 'center' }}>
-          <div style={{
-            fontSize: '1.5rem',
+      {/* SECTION 1: ABOUT LAMPAG - FULL SCREEN 2 */}
+      <section className="screen-section" style={{ backgroundColor: '#ffffff', borderBottom: '1px solid var(--border-dim)' }}>
+        <div className="container" style={{ textAlign: 'center', maxWidth: '880px' }}>
+          <span style={{
+            fontSize: '0.78rem',
             fontWeight: 800,
             letterSpacing: '0.08em',
-            color: 'var(--text-main)',
-            marginBottom: '32px',
-            textTransform: 'uppercase'
+            color: 'var(--lampag-green)',
+            marginBottom: '6px',
+            display: 'block',
+            textTransform: 'uppercase',
+            fontFamily: 'var(--font-mono)'
           }}>
             {t.home.aboutTag}
-          </div>
+          </span>
 
-          <div style={{ maxWidth: '820px', margin: '0 auto 40px auto' }}>
+          <div style={{ margin: '0 auto 20px auto', maxWidth: '640px' }}>
             <WireframePlaceholder
               title="ABOUT LAMPAG ARCHITECTURAL COMPLEX"
               direction="High quality architectural exterior photo showing aluminium systems."
               aspectRatio="16/9"
-              height="320px"
+              height="200px"
             />
           </div>
 
-          <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-            <h2 style={{ fontSize: '2.1rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '16px' }}>
-              {t.home.aboutTitle}
-            </h2>
-            <p style={{ fontSize: '1.08rem', color: '#475569', lineHeight: 1.75, marginBottom: '24px' }}>
-              {t.home.aboutDesc}
-            </p>
-            <button className="btn-pill-green-outline" onClick={() => setActivePage('about')}>
-              {t.home.aboutBtn} <ArrowUpRight size={16} />
-            </button>
-          </div>
+          <h2 style={{ fontSize: '1.9rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '10px' }}>
+            {t.home.aboutTitle}
+          </h2>
+          <p style={{ fontSize: '0.98rem', color: '#475569', lineHeight: 1.65, marginBottom: '20px' }}>
+            {t.home.aboutDesc}
+          </p>
+          <button className="btn-pill-green-outline" onClick={() => setActivePage('about')}>
+            {t.home.aboutBtn} <ArrowUpRight size={16} />
+          </button>
         </div>
       </section>
 
-      {/* SECTION 2: COMPREHENSIVE ALUMINIUM SYSTEM */}
-      <section className="section-padding" style={{ backgroundColor: '#f4f8f5', borderBottom: '1px solid var(--border-dim)' }}>
+      {/* SECTION 2: COMPREHENSIVE ALUMINIUM SYSTEMS - FULL SCREEN 3 */}
+      <section className="screen-section" style={{ backgroundColor: '#f4f8f5', borderBottom: '1px solid var(--border-dim)' }}>
         <div className="container">
-          <div className="grid-2" style={{ gap: '48px', alignItems: 'flex-start' }}>
+          <div className="grid-2" style={{ gap: '36px', alignItems: 'center' }}>
             {/* Left Column: Heading + Action */}
-            <div style={{ sticky: true, top: '100px' }}>
+            <div>
+              <span style={{
+                fontSize: '0.78rem',
+                fontFamily: 'var(--font-mono)',
+                fontWeight: 700,
+                color: 'var(--lampag-green)',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                display: 'block',
+                marginBottom: '6px'
+              }}>
+                ALUMINIUM CAPABILITIES
+              </span>
               <h2 style={{
-                fontSize: '2.4rem',
+                fontSize: '2.2rem',
                 fontWeight: 900,
                 color: 'var(--text-main)',
                 lineHeight: 1.15,
                 textTransform: 'uppercase',
-                marginBottom: '28px'
+                marginBottom: '16px'
               }}>
                 {t.home.productsTitle}
               </h2>
-              <p style={{ color: '#475569', fontSize: '1.05rem', lineHeight: 1.6, marginBottom: '28px' }}>
+              <p style={{ color: '#475569', fontSize: '0.98rem', lineHeight: 1.6, marginBottom: '24px' }}>
                 {t.home.productsDesc}
               </p>
               <button
                 className="btn-pill-green"
-                onClick={() => setActivePage('contact')}
+                onClick={() => setActivePage('product')}
               >
-                {t.hero.btnContact} <ArrowUpRight size={18} />
+                Explore Product Catalog <ArrowUpRight size={18} />
               </button>
             </div>
 
-            {/* Right Column: 2x2 Cards Grid with Hover Reveal */}
+            {/* Right Column: 2x2 Cards Grid */}
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-              gap: '20px'
+              gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+              gap: '16px'
             }}>
               {solutions.map((item) => (
                 <div
@@ -236,11 +252,13 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
                     backgroundPosition: 'center',
                     display: 'flex',
                     alignItems: 'flex-end',
-                    padding: '20px'
+                    padding: '16px',
+                    minHeight: '160px',
+                    borderRadius: 'var(--radius-md)'
                   }}
                 >
                   <h3 style={{
-                    fontSize: '1.25rem',
+                    fontSize: '1.15rem',
                     fontWeight: 800,
                     color: '#ffffff',
                     textTransform: 'uppercase',
@@ -250,12 +268,11 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
                     {item.title}
                   </h3>
 
-                  {/* Hover reveal overlay containing description */}
                   <div className="product-card-overlay">
-                    <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--lampag-green)', marginBottom: '10px' }}>
+                    <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--lampag-green)', marginBottom: '6px' }}>
                       {item.title}
                     </h3>
-                    <p style={{ fontSize: '0.88rem', color: '#e2e8f0', lineHeight: 1.5 }}>
+                    <p style={{ fontSize: '0.82rem', color: '#e2e8f0', lineHeight: 1.45 }}>
                       {item.desc}
                     </p>
                   </div>
@@ -266,10 +283,9 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
         </div>
       </section>
 
-      {/* SECTION 3: LIFECYCLE STAGE SUPPORT */}
-      <section style={{
+      {/* SECTION 3: LIFECYCLE STAGE SUPPORT - FULL SCREEN 4 */}
+      <section className="screen-section" style={{
         position: 'relative',
-        padding: '96px 0',
         backgroundImage: 'url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -282,8 +298,7 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
         }} />
 
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          {/* Floating Left Container with 80% Transparency */}
-          <div className="glass-overlay-80" style={{ maxWidth: '580px' }}>
+          <div className="glass-overlay-80" style={{ maxWidth: '580px', padding: '36px' }}>
             <span style={{
               fontSize: '0.75rem',
               fontFamily: 'var(--font-mono)',
@@ -291,33 +306,41 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
               color: 'var(--lampag-green)',
               letterSpacing: '0.08em',
               textTransform: 'uppercase',
-              marginBottom: '8px',
+              marginBottom: '6px',
               display: 'block'
             }}>
               {t.home.lifecycleTag}
             </span>
             <h2 style={{
-              fontSize: '1.8rem',
+              fontSize: '1.75rem',
               fontWeight: 900,
               color: 'var(--text-main)',
               lineHeight: 1.2,
-              marginBottom: '20px',
+              marginBottom: '14px',
               textTransform: 'uppercase'
             }}>
               {t.home.lifecycleTitle}
             </h2>
 
-            <p style={{ fontSize: '0.98rem', color: '#334155', lineHeight: 1.65, marginBottom: '16px' }}>
+            <p style={{ fontSize: '0.95rem', color: '#334155', lineHeight: 1.6, marginBottom: '20px' }}>
               {t.home.lifecycleDesc}
             </p>
+
+            <button
+              className="btn-pill-green"
+              onClick={() => setActivePage('services')}
+              style={{ fontSize: '0.88rem', padding: '10px 20px' }}
+            >
+              Explore Full Engineering Services <ArrowUpRight size={16} />
+            </button>
           </div>
         </div>
       </section>
 
-      {/* SECTION 4: SELECTED ARCHITECTURAL REFERENCES */}
-      <section className="section-padding" style={{ backgroundColor: '#ffffff', borderBottom: '1px solid var(--border-dim)' }}>
+      {/* SECTION 4: SELECTED ARCHITECTURAL REFERENCES - FULL SCREEN 5 */}
+      <section className="screen-section" style={{ backgroundColor: '#ffffff', borderBottom: '1px solid var(--border-dim)' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '24px' }}>
             <span style={{
               fontSize: '0.78rem',
               fontFamily: 'var(--font-mono)',
@@ -328,7 +351,7 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
             }}>
               {t.home.portfolioTag}
             </span>
-            <h2 style={{ fontSize: '2.1rem', fontWeight: 900, color: 'var(--text-main)', textTransform: 'uppercase', marginTop: '6px' }}>
+            <h2 style={{ fontSize: '2rem', fontWeight: 900, color: 'var(--text-main)', textTransform: 'uppercase', marginTop: '4px' }}>
               {t.home.portfolioTitle}
             </h2>
           </div>
@@ -336,9 +359,9 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
           {/* Grid of 4 portfolio items with dynamic carousel rotation */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-            gap: '20px',
-            marginBottom: '36px'
+            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+            gap: '16px',
+            marginBottom: '28px'
           }}>
             {[
               portfolioProjects[portfolioIndex % portfolioProjects.length],
@@ -361,7 +384,7 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
                 }}
               >
                 <div style={{
-                  height: '180px',
+                  height: '140px',
                   backgroundImage: `url("${proj.image}")`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
@@ -370,11 +393,11 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
                   {idx === 0 && (
                     <span style={{
                       position: 'absolute',
-                      top: '10px',
-                      left: '10px',
+                      top: '8px',
+                      left: '8px',
                       backgroundColor: 'var(--lampag-green)',
                       color: '#ffffff',
-                      fontSize: '0.7rem',
+                      fontSize: '0.68rem',
                       fontWeight: 800,
                       padding: '2px 8px',
                       borderRadius: 'var(--radius-sm)',
@@ -384,21 +407,21 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
                     </span>
                   )}
                 </div>
-                <div style={{ padding: '18px', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'space-between' }}>
+                <div style={{ padding: '14px', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'space-between' }}>
                   <div>
                     <span style={{
-                      fontSize: '0.72rem',
+                      fontSize: '0.7rem',
                       fontWeight: 700,
                       color: 'var(--lampag-green-dark)',
                       backgroundColor: 'var(--lampag-green-subtle)',
-                      padding: '2px 8px',
+                      padding: '2px 6px',
                       borderRadius: 'var(--radius-sm)',
                       display: 'inline-block',
-                      marginBottom: '8px'
+                      marginBottom: '6px'
                     }}>
                       {proj.sector}
                     </span>
-                    <h4 style={{ fontSize: '0.92rem', fontWeight: 800, color: 'var(--text-main)', lineHeight: 1.3, marginBottom: '16px', minHeight: '2.4rem' }}>
+                    <h4 style={{ fontSize: '0.88rem', fontWeight: 800, color: 'var(--text-main)', lineHeight: 1.3, marginBottom: '12px', minHeight: '2.2rem' }}>
                       {proj.title}
                     </h4>
                   </div>
@@ -409,9 +432,9 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
                       setActivePage('portfolio');
                       window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
-                    style={{ width: '100%', fontSize: '0.85rem', padding: '8px 14px' }}
+                    style={{ width: '100%', fontSize: '0.82rem', padding: '6px 12px' }}
                   >
-                    {t.portfolio.btnDetails} <ArrowUpRight size={15} />
+                    {t.portfolio.btnDetails} <ArrowUpRight size={14} />
                   </button>
                 </div>
               </div>
@@ -419,14 +442,14 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
           </div>
 
           {/* Controls */}
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '20px' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '16px' }}>
             <div style={{ display: 'flex', gap: '8px' }}>
               <button
                 onClick={handlePrevProject}
                 aria-label="Previous Project"
                 style={{
-                  width: '42px',
-                  height: '42px',
+                  width: '38px',
+                  height: '38px',
                   borderRadius: '50%',
                   border: '1.5px solid var(--border-strong)',
                   backgroundColor: '#ffffff',
@@ -440,14 +463,14 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
                 onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--lampag-green)'}
                 onMouseLeave={e => e.currentTarget.style.borderColor = 'var(--border-strong)'}
               >
-                <ChevronLeft size={20} color="var(--text-main)" />
+                <ChevronLeft size={18} color="var(--text-main)" />
               </button>
               <button
                 onClick={handleNextProject}
                 aria-label="Next Project"
                 style={{
-                  width: '42px',
-                  height: '42px',
+                  width: '38px',
+                  height: '38px',
                   borderRadius: '50%',
                   border: '1.5px solid var(--border-strong)',
                   backgroundColor: '#ffffff',
@@ -461,7 +484,7 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
                 onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--lampag-green)'}
                 onMouseLeave={e => e.currentTarget.style.borderColor = 'var(--border-strong)'}
               >
-                <ChevronRight size={20} color="var(--text-main)" />
+                <ChevronRight size={18} color="var(--text-main)" />
               </button>
             </div>
 
@@ -471,32 +494,33 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
                 setActivePage('portfolio');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
+              style={{ fontSize: '0.88rem', padding: '8px 18px' }}
             >
-              {t.home.portfolioBtn} <ArrowUpRight size={18} />
+              {t.home.portfolioBtn} <ArrowUpRight size={16} />
             </button>
           </div>
         </div>
       </section>
 
-      {/* SECTION 5: WHY LEADING PARTNERS CHOOSE LAMPAG */}
-      <section className="section-padding" style={{ backgroundColor: '#f8fafc', borderBottom: '1px solid var(--border-dim)' }}>
+      {/* SECTION 5: WHY LEADING PARTNERS CHOOSE LAMPAG - FULL SCREEN 6 */}
+      <section className="screen-section" style={{ backgroundColor: '#f8fafc', borderBottom: '1px solid var(--border-dim)' }}>
         <div className="container">
-          <div className="grid-2" style={{ gap: '40px', alignItems: 'stretch' }}>
+          <div className="grid-2" style={{ gap: '36px', alignItems: 'center' }}>
             {/* Left Column: Stack of 3 Visual Cards */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <div style={{
                 backgroundColor: '#ffffff',
                 border: '1px solid var(--border-dim)',
                 borderRadius: 'var(--radius-md)',
-                padding: '24px',
+                padding: '18px 22px',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '20px',
+                gap: '16px',
                 boxShadow: 'var(--shadow-wf)'
               }}>
                 <div style={{
-                  width: '48px',
-                  height: '48px',
+                  width: '42px',
+                  height: '42px',
                   borderRadius: 'var(--radius-md)',
                   backgroundColor: 'var(--lampag-green-subtle)',
                   display: 'flex',
@@ -504,11 +528,11 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
                   justifyContent: 'center',
                   flexShrink: 0
                 }}>
-                  <Cpu size={24} color="var(--lampag-green)" />
+                  <Cpu size={20} color="var(--lampag-green)" />
                 </div>
                 <div>
-                  <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-main)' }}>{t.home.whyPillar1Title}</h3>
-                  <p style={{ fontSize: '0.88rem', color: '#64748b' }}>{t.home.whyPillar1Desc}</p>
+                  <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-main)' }}>{t.home.whyPillar1Title}</h3>
+                  <p style={{ fontSize: '0.84rem', color: '#64748b' }}>{t.home.whyPillar1Desc}</p>
                 </div>
               </div>
 
@@ -516,15 +540,15 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
                 backgroundColor: '#ffffff',
                 border: '1px solid var(--border-dim)',
                 borderRadius: 'var(--radius-md)',
-                padding: '24px',
+                padding: '18px 22px',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '20px',
+                gap: '16px',
                 boxShadow: 'var(--shadow-wf)'
               }}>
                 <div style={{
-                  width: '48px',
-                  height: '48px',
+                  width: '42px',
+                  height: '42px',
                   borderRadius: 'var(--radius-md)',
                   backgroundColor: 'var(--lampag-green-subtle)',
                   display: 'flex',
@@ -532,11 +556,11 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
                   justifyContent: 'center',
                   flexShrink: 0
                 }}>
-                  <ShieldCheck size={24} color="var(--lampag-green)" />
+                  <ShieldCheck size={20} color="var(--lampag-green)" />
                 </div>
                 <div>
-                  <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-main)' }}>{t.home.whyPillar2Title}</h3>
-                  <p style={{ fontSize: '0.88rem', color: '#64748b' }}>{t.home.whyPillar2Desc}</p>
+                  <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-main)' }}>{t.home.whyPillar2Title}</h3>
+                  <p style={{ fontSize: '0.84rem', color: '#64748b' }}>{t.home.whyPillar2Desc}</p>
                 </div>
               </div>
 
@@ -544,15 +568,15 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
                 backgroundColor: '#ffffff',
                 border: '1px solid var(--border-dim)',
                 borderRadius: 'var(--radius-md)',
-                padding: '24px',
+                padding: '18px 22px',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '20px',
+                gap: '16px',
                 boxShadow: 'var(--shadow-wf)'
               }}>
                 <div style={{
-                  width: '48px',
-                  height: '48px',
+                  width: '42px',
+                  height: '42px',
                   borderRadius: 'var(--radius-md)',
                   backgroundColor: 'var(--lampag-green-subtle)',
                   display: 'flex',
@@ -560,11 +584,11 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
                   justifyContent: 'center',
                   flexShrink: 0
                 }}>
-                  <Layers size={24} color="var(--lampag-green)" />
+                  <Layers size={20} color="var(--lampag-green)" />
                 </div>
                 <div>
-                  <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-main)' }}>{t.home.whyPillar3Title}</h3>
-                  <p style={{ fontSize: '0.88rem', color: '#64748b' }}>{t.home.whyPillar3Desc}</p>
+                  <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-main)' }}>{t.home.whyPillar3Title}</h3>
+                  <p style={{ fontSize: '0.84rem', color: '#64748b' }}>{t.home.whyPillar3Desc}</p>
                 </div>
               </div>
             </div>
@@ -574,58 +598,69 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
               backgroundColor: '#eaf5ed',
               border: '1px solid #c6e6cd',
               borderRadius: 'var(--radius-md)',
-              padding: '40px',
+              padding: '32px',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center'
             }}>
               <h2 style={{
-                fontSize: '2rem',
+                fontSize: '1.85rem',
                 fontWeight: 900,
                 color: 'var(--lampag-green-dark)',
                 lineHeight: 1.25,
-                marginBottom: '20px',
-                textTransform: 'uppercase'
+                marginBottom: '12px'
               }}>
-                WHY LEADING PARTNERS CHOOSE LAMPAG
+                {t.home.whyTitle}
               </h2>
-              <p style={{ fontSize: '1.05rem', color: '#2d4a34', lineHeight: 1.7 }}>
-                At Lampag, we are committed to delivering more than aluminium systems. We provide reliable project solutions built on quality, expertise, and partnership.
+              <p style={{ fontSize: '0.96rem', color: '#2d3748', lineHeight: 1.6, marginBottom: '22px' }}>
+                {t.home.whyDesc}
               </p>
+              <button
+                className="btn-pill-green"
+                onClick={() => setActivePage('about')}
+                style={{ alignSelf: 'flex-start', fontSize: '0.88rem', padding: '10px 22px' }}
+              >
+                {t.home.aboutBtn} <ArrowUpRight size={16} />
+              </button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* SECTION 6: READY TO BRING YOUR ARCHITECTURAL VISION TO LIFE */}
-      <section style={{
-        padding: '80px 0',
+      {/* SECTION 6: BOTTOM CALL TO ACTION BANNER - FULL SCREEN 7 */}
+      <section className="screen-section" style={{
         backgroundColor: '#0a140e',
         color: '#ffffff',
-        backgroundImage: 'linear-gradient(rgba(10, 20, 14, 0.85), rgba(10, 20, 14, 0.85)), url("https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=80")',
+        borderTop: '2px solid var(--lampag-green)',
+        backgroundImage: 'linear-gradient(rgba(10, 20, 14, 0.88), rgba(10, 20, 14, 0.94)), url("https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=80")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         textAlign: 'center'
       }}>
-        <div className="container" style={{ maxWidth: '780px' }}>
+        <div className="container" style={{ maxWidth: '760px' }}>
           <h2 style={{
             fontSize: '2.4rem',
             fontWeight: 900,
-            color: '#ffffff',
             lineHeight: 1.2,
-            marginBottom: '16px',
-            textTransform: 'uppercase'
+            marginBottom: '14px',
+            color: '#ffffff'
           }}>
-            READY TO BRING YOUR ARCHITECTURAL VISION TO LIFE?
+            {t.home.ctaTitle}
           </h2>
-          <p style={{ fontSize: '1.1rem', color: '#cbd5e1', marginBottom: '32px' }}>
-            Contact our engineering team to discuss your project requirements
+          <p style={{
+            fontSize: '1.08rem',
+            color: '#cbd5e1',
+            lineHeight: 1.6,
+            marginBottom: '28px'
+          }}>
+            {t.home.ctaDesc}
           </p>
           <button
             className="btn-pill-green"
             onClick={() => setActivePage('contact')}
+            style={{ fontSize: '1rem', padding: '12px 28px' }}
           >
-            Start Your Project <ArrowUpRight size={18} />
+            {t.home.ctaBtn} <ArrowUpRight size={18} />
           </button>
         </div>
       </section>

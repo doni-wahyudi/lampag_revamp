@@ -24,8 +24,8 @@ const PortfolioPage = ({ setSelectedProject }) => {
       location: 'Hamburg, Germany',
       sectorId: 'commercial',
       sector: t.portfolio.tabCom,
-      systems: 'Schüco UCC 65 SG Curtain Wall & Custom Sliding Doors',
-      summary: 'Integrated slim profile sliding doors maximizing natural light while maintaining high thermal performance and structural rigidity for high-wind loads.'
+      systems: 'Schüco UCC 65 SG Curtain Wall & Sliding Doors',
+      summary: 'Slim profile sliding doors maximizing natural light while maintaining high thermal performance and structural rigidity.'
     },
     {
       id: 2,
@@ -34,7 +34,7 @@ const PortfolioPage = ({ setSelectedProject }) => {
       sectorId: 'residential',
       sector: t.portfolio.tabRes,
       systems: 'Schüco AWS 75.SI+ & AD 75 FD Folding Doors',
-      summary: 'Energy-efficient triple-glazed aluminium window profiles engineered for acoustic sound insulation and Passive House thermal efficiency.'
+      summary: 'Energy-efficient triple-glazed aluminium window profiles engineered for acoustic sound insulation and Passive House efficiency.'
     },
     {
       id: 3,
@@ -43,7 +43,7 @@ const PortfolioPage = ({ setSelectedProject }) => {
       sectorId: 'hospitality',
       sector: t.portfolio.tabHosp,
       systems: 'Schüco AF UDC 80 Unitized Façade & AWS 75.PD',
-      summary: 'Panoramic all-glass unitized façade panels pre-assembled offsite for fast architectural cladding and noise reduction in central business district.'
+      summary: 'Panoramic all-glass unitized façade panels pre-assembled offsite for fast architectural cladding in central business district.'
     },
     {
       id: 4,
@@ -79,7 +79,7 @@ const PortfolioPage = ({ setSelectedProject }) => {
       sectorId: 'commercial',
       sector: t.portfolio.tabCom,
       systems: 'Schüco FWS 60.CV & AWS 90.SI+ Windows',
-      summary: 'Concealed vent façade elements delivering maximum architectural transparency, thermal acoustic comfort, and integrated building automation.'
+      summary: 'Concealed vent façade elements delivering architectural transparency, thermal acoustic comfort, and integrated automation.'
     },
     {
       id: 8,
@@ -97,7 +97,7 @@ const PortfolioPage = ({ setSelectedProject }) => {
       sectorId: 'hospitality',
       sector: t.portfolio.tabHosp,
       systems: 'Schüco AWS 75 BS.SI+ & ADS 90.SI Doors',
-      summary: 'Acoustic-rated soundproof block window systems engineered for urban center tranquility and Class RC3 burglar resistance.'
+      summary: 'Acoustic-rated soundproof block window systems engineered for urban center tranquility and Class RC3 security.'
     },
     {
       id: 10,
@@ -106,7 +106,7 @@ const PortfolioPage = ({ setSelectedProject }) => {
       sectorId: 'hospitality',
       sector: t.portfolio.tabHosp,
       systems: 'Schüco FWS 50 & AWS 70.HI Antibacterial Profiles',
-      summary: 'Hygienic structural glazing façade with custom solar shading louvres and precision thermal insulation for specialized research facilities.'
+      summary: 'Hygienic structural glazing façade with custom solar shading louvres and precision thermal insulation.'
     },
     {
       id: 11,
@@ -115,7 +115,7 @@ const PortfolioPage = ({ setSelectedProject }) => {
       sectorId: 'commercial',
       sector: t.portfolio.tabCom,
       systems: 'Schüco UCC 65 SG & Integrated Photovoltaic BIPV',
-      summary: 'Sustainable unitized glass envelope with custom BAPV panels achieving net-zero building energy targets and solar control efficiency.'
+      summary: 'Sustainable unitized glass envelope with custom BAPV panels achieving net-zero building energy targets.'
     },
     {
       id: 12,
@@ -153,7 +153,7 @@ const PortfolioPage = ({ setSelectedProject }) => {
 
   return (
     <div>
-      {/* HERO BANNER */}
+      {/* HERO BANNER - FULL SCREEN 1 */}
       <section 
         className="hero-full-banner"
         style={{
@@ -166,7 +166,7 @@ const PortfolioPage = ({ setSelectedProject }) => {
               <span style={{
                 color: 'var(--lampag-green)',
                 fontWeight: 700,
-                fontSize: '0.85rem',
+                fontSize: '0.82rem',
                 letterSpacing: '0.08em',
                 textTransform: 'uppercase',
                 fontFamily: 'var(--font-mono)'
@@ -174,32 +174,31 @@ const PortfolioPage = ({ setSelectedProject }) => {
                 {t.portfolio.heroTag}
               </span>
               <h1 style={{
-                fontSize: '3rem',
+                fontSize: '2.8rem',
                 fontWeight: 800,
-                lineHeight: 1.12,
+                lineHeight: 1.15,
                 color: '#ffffff',
-                margin: '12px 0 20px 0',
+                margin: '10px 0 16px 0',
                 letterSpacing: '-0.03em'
               }}>
                 {t.portfolio.heroTitle}
               </h1>
               <p style={{
-                fontSize: '1.15rem',
+                fontSize: '1.08rem',
                 color: '#cbd5e1',
                 lineHeight: 1.6,
-                marginBottom: '24px',
-                maxWidth: '540px'
+                marginBottom: '20px',
+                maxWidth: '520px'
               }}>
                 {t.portfolio.heroDesc}
               </p>
 
               <div style={{
-                marginTop: '20px',
-                padding: '12px 18px',
+                padding: '10px 16px',
                 backgroundColor: 'rgba(57, 158, 82, 0.15)',
                 borderLeft: '3px solid var(--lampag-green)',
                 borderRadius: '0 var(--radius-sm) var(--radius-sm) 0',
-                fontSize: '0.9rem',
+                fontSize: '0.86rem',
                 color: '#e2e8f0'
               }}>
                 <strong style={{ color: 'var(--lampag-green)' }}>Architectural Track Record:</strong> 700+ completed projects engineered across Europe and worldwide.
@@ -211,15 +210,15 @@ const PortfolioPage = ({ setSelectedProject }) => {
                 title="PORTFOLIO HERO PHOTO GRID"
                 direction="Grid or hero photo showcasing completed residential & commercial building projects."
                 aspectRatio="4/3"
-                height="360px"
+                height="320px"
               />
             </div>
           </div>
         </div>
       </section>
 
-      {/* PORTFOLIO GRID SHOWCASE */}
-      <section className="section-padding" style={{ backgroundColor: '#ffffff' }} ref={gridTopRef}>
+      {/* PORTFOLIO GRID SHOWCASE - FULL SCREEN 2 */}
+      <section className="screen-section" style={{ backgroundColor: '#ffffff' }} ref={gridTopRef}>
         <div className="container">
           {/* Header Controls: Filters + Count */}
           <div style={{
@@ -227,11 +226,11 @@ const PortfolioPage = ({ setSelectedProject }) => {
             flexWrap: 'wrap',
             alignItems: 'center',
             justifyContent: 'space-between',
-            gap: '16px',
-            marginBottom: '36px'
+            gap: '12px',
+            marginBottom: '24px'
           }}>
             {/* Filter Buttons with High Contrast */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
               {categories.map(cat => {
                 const isActive = filter === cat.id;
                 return (
@@ -239,9 +238,9 @@ const PortfolioPage = ({ setSelectedProject }) => {
                     key={cat.id}
                     onClick={() => handleFilterChange(cat.id)}
                     style={{
-                      fontSize: '0.92rem',
+                      fontSize: '0.88rem',
                       fontWeight: 700,
-                      padding: '9px 22px',
+                      padding: '8px 18px',
                       borderRadius: 'var(--radius-pill)',
                       cursor: 'pointer',
                       transition: 'all 0.2s ease',
@@ -260,11 +259,11 @@ const PortfolioPage = ({ setSelectedProject }) => {
 
             {/* Results Count Badge */}
             <div style={{
-              fontSize: '0.85rem',
+              fontSize: '0.82rem',
               color: '#64748b',
               fontWeight: 600,
               backgroundColor: '#f8fafc',
-              padding: '6px 14px',
+              padding: '6px 12px',
               borderRadius: 'var(--radius-pill)',
               border: '1px solid var(--border-dim)'
             }}>
@@ -273,12 +272,12 @@ const PortfolioPage = ({ setSelectedProject }) => {
           </div>
 
           {/* Project Grid */}
-          <div className="grid-2" style={{ gap: '28px', alignItems: 'stretch' }}>
+          <div className="grid-3" style={{ gap: '20px', alignItems: 'stretch' }}>
             {paginatedProjects.map(proj => (
               <div 
                 key={proj.id} 
                 style={{
-                  padding: '24px',
+                  padding: '18px',
                   backgroundColor: '#ffffff',
                   border: '1px solid var(--border-dim)',
                   borderRadius: 'var(--radius-md)',
@@ -292,62 +291,62 @@ const PortfolioPage = ({ setSelectedProject }) => {
                 }}
                 onClick={() => setSelectedProject(proj)}
               >
-                <div style={{ width: '100%', height: '220px', overflow: 'hidden', borderRadius: 'var(--radius-sm)' }}>
+                <div style={{ width: '100%', height: '140px', overflow: 'hidden', borderRadius: 'var(--radius-sm)' }}>
                   <WireframePlaceholder
                     title={`PROJECT: ${proj.title}`}
                     direction="High-quality photo of completed project."
                     aspectRatio="16/9"
-                    height="220px"
+                    height="140px"
                   />
                 </div>
 
-                <div style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'space-between' }}>
+                <div style={{ marginTop: '14px', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'space-between' }}>
                   <div>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '12px', alignItems: 'center' }}>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '8px', alignItems: 'center' }}>
                       <span style={{
                         backgroundColor: 'var(--lampag-green-subtle)',
                         color: 'var(--lampag-green-dark)',
-                        fontSize: '0.72rem',
+                        fontSize: '0.68rem',
                         fontWeight: 700,
-                        padding: '3px 10px',
+                        padding: '2px 8px',
                         borderRadius: 'var(--radius-sm)'
                       }}>
                         {proj.sector}
                       </span>
-                      <span style={{ fontSize: '0.82rem', color: '#64748b', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                        <MapPin size={13} color="var(--lampag-green)" /> {proj.location}
+                      <span style={{ fontSize: '0.78rem', color: '#64748b', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                        <MapPin size={12} color="var(--lampag-green)" /> {proj.location}
                       </span>
                     </div>
 
-                    <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '10px', minHeight: '3.4rem', lineHeight: 1.35 }}>
+                    <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '6px', minHeight: '2.6rem', lineHeight: 1.25 }}>
                       {proj.title}
                     </h3>
 
-                    <p style={{ fontSize: '0.9rem', color: '#64748b', lineHeight: 1.55, marginBottom: '16px', minHeight: '68px' }}>
+                    <p style={{ fontSize: '0.82rem', color: '#64748b', lineHeight: 1.45, marginBottom: '10px', minHeight: '48px' }}>
                       {proj.summary}
                     </p>
 
                     <div style={{ 
-                      padding: '12px 14px', 
+                      padding: '8px 10px', 
                       backgroundColor: '#f8fafc', 
                       borderRadius: 'var(--radius-sm)',
                       border: '1px solid var(--border-dim)',
-                      fontSize: '0.82rem',
-                      marginBottom: '20px',
-                      minHeight: '48px',
+                      fontSize: '0.76rem',
+                      marginBottom: '14px',
+                      minHeight: '38px',
                       display: 'flex',
                       alignItems: 'center'
                     }}>
                       <div>
-                        <strong style={{ color: 'var(--text-main)' }}>Systems Used:</strong>{' '}
+                        <strong style={{ color: 'var(--text-main)' }}>Systems:</strong>{' '}
                         <span style={{ color: 'var(--lampag-green-dark)', fontWeight: 700 }}>{proj.systems}</span>
                       </div>
                     </div>
                   </div>
 
-                  <div style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: '8px' }}>
-                    <button className="btn-pill-green" style={{ fontSize: '0.82rem', padding: '8px 16px', width: '100%' }}>
-                      {t.portfolio.btnDetails} <ArrowUpRight size={14} />
+                  <div style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: '4px' }}>
+                    <button className="btn-pill-green" style={{ fontSize: '0.8rem', padding: '6px 14px', width: '100%' }}>
+                      {t.portfolio.btnDetails} <ArrowUpRight size={13} />
                     </button>
                   </div>
                 </div>
@@ -362,8 +361,8 @@ const PortfolioPage = ({ setSelectedProject }) => {
               justifyContent: 'center',
               alignItems: 'center',
               gap: '10px',
-              marginTop: '48px',
-              paddingTop: '24px',
+              marginTop: '28px',
+              paddingTop: '16px',
               borderTop: '1px solid var(--border-dim)'
             }}>
               {/* Prev Button */}
@@ -372,8 +371,8 @@ const PortfolioPage = ({ setSelectedProject }) => {
                 disabled={validCurrentPage === 1}
                 aria-label="Previous Page"
                 style={{
-                  width: '42px',
-                  height: '42px',
+                  width: '38px',
+                  height: '38px',
                   borderRadius: 'var(--radius-sm)',
                   border: '1px solid var(--border-dim)',
                   backgroundColor: validCurrentPage === 1 ? '#f1f5f9' : '#ffffff',
@@ -386,7 +385,7 @@ const PortfolioPage = ({ setSelectedProject }) => {
                   opacity: validCurrentPage === 1 ? 0.6 : 1
                 }}
               >
-                <ChevronLeft size={18} />
+                <ChevronLeft size={16} />
               </button>
 
               {/* Numbered Page Buttons */}
@@ -395,15 +394,15 @@ const PortfolioPage = ({ setSelectedProject }) => {
                   key={pageNum}
                   onClick={() => handlePageChange(pageNum)}
                   style={{
-                    width: '42px',
-                    height: '42px',
+                    width: '38px',
+                    height: '38px',
                     borderRadius: 'var(--radius-sm)',
                     border: '1px solid',
                     borderColor: validCurrentPage === pageNum ? 'var(--lampag-green)' : 'var(--border-dim)',
                     backgroundColor: validCurrentPage === pageNum ? 'var(--lampag-green)' : '#ffffff',
                     color: validCurrentPage === pageNum ? '#ffffff' : 'var(--text-main)',
                     fontWeight: 700,
-                    fontSize: '0.92rem',
+                    fontSize: '0.88rem',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -422,8 +421,8 @@ const PortfolioPage = ({ setSelectedProject }) => {
                 disabled={validCurrentPage === totalPages}
                 aria-label="Next Page"
                 style={{
-                  width: '42px',
-                  height: '42px',
+                  width: '38px',
+                  height: '38px',
                   borderRadius: 'var(--radius-sm)',
                   border: '1px solid var(--border-dim)',
                   backgroundColor: validCurrentPage === totalPages ? '#f1f5f9' : '#ffffff',
@@ -436,7 +435,7 @@ const PortfolioPage = ({ setSelectedProject }) => {
                   opacity: validCurrentPage === totalPages ? 0.6 : 1
                 }}
               >
-                <ChevronRight size={18} />
+                <ChevronRight size={16} />
               </button>
             </div>
           )}

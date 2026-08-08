@@ -8,42 +8,42 @@ const AboutPage = () => {
 
   const strengths = [
     {
-      icon: <ShieldCheck size={24} color="var(--lampag-green)" />,
+      icon: <ShieldCheck size={22} color="var(--lampag-green)" />,
       title: t.about.pillar1,
       desc: t.about.pillar1Desc
     },
     {
-      icon: <Wrench size={24} color="var(--lampag-green)" />,
+      icon: <Wrench size={22} color="var(--lampag-green)" />,
       title: t.about.pillar2,
       desc: t.about.pillar2Desc
     },
     {
-      icon: <Building size={24} color="var(--lampag-green)" />,
+      icon: <Building size={22} color="var(--lampag-green)" />,
       title: t.about.pillar3,
       desc: t.about.pillar3Desc
     },
     {
-      icon: <Award size={24} color="var(--lampag-green)" />,
+      icon: <Award size={22} color="var(--lampag-green)" />,
       title: t.about.pillar4,
       desc: t.about.pillar4Desc
     },
     {
-      icon: <Factory size={24} color="var(--lampag-green)" />,
+      icon: <Factory size={22} color="var(--lampag-green)" />,
       title: t.about.pillar5,
       desc: t.about.pillar5Desc
     },
     {
-      icon: <CheckCircle2 size={24} color="var(--lampag-green)" />,
+      icon: <CheckCircle2 size={22} color="var(--lampag-green)" />,
       title: t.about.pillar6,
       desc: t.about.pillar6Desc
     },
     {
-      icon: <RefreshCw size={24} color="var(--lampag-green)" />,
+      icon: <RefreshCw size={22} color="var(--lampag-green)" />,
       title: t.about.pillar7,
       desc: t.about.pillar7Desc
     },
     {
-      icon: <Handshake size={24} color="var(--lampag-green)" />,
+      icon: <Handshake size={22} color="var(--lampag-green)" />,
       title: t.about.pillar8,
       desc: t.about.pillar8Desc
     }
@@ -51,7 +51,7 @@ const AboutPage = () => {
 
   return (
     <div>
-      {/* HERO BANNER */}
+      {/* HERO BANNER - FULL SCREEN 1 */}
       <section 
         className="hero-full-banner"
         style={{
@@ -64,7 +64,7 @@ const AboutPage = () => {
               <span style={{
                 color: 'var(--lampag-green)',
                 fontWeight: 700,
-                fontSize: '0.85rem',
+                fontSize: '0.82rem',
                 letterSpacing: '0.08em',
                 textTransform: 'uppercase',
                 fontFamily: 'var(--font-mono)'
@@ -72,32 +72,31 @@ const AboutPage = () => {
                 {t.about.heroTag}
               </span>
               <h1 style={{
-                fontSize: '3rem',
+                fontSize: '2.8rem',
                 fontWeight: 800,
-                lineHeight: 1.12,
+                lineHeight: 1.15,
                 color: '#ffffff',
-                margin: '12px 0 20px 0',
+                margin: '10px 0 16px 0',
                 letterSpacing: '-0.03em'
               }}>
                 {t.about.heroTitle}
               </h1>
               <p style={{
-                fontSize: '1.15rem',
+                fontSize: '1.08rem',
                 color: '#cbd5e1',
                 lineHeight: 1.6,
-                marginBottom: '24px',
-                maxWidth: '540px'
+                marginBottom: '20px',
+                maxWidth: '520px'
               }}>
                 {t.about.heroDesc}
               </p>
 
               <div style={{
-                marginTop: '20px',
-                padding: '12px 18px',
+                padding: '10px 16px',
                 backgroundColor: 'rgba(57, 158, 82, 0.15)',
                 borderLeft: '3px solid var(--lampag-green)',
                 borderRadius: '0 var(--radius-sm) var(--radius-sm) 0',
-                fontSize: '0.9rem',
+                fontSize: '0.86rem',
                 color: '#e2e8f0'
               }}>
                 <strong style={{ color: 'var(--lampag-green)' }}>German Manufacturing Excellence:</strong> Member of Alu Group with 70,000 m² annual capacity & 700+ worldwide projects.
@@ -109,59 +108,72 @@ const AboutPage = () => {
                 title="ABOUT HERO ARCHITECTURAL CLOSE-UP"
                 direction="Architectural close-up highlighting precision engineering, curtain wall glass joints, and clean structural lines."
                 aspectRatio="4/3"
-                height="360px"
+                height="320px"
               />
             </div>
           </div>
         </div>
       </section>
 
-      {/* SECTION 1: COMPANY PROFILE (WHO WE ARE) */}
-      <section className="section-padding" style={{ backgroundColor: '#ffffff', borderBottom: '1px solid var(--border-dim)' }}>
+      {/* SECTION 1: WHO WE ARE - FULL SCREEN 2 */}
+      <section className="screen-section" style={{ backgroundColor: '#ffffff', borderBottom: '1px solid var(--border-dim)' }}>
         <div className="container">
-          <div className="grid-2" style={{ gap: '40px', alignItems: 'flex-start' }}>
+          <div className="grid-2" style={{ gap: '40px', alignItems: 'center' }}>
             <div>
-              <h2 style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '16px' }}>{t.about.whoTitle}</h2>
-              <p style={{ fontSize: '1rem', lineHeight: 1.7, color: 'var(--text-main)', marginBottom: '16px' }}>
+              <span style={{
+                fontSize: '0.78rem',
+                fontFamily: 'var(--font-mono)',
+                fontWeight: 700,
+                color: 'var(--lampag-green)',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                marginBottom: '6px',
+                display: 'block'
+              }}>
+                ABOUT LAMPAG
+              </span>
+              <h2 style={{ fontSize: '2.2rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '14px', lineHeight: 1.2 }}>{t.about.whoTitle}</h2>
+              <p style={{ fontSize: '0.96rem', lineHeight: 1.65, color: 'var(--text-main)', marginBottom: '12px' }}>
                 {t.about.whoP1}
               </p>
-              <p style={{ fontSize: '1rem', lineHeight: 1.7, color: '#64748b', marginBottom: '16px' }}>
+              <p style={{ fontSize: '0.92rem', lineHeight: 1.6, color: '#64748b', marginBottom: '12px' }}>
                 {t.about.whoP2}
               </p>
-              <p style={{ fontSize: '1rem', lineHeight: 1.7, color: '#64748b' }}>
+              <p style={{ fontSize: '0.92rem', lineHeight: 1.6, color: '#64748b' }}>
                 {t.about.whoP3}
               </p>
             </div>
 
             <div style={{
-              padding: '28px',
+              padding: '28px 32px',
               backgroundColor: '#f8fafc',
               border: '1px solid var(--border-dim)',
-              borderRadius: 'var(--radius-md)'
+              borderRadius: 'var(--radius-md)',
+              boxShadow: 'var(--shadow-wf)'
             }}>
               <div style={{
                 fontSize: '0.8rem',
                 fontFamily: 'var(--font-mono)',
                 fontWeight: 700,
                 color: 'var(--lampag-green)',
-                letterSpacing: '0.06em',
+                letterSpacing: '0.08em',
                 marginBottom: '16px',
                 textTransform: 'uppercase'
               }}>
                 COMPANY AT A GLANCE
               </div>
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '14px' }}>
                 <li style={{ borderBottom: '1px dashed var(--border-dim)', paddingBottom: '12px' }}>
-                  <div style={{ fontSize: '1.5rem', fontWeight: 900, color: 'var(--lampag-green)' }}>700+</div>
-                  <div style={{ fontSize: '0.88rem', color: '#64748b' }}>Completed projects worldwide across residential & commercial sectors.</div>
+                  <div style={{ fontSize: '1.75rem', fontWeight: 900, color: 'var(--lampag-green)' }}>700+</div>
+                  <div style={{ fontSize: '0.86rem', color: '#64748b' }}>Completed projects worldwide across residential & commercial sectors.</div>
                 </li>
                 <li style={{ borderBottom: '1px dashed var(--border-dim)', paddingBottom: '12px' }}>
-                  <div style={{ fontSize: '1.5rem', fontWeight: 900, color: 'var(--lampag-green)' }}>70,000 m²</div>
-                  <div style={{ fontSize: '0.88rem', color: '#64748b' }}>Annual production capacity with advanced Schüco CNC automation.</div>
+                  <div style={{ fontSize: '1.75rem', fontWeight: 900, color: 'var(--lampag-green)' }}>70,000 m²</div>
+                  <div style={{ fontSize: '0.86rem', color: '#64748b' }}>Annual production capacity with advanced Schüco CNC automation.</div>
                 </li>
                 <li>
-                  <div style={{ fontSize: '1.5rem', fontWeight: 900, color: 'var(--lampag-green)' }}>50+ Years</div>
-                  <div style={{ fontSize: '0.88rem', color: '#64748b' }}>Regional team engineering expertise in aluminium construction.</div>
+                  <div style={{ fontSize: '1.75rem', fontWeight: 900, color: 'var(--lampag-green)' }}>50+ Years</div>
+                  <div style={{ fontSize: '0.86rem', color: '#64748b' }}>Regional team engineering expertise in aluminium construction.</div>
                 </li>
               </ul>
             </div>
@@ -169,19 +181,32 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* SECTION 2 & 3: PHILOSOPHY & APPROACH */}
-      <section className="section-padding" style={{ backgroundColor: '#f4f8f5', borderBottom: '1px solid var(--border-dim)' }}>
+      {/* SECTION 2: PHILOSOPHY & APPROACH - FULL SCREEN 3 */}
+      <section className="screen-section" style={{ backgroundColor: '#f4f8f5', borderBottom: '1px solid var(--border-dim)' }}>
         <div className="container">
-          <div className="grid-2" style={{ gap: '32px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '28px' }}>
+            <span style={{ fontSize: '0.78rem', fontFamily: 'var(--font-mono)', fontWeight: 700, color: 'var(--lampag-green)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+              OUR FOUNDATIONS
+            </span>
+            <h2 style={{ fontSize: '2.1rem', fontWeight: 800, color: 'var(--text-main)', marginTop: '4px' }}>
+              Engineering Philosophy & Approach
+            </h2>
+          </div>
+
+          <div className="grid-2" style={{ gap: '28px', alignItems: 'stretch' }}>
             <div style={{
               padding: '32px',
               backgroundColor: '#ffffff',
               border: '1px solid var(--border-dim)',
-              borderRadius: 'var(--radius-md)'
+              borderRadius: 'var(--radius-md)',
+              boxShadow: 'var(--shadow-wf)',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center'
             }}>
               <span style={{ fontSize: '0.78rem', fontFamily: 'var(--font-mono)', fontWeight: 700, color: 'var(--lampag-green)' }}>[OUR PHILOSOPHY]</span>
               <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginTop: '6px', marginBottom: '12px', color: 'var(--text-main)' }}>{t.about.philosophyTitle}</h3>
-              <p style={{ fontSize: '0.98rem', color: '#64748b', lineHeight: 1.6 }}>
+              <p style={{ fontSize: '0.95rem', color: '#64748b', lineHeight: 1.65 }}>
                 {t.about.philosophyDesc}
               </p>
             </div>
@@ -190,11 +215,15 @@ const AboutPage = () => {
               padding: '32px',
               backgroundColor: '#ffffff',
               border: '1px solid var(--border-dim)',
-              borderRadius: 'var(--radius-md)'
+              borderRadius: 'var(--radius-md)',
+              boxShadow: 'var(--shadow-wf)',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center'
             }}>
               <span style={{ fontSize: '0.78rem', fontFamily: 'var(--font-mono)', fontWeight: 700, color: 'var(--lampag-green)' }}>[OUR APPROACH]</span>
               <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginTop: '6px', marginBottom: '12px', color: 'var(--text-main)' }}>{t.about.approachTitle}</h3>
-              <p style={{ fontSize: '0.98rem', color: '#64748b', lineHeight: 1.6 }}>
+              <p style={{ fontSize: '0.95rem', color: '#64748b', lineHeight: 1.65 }}>
                 {t.about.approachDesc}
               </p>
             </div>
@@ -202,60 +231,64 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* SECTION 4: 8 CORE STRENGTHS GRID */}
-      <section className="section-padding" style={{ backgroundColor: '#ffffff', borderBottom: '1px solid var(--border-dim)' }}>
+      {/* SECTION 3: 8 CORE STRENGTHS - FULL SCREEN 4 */}
+      <section className="screen-section" style={{ backgroundColor: '#ffffff', borderBottom: '1px solid var(--border-dim)' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '36px' }}>
-            <h2 style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--text-main)' }}>{t.about.strengthsTitle}</h2>
-            <p style={{ color: '#64748b', marginTop: '6px' }}>Our core operational pillars ensuring reliability, precision, and building longevity.</p>
+          <div style={{ textAlign: 'center', marginBottom: '28px' }}>
+            <h2 style={{ fontSize: '2.1rem', fontWeight: 800, color: 'var(--text-main)' }}>{t.about.strengthsTitle}</h2>
+            <p style={{ color: '#64748b', marginTop: '6px', fontSize: '0.95rem' }}>Our core operational pillars ensuring reliability, precision, and building longevity.</p>
           </div>
 
-          <div className="grid-4">
+          <div className="grid-4" style={{ gap: '16px' }}>
             {strengths.map((item, index) => (
               <div key={index} style={{
-                padding: '20px',
+                padding: '18px',
                 backgroundColor: '#ffffff',
                 border: '1px solid var(--border-dim)',
                 borderRadius: 'var(--radius-md)',
-                transition: 'border-color 0.2s ease'
+                transition: 'border-color 0.2s ease',
+                boxShadow: 'var(--shadow-wf)'
               }}>
                 <div style={{
-                  width: '44px',
-                  height: '44px',
+                  width: '38px',
+                  height: '38px',
                   borderRadius: 'var(--radius-md)',
                   backgroundColor: 'var(--lampag-green-subtle)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  marginBottom: '14px'
+                  marginBottom: '10px'
                 }}>
                   {item.icon}
                 </div>
-                <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '8px' }}>{item.title}</h4>
-                <p style={{ fontSize: '0.88rem', color: '#64748b', lineHeight: 1.5 }}>{item.desc}</p>
+                <h4 style={{ fontSize: '0.96rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '6px', minHeight: '2.2rem', lineHeight: 1.25 }}>{item.title}</h4>
+                <p style={{ fontSize: '0.82rem', color: '#64748b', lineHeight: 1.45 }}>{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* SECTION 5: SUSTAINABILITY & COMMITMENT */}
-      <section className="section-padding" style={{ backgroundColor: '#eaf5ed' }}>
+      {/* SECTION 4: SUSTAINABILITY - FULL SCREEN 5 */}
+      <section className="screen-section" style={{ backgroundColor: '#eaf5ed' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-            <h2 style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--lampag-green-dark)' }}>
+          <div style={{ textAlign: 'center', marginBottom: '28px' }}>
+            <span style={{ fontSize: '0.78rem', fontFamily: 'var(--font-mono)', fontWeight: 700, color: 'var(--lampag-green)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+              ENVIRONMENTAL RESPONSIBILITY
+            </span>
+            <h2 style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--lampag-green-dark)', marginTop: '4px' }}>
               {t.about.sustainabilityTitle}
             </h2>
           </div>
-          <div className="grid-2" style={{ gap: '32px' }}>
-            <div style={{ padding: '28px', backgroundColor: '#ffffff', border: '1px solid #c6e6cd', borderRadius: 'var(--radius-md)' }}>
-              <p style={{ fontSize: '0.95rem', color: '#334155', lineHeight: 1.6 }}>
+          <div className="grid-2" style={{ gap: '28px' }}>
+            <div style={{ padding: '28px', backgroundColor: '#ffffff', border: '1px solid #c6e6cd', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-wf)' }}>
+              <p style={{ fontSize: '0.96rem', color: '#334155', lineHeight: 1.65 }}>
                 {t.about.sustainabilityP1}
               </p>
             </div>
 
-            <div style={{ padding: '28px', backgroundColor: '#ffffff', border: '1px solid #c6e6cd', borderRadius: 'var(--radius-md)' }}>
-              <p style={{ fontSize: '0.95rem', color: '#334155', lineHeight: 1.6 }}>
+            <div style={{ padding: '28px', backgroundColor: '#ffffff', border: '1px solid #c6e6cd', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-wf)' }}>
+              <p style={{ fontSize: '0.96rem', color: '#334155', lineHeight: 1.65 }}>
                 {t.about.sustainabilityP2}
               </p>
             </div>

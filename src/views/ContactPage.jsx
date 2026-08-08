@@ -89,7 +89,7 @@ const ContactPage = () => {
       </section>
 
       {/* CONTACT FORM & DIRECT DETAILS SECTION */}
-      <section className="section-padding" style={{ backgroundColor: '#ffffff' }}>
+      <section className="screen-section" style={{ backgroundColor: '#ffffff' }}>
         <div className="container">
           <div className="grid-2" style={{ gap: '40px', alignItems: 'flex-start' }}>
             {/* Contact Form Box */}
