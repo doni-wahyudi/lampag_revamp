@@ -161,22 +161,26 @@ body.blueprint-mode .wf-box {
   justify-content: center;
   gap: 8px;
   font-family: var(--font-sans);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.95rem;
   padding: 11px 24px;
   border-radius: var(--radius-pill);
-  background-color: transparent;
-  color: var(--lampag-green);
-  border: 1.5px solid var(--lampag-green);
+  background-color: #ffffff;
+  color: var(--lampag-green-dark);
+  border: 2px solid var(--lampag-green);
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
   max-width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .btn-pill-green-outline:hover {
-  background-color: var(--lampag-green-subtle);
+  background-color: var(--lampag-green);
+  color: #ffffff;
+  border-color: var(--lampag-green);
   transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(57, 158, 82, 0.3);
 }
 
 .btn-primary {

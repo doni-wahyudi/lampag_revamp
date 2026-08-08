@@ -154,22 +154,32 @@ const ProductsPage = ({ setSelectedProduct }) => {
       {/* CATALOG FILTER & DISPLAY */}
       <section className="section-padding" style={{ backgroundColor: '#ffffff' }}>
         <div className="container">
-          {/* Category Filter Tabs */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '40px' }}>
-            {categories.map(cat => (
-              <button
-                key={cat.id}
-                onClick={() => setActiveCategory(cat.id)}
-                className={`btn-pill-green-outline ${activeCategory === cat.id ? 'btn-pill-green' : ''}`}
-                style={{
-                  fontSize: '0.88rem',
-                  padding: '8px 18px',
-                  ...(activeCategory === cat.id ? { color: '#ffffff' } : { color: 'var(--text-main)', borderColor: 'var(--border-dim)' })
-                }}
-              >
-                {cat.label}
-              </button>
-            ))}
+          {/* Category Filter Tabs with High Contrast */}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginBottom: '40px' }}>
+            {categories.map(cat => {
+              const isActive = activeCategory === cat.id;
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => setActiveCategory(cat.id)}
+                  style={{
+                    fontSize: '0.92rem',
+                    fontWeight: 700,
+                    padding: '9px 22px',
+                    borderRadius: 'var(--radius-pill)',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease',
+                    border: '2px solid',
+                    borderColor: isActive ? 'var(--lampag-green)' : '#cbd5e1',
+                    backgroundColor: isActive ? 'var(--lampag-green)' : '#ffffff',
+                    color: isActive ? '#ffffff' : 'var(--text-main)',
+                    boxShadow: isActive ? '0 4px 14px rgba(57, 158, 82, 0.3)' : '0 2px 6px rgba(0, 0, 0, 0.04)'
+                  }}
+                >
+                  {cat.label}
+                </button>
+              );
+            })}
           </div>
 
           {/* Render Sections */}
