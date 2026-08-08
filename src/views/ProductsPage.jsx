@@ -87,20 +87,14 @@ const ProductsPage = ({ setSelectedProduct }) => {
   return (
     <div>
       {/* HERO BANNER */}
-      <section style={{
-        backgroundColor: '#0a140e',
-        color: '#ffffff',
-        padding: '72px 0',
-        borderBottom: '1px solid #1b3323',
-        backgroundImage: 'linear-gradient(rgba(10, 20, 14, 0.82), rgba(10, 20, 14, 0.92)), url("https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1600&q=80")',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        minHeight: '480px',
-        display: 'flex',
-        alignItems: 'center'
-      }}>
+      <section 
+        className="hero-full-banner"
+        style={{
+          backgroundImage: 'linear-gradient(rgba(10, 20, 14, 0.82), rgba(10, 20, 14, 0.92)), url("https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=2000&q=85")'
+        }}
+      >
         <div className="container">
-          <div className="grid-2" style={{ alignItems: 'center', gap: '48px' }}>
+          <div className="hero-content-wrapper">
             <div>
               <span style={{
                 color: 'var(--lampag-green)',
