@@ -5,13 +5,21 @@ import { useLanguage } from '../i18n/LanguageContext';
 
 const PortfolioPage = ({ setSelectedProject }) => {
   const { t } = useLanguage();
-  const [filter, setFilter] = useState('All');
+  const [filter, setFilter] = useState('all');
+
+  const categories = [
+    { id: 'all', label: t.portfolio.tabAll },
+    { id: 'residential', label: t.portfolio.tabRes },
+    { id: 'commercial', label: t.portfolio.tabCom },
+    { id: 'hospitality', label: t.portfolio.tabHosp }
+  ];
 
   const projects = [
     {
       id: 1,
       title: 'Hamburg Commercial Office Hub',
       location: 'Hamburg, Germany',
+      sectorId: 'commercial',
       sector: t.portfolio.tabCom,
       systems: 'Schüco UCC 65 SG Curtain Wall & Custom Sliding Doors',
       summary: 'Integrated slim profile sliding doors maximizing natural light while maintaining high thermal performance and structural rigidity for high-wind loads.'
@@ -20,6 +28,7 @@ const PortfolioPage = ({ setSelectedProject }) => {
       id: 2,
       title: 'Dortmund Modern Residential Complex',
       location: 'Dortmund, Germany',
+      sectorId: 'residential',
       sector: t.portfolio.tabRes,
       systems: 'Schüco AWS 75.SI+ & AD 75 FD Folding Doors',
       summary: 'Energy-efficient triple-glazed aluminium window profiles engineered for acoustic sound insulation and Passive House thermal efficiency.'
@@ -28,6 +37,7 @@ const PortfolioPage = ({ setSelectedProject }) => {
       id: 3,
       title: 'Frankfurt Grand Hospitality Tower',
       location: 'Frankfurt, Germany',
+      sectorId: 'hospitality',
       sector: t.portfolio.tabHosp,
       systems: 'Schüco AF UDC 80 Unitized Façade & AWS 75.PD',
       summary: 'Panoramic all-glass unitized façade panels pre-assembled offsite for fast architectural cladding and noise reduction in central business district.'
@@ -36,6 +46,7 @@ const PortfolioPage = ({ setSelectedProject }) => {
       id: 4,
       title: 'Bremen Municipal Technical Institute',
       location: 'Bremen, Germany',
+      sectorId: 'hospitality',
       sector: t.portfolio.tabHosp,
       systems: 'Schüco FWS 60.SG & AWS 70.HI Windows',
       summary: 'High-durability structural glazing curtain wall installed with automated ventilation actuators and solar shading integration.'
@@ -44,6 +55,7 @@ const PortfolioPage = ({ setSelectedProject }) => {
       id: 5,
       title: 'Munich Luxury Villa Residence',
       location: 'Munich, Germany',
+      sectorId: 'residential',
       sector: t.portfolio.tabRes,
       systems: 'Schüco ASE 67 PD Sliding Doors & Glass Railings',
       summary: 'Floor-to-ceiling panoramic sliding doors with flush sill thresholds creating seamless indoor-outdoor transitions.'
@@ -52,17 +64,16 @@ const PortfolioPage = ({ setSelectedProject }) => {
       id: 6,
       title: 'Cologne Corporate Headquarters',
       location: 'Cologne, Germany',
+      sectorId: 'commercial',
       sector: t.portfolio.tabCom,
       systems: 'Schüco FWS 50.SG & ADS 75.SI Entrance Systems',
       summary: 'Custom heavy-traffic entrance system with burglar resistance RC3 and structural glazing glass fins.'
     }
   ];
 
-  const categories = [t.portfolio.tabAll, t.portfolio.tabRes, t.portfolio.tabCom, t.portfolio.tabHosp];
-
-  const filteredProjects = filter === t.portfolio.tabAll || filter === 'All'
+  const filteredProjects = filter === 'all' 
     ? projects 
-    : projects.filter(p => p.sector === filter);
+    : projects.filter(p => p.sectorId === filter);
 
   return (
     <div>
@@ -126,16 +137,16 @@ const PortfolioPage = ({ setSelectedProject }) => {
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '36px' }}>
             {categories.map(cat => (
               <button
-                key={cat}
-                onClick={() => setFilter(cat)}
-                className={`btn-pill-green-outline ${filter === cat ? 'btn-pill-green' : ''}`}
+                key={cat.id}
+                onClick={() => setFilter(cat.id)}
+                className={`btn-pill-green-outline ${filter === cat.id ? 'btn-pill-green' : ''}`}
                 style={{
                   fontSize: '0.88rem',
                   padding: '8px 18px',
-                  ...(filter === cat ? { color: '#ffffff' } : { color: 'var(--text-main)', borderColor: 'var(--border-dim)' })
+                  ...(filter === cat.id ? { color: '#ffffff' } : { color: 'var(--text-main)', borderColor: 'var(--border-dim)' })
                 }}
               >
-                {cat}
+                {cat.label}
               </button>
             ))}
           </div>
@@ -160,7 +171,6 @@ const PortfolioPage = ({ setSelectedProject }) => {
                   direction="High-quality photo of completed project."
                   aspectRatio="16/9"
                   height="220px"
-                  blueprintMode={blueprintMode}
                 />
 
                 <div style={{ marginTop: '20px' }}>
@@ -202,7 +212,7 @@ const PortfolioPage = ({ setSelectedProject }) => {
 
                   <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                     <button className="btn-pill-green" style={{ fontSize: '0.82rem', padding: '6px 14px' }}>
-                      View Project Details <ArrowUpRight size={14} />
+                      {t.portfolio.btnDetails} <ArrowUpRight size={14} />
                     </button>
                   </div>
                 </div>

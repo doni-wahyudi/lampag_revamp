@@ -1,6 +1,6 @@
 import React from 'react';
 import WireframePlaceholder from '../components/WireframePlaceholder';
-import { FileCode, Settings, Users, ShieldCheck, Home, Building2, Hotel, GraduationCap, Stethoscope, Landmark, ArrowUpRight } from 'lucide-react';
+import { FileCode, Settings, Users, ShieldCheck, Home, Building2, Hotel, GraduationCap, Stethoscope, Landmark, ArrowUpRight, Layers, Cpu } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 
 const WhatWeOfferPage = ({ setActivePage }) => {
