@@ -333,40 +333,81 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
             </h2>
           </div>
 
-          {/* Grid of 4 portfolio items */}
+          {/* Grid of 4 portfolio items with dynamic carousel rotation */}
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
             gap: '20px',
             marginBottom: '36px'
           }}>
-            {portfolioProjects.map((proj) => (
+            {[
+              portfolioProjects[portfolioIndex % portfolioProjects.length],
+              portfolioProjects[(portfolioIndex + 1) % portfolioProjects.length],
+              portfolioProjects[(portfolioIndex + 2) % portfolioProjects.length],
+              portfolioProjects[(portfolioIndex + 3) % portfolioProjects.length]
+            ].map((proj, idx) => (
               <div
-                key={proj.id}
+                key={`${proj.id}-${idx}`}
                 style={{
-                  border: '1px solid var(--border-dim)',
+                  border: idx === 0 ? '1.5px solid var(--lampag-green)' : '1px solid var(--border-dim)',
                   borderRadius: 'var(--radius-md)',
                   overflow: 'hidden',
                   backgroundColor: '#ffffff',
                   display: 'flex',
-                  flexDirection: 'column'
+                  flexDirection: 'column',
+                  height: '100%',
+                  boxShadow: idx === 0 ? '0 8px 24px rgba(57, 158, 82, 0.18)' : 'none',
+                  transition: 'all 0.3s ease'
                 }}
               >
                 <div style={{
                   height: '180px',
                   backgroundImage: `url("${proj.image}")`,
                   backgroundSize: 'cover',
-                  backgroundPosition: 'center'
-                }} />
+                  backgroundPosition: 'center',
+                  position: 'relative'
+                }}>
+                  {idx === 0 && (
+                    <span style={{
+                      position: 'absolute',
+                      top: '10px',
+                      left: '10px',
+                      backgroundColor: 'var(--lampag-green)',
+                      color: '#ffffff',
+                      fontSize: '0.7rem',
+                      fontWeight: 800,
+                      padding: '2px 8px',
+                      borderRadius: 'var(--radius-sm)',
+                      textTransform: 'uppercase'
+                    }}>
+                      Featured
+                    </span>
+                  )}
+                </div>
                 <div style={{ padding: '18px', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'space-between' }}>
-                  <h4 style={{ fontSize: '0.92rem', fontWeight: 800, color: 'var(--text-main)', lineHeight: 1.3, marginBottom: '16px' }}>
-                    {proj.title}
-                  </h4>
+                  <div>
+                    <span style={{
+                      fontSize: '0.72rem',
+                      fontWeight: 700,
+                      color: 'var(--lampag-green-dark)',
+                      backgroundColor: 'var(--lampag-green-subtle)',
+                      padding: '2px 8px',
+                      borderRadius: 'var(--radius-sm)',
+                      display: 'inline-block',
+                      marginBottom: '8px'
+                    }}>
+                      {proj.sector}
+                    </span>
+                    <h4 style={{ fontSize: '0.92rem', fontWeight: 800, color: 'var(--text-main)', lineHeight: 1.3, marginBottom: '16px', minHeight: '2.4rem' }}>
+                      {proj.title}
+                    </h4>
+                  </div>
                   <button
                     className="btn-pill-green"
                     onClick={() => {
-                      setSelectedProject(proj);
+                      if (setSelectedProject) setSelectedProject(proj);
                       setActivePage('portfolio');
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
                     style={{ width: '100%', fontSize: '0.85rem', padding: '8px 14px' }}
                   >
@@ -382,33 +423,43 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
             <div style={{ display: 'flex', gap: '8px' }}>
               <button
                 onClick={handlePrevProject}
+                aria-label="Previous Project"
                 style={{
-                  width: '40px',
-                  height: '40px',
+                  width: '42px',
+                  height: '42px',
                   borderRadius: '50%',
                   border: '1.5px solid var(--border-strong)',
                   backgroundColor: '#ffffff',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                  boxShadow: '0 2px 6px rgba(0,0,0,0.08)'
                 }}
+                onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--lampag-green)'}
+                onMouseLeave={e => e.currentTarget.style.borderColor = 'var(--border-strong)'}
               >
                 <ChevronLeft size={20} color="var(--text-main)" />
               </button>
               <button
                 onClick={handleNextProject}
+                aria-label="Next Project"
                 style={{
-                  width: '40px',
-                  height: '40px',
+                  width: '42px',
+                  height: '42px',
                   borderRadius: '50%',
                   border: '1.5px solid var(--border-strong)',
                   backgroundColor: '#ffffff',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                  boxShadow: '0 2px 6px rgba(0,0,0,0.08)'
                 }}
+                onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--lampag-green)'}
+                onMouseLeave={e => e.currentTarget.style.borderColor = 'var(--border-strong)'}
               >
                 <ChevronRight size={20} color="var(--text-main)" />
               </button>
@@ -416,7 +467,10 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
 
             <button
               className="btn-pill-green"
-              onClick={() => setActivePage('portfolio')}
+              onClick={() => {
+                setActivePage('portfolio');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
             >
               {t.home.portfolioBtn} <ArrowUpRight size={18} />
             </button>

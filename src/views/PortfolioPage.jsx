@@ -164,7 +164,7 @@ const PortfolioPage = ({ setSelectedProject }) => {
           </div>
 
           {/* Project Grid */}
-          <div className="grid-2" style={{ gap: '28px' }}>
+          <div className="grid-2" style={{ gap: '28px', alignItems: 'stretch' }}>
             {filteredProjects.map(proj => (
               <div 
                 key={proj.id} 
@@ -174,56 +174,70 @@ const PortfolioPage = ({ setSelectedProject }) => {
                   border: '1px solid var(--border-dim)',
                   borderRadius: 'var(--radius-md)',
                   cursor: 'pointer',
-                  transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+                  transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  height: '100%',
+                  boxSizing: 'border-box',
+                  boxShadow: 'var(--shadow-wf)'
                 }}
                 onClick={() => setSelectedProject(proj)}
               >
-                <WireframePlaceholder
-                  title={`PROJECT: ${proj.title}`}
-                  direction="High-quality photo of completed project."
-                  aspectRatio="16/9"
-                  height="220px"
-                />
+                <div style={{ width: '100%', height: '220px', overflow: 'hidden', borderRadius: 'var(--radius-sm)' }}>
+                  <WireframePlaceholder
+                    title={`PROJECT: ${proj.title}`}
+                    direction="High-quality photo of completed project."
+                    aspectRatio="16/9"
+                    height="220px"
+                  />
+                </div>
 
-                <div style={{ marginTop: '20px' }}>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '10px', alignItems: 'center' }}>
-                    <span style={{
-                      backgroundColor: 'var(--lampag-green-subtle)',
-                      color: 'var(--lampag-green-dark)',
-                      fontSize: '0.72rem',
-                      fontWeight: 700,
-                      padding: '2px 8px',
-                      borderRadius: 'var(--radius-sm)'
+                <div style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'space-between' }}>
+                  <div>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '12px', alignItems: 'center' }}>
+                      <span style={{
+                        backgroundColor: 'var(--lampag-green-subtle)',
+                        color: 'var(--lampag-green-dark)',
+                        fontSize: '0.72rem',
+                        fontWeight: 700,
+                        padding: '3px 10px',
+                        borderRadius: 'var(--radius-sm)'
+                      }}>
+                        {proj.sector}
+                      </span>
+                      <span style={{ fontSize: '0.82rem', color: '#64748b', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                        <MapPin size={13} color="var(--lampag-green)" /> {proj.location}
+                      </span>
+                    </div>
+
+                    <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '10px', minHeight: '3.4rem', lineHeight: 1.35 }}>
+                      {proj.title}
+                    </h3>
+
+                    <p style={{ fontSize: '0.9rem', color: '#64748b', lineHeight: 1.55, marginBottom: '16px', minHeight: '68px' }}>
+                      {proj.summary}
+                    </p>
+
+                    <div style={{ 
+                      padding: '12px 14px', 
+                      backgroundColor: '#f8fafc', 
+                      borderRadius: 'var(--radius-sm)',
+                      border: '1px solid var(--border-dim)',
+                      fontSize: '0.82rem',
+                      marginBottom: '20px',
+                      minHeight: '48px',
+                      display: 'flex',
+                      alignItems: 'center'
                     }}>
-                      {proj.sector}
-                    </span>
-                    <span style={{ fontSize: '0.82rem', color: '#64748b', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                      <MapPin size={13} color="var(--lampag-green)" /> {proj.location}
-                    </span>
+                      <div>
+                        <strong style={{ color: 'var(--text-main)' }}>Systems Used:</strong>{' '}
+                        <span style={{ color: 'var(--lampag-green-dark)', fontWeight: 700 }}>{proj.systems}</span>
+                      </div>
+                    </div>
                   </div>
 
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '8px' }}>
-                    {proj.title}
-                  </h3>
-
-                  <p style={{ fontSize: '0.9rem', color: '#64748b', lineHeight: 1.5, marginBottom: '16px' }}>
-                    {proj.summary}
-                  </p>
-
-                  <div style={{ 
-                    padding: '12px 14px', 
-                    backgroundColor: '#f8fafc', 
-                    borderRadius: 'var(--radius-sm)',
-                    border: '1px solid var(--border-dim)',
-                    fontSize: '0.82rem',
-                    marginBottom: '16px'
-                  }}>
-                    <strong style={{ color: 'var(--text-main)' }}>Systems Used:</strong>{' '}
-                    <span style={{ color: 'var(--lampag-green-dark)', fontWeight: 700 }}>{proj.systems}</span>
-                  </div>
-
-                  <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                    <button className="btn-pill-green" style={{ fontSize: '0.82rem', padding: '6px 14px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: '8px' }}>
+                    <button className="btn-pill-green" style={{ fontSize: '0.82rem', padding: '8px 16px', width: '100%' }}>
                       {t.portfolio.btnDetails} <ArrowUpRight size={14} />
                     </button>
                   </div>
