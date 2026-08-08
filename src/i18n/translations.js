@@ -11,7 +11,7 @@ export const translations = {
     hero: {
       subtitle: 'Precision Aluminium Systems for Modern Architecture',
       title: 'Precision Aluminium Systems for Modern Architecture',
-      desc: 'Premium windows, doors, and curtain wall solutions engineered for durability, performance, and contemporary design.',
+      desc: 'Precision-engineered windows, doors, and curtain wall systems delivering energy efficiency, durability, and lasting performance.',
       btnExplore: 'Explore Our Solutions',
       btnContact: 'Get in Touch',
       badge: 'Certified Schüco Partner & Over 700+ Completed Projects'
@@ -114,7 +114,7 @@ export const translations = {
       service4Title: 'Design Optimization',
       service4Desc: 'Balancing aesthetic intent with cost-efficiency, material usage, and structural performance.',
       service5Title: 'Technical Documentation',
-      service5Desc: 'Providing detailed CAD/BIM drawings, structural calculations, thermal and acoustic performance data, and technical specifications.',
+      service5Desc: 'Detailed CAD/BIM drawings, structural calculations, thermal and acoustic performance data, and technical specifications.',
       service6Title: 'Project Coordination',
       service6Desc: 'Seamless collaboration with contractors and project managers for smooth execution.',
       service7Title: 'Installation Support',
@@ -191,7 +191,7 @@ export const translations = {
       heroTag: 'CONTACT',
       heroTitle: 'Get in Touch',
       heroDesc: 'Let’s discuss your upcoming architectural project or engineering requirements.',
-      deskNote: 'Engineering Desk: Neuer Wall 2-6, 20354 Hamburg & Strümpenbusch 3, 44357 Dortmund.',
+      deskNote: 'Engineering Desk: Strümpenbusch 3, 44357 Dortmund.',
       formTitle: 'Send Us a Message',
       formSubtitle: 'Fill in your project details below to request a technical consultation or quote.',
       fieldName: 'Full Name *',
@@ -209,7 +209,7 @@ export const translations = {
       phoneLabel: 'Telephone Number:',
       faxLabel: 'Fax Number:',
       emailLabel: 'Email:',
-      socialLabel: 'Social Media:'
+      socialLabel: 'SOCIAL MEDIA:'
     },
     footer: {
       aboutTitle: 'LAMPAG GmbH',
@@ -219,7 +219,6 @@ export const translations = {
       aluGroup: 'ALU GROUP',
       linksTitle: 'NAVIGATION',
       contactTitle: 'CONTACT',
-      hamburg: 'Neuer Wall 2-6, 20354 Hamburg',
       dortmund: 'Strümpenbusch 3, 44357 Dortmund',
       rights: '© 2026 Lampag. All Rights Reserved. | Imprint | Privacy Policy'
     }
@@ -236,7 +235,7 @@ export const translations = {
     },
     hero: {
       subtitle: 'Präzisions-Aluminiumsysteme für moderne Architektur',
-      title: 'Präzisions-Aluminiumsysteme für moderne Architektur',
+      title: 'Willkommen in der Zukunft des Bauens',
       desc: 'Präzisionsgefertigte Fenster, Türen und Vorhangfassadensysteme für maximale Energieeffizienz, Langlebigkeit und dauerhafte Leistung.',
       btnExplore: 'Unsere Lösungen entdecken',
       btnContact: 'Kontakt aufnehmen',
@@ -417,7 +416,7 @@ export const translations = {
       heroTag: 'KONTAKT',
       heroTitle: 'Kontakt aufnehmen',
       heroDesc: 'Lassen Sie uns Ihr bevorstehendes Bauprojekt oder Ihre technischen Anforderungen besprechen.',
-      deskNote: 'Technisches Büro: Neuer Wall 2-6, 20354 Hamburg & Strümpenbusch 3, 44357 Dortmund.',
+      deskNote: 'Technisches Büro: Strümpenbusch 3, 44357 Dortmund.',
       formTitle: 'Senden Sie uns eine Nachricht',
       formSubtitle: 'Füllen Sie das Formular aus für eine technische Beratung oder ein Angebot.',
       fieldName: 'Vollständiger Name *',
@@ -435,7 +434,7 @@ export const translations = {
       phoneLabel: 'Telefon:',
       faxLabel: 'Fax:',
       emailLabel: 'E-Mail:',
-      socialLabel: 'Social Media:'
+      socialLabel: 'SOCIAL MEDIA:'
     },
     footer: {
       aboutTitle: 'LAMPAG GmbH',
@@ -445,7 +444,6 @@ export const translations = {
       aluGroup: 'ALU GROUP',
       linksTitle: 'NAVIGATION',
       contactTitle: 'KONTAKT',
-      hamburg: 'Neuer Wall 2-6, 20354 Hamburg',
       dortmund: 'Strümpenbusch 3, 44357 Dortmund',
       rights: '© 2026 Lampag. Alle Rechte vorbehalten. | Impressum | Datenschutz'
     }

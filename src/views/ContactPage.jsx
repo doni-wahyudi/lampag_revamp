@@ -270,7 +270,7 @@ const ContactPage = () => {
                   DIRECT CONTACT SPECIFICATIONS
                 </span>
                 <h3 style={{ fontSize: '1.3rem', fontWeight: 800, color: 'var(--text-main)', marginTop: '4px', marginBottom: '20px' }}>
-                  LAMPAG GmbH Contact Desk
+                  {t.contact.deskTitle}
                 </h3>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '18px', fontSize: '0.92rem' }}>
@@ -279,8 +279,8 @@ const ContactPage = () => {
                       <MapPin size={16} color="#ffffff" />
                     </div>
                     <div>
-                      <strong style={{ color: 'var(--text-main)' }}>Office Location:</strong><br />
-                      Neuer Wall 2-6, 20354 Hamburg
+                      <strong style={{ color: 'var(--text-main)' }}>{t.contact.locationLabel}</strong><br />
+                      Strümpenbusch 3, 44357 Dortmund
                     </div>
                   </div>
 
@@ -289,7 +289,7 @@ const ContactPage = () => {
                       <Phone size={16} color="#ffffff" />
                     </div>
                     <div>
-                      <strong style={{ color: 'var(--text-main)' }}>Telephone:</strong> +49 040 571 996 390
+                      <strong style={{ color: 'var(--text-main)' }}>{t.contact.phoneLabel}</strong> WIP
                     </div>
                   </div>
 
@@ -298,7 +298,7 @@ const ContactPage = () => {
                       <Printer size={16} color="#ffffff" />
                     </div>
                     <div>
-                      <strong style={{ color: 'var(--text-main)' }}>Fax:</strong> +49 040 571 996 381
+                      <strong style={{ color: 'var(--text-main)' }}>{t.contact.faxLabel}</strong> WIP
                     </div>
                   </div>
 
@@ -307,53 +307,64 @@ const ContactPage = () => {
                       <Mail size={16} color="#ffffff" />
                     </div>
                     <div>
-                      <strong style={{ color: 'var(--text-main)' }}>Email:</strong> info@lampag.com
+                      <strong style={{ color: 'var(--text-main)' }}>{t.contact.emailLabel}</strong> info@lampag.com
                     </div>
                   </div>
                 </div>
 
                 <div style={{ marginTop: '24px', paddingTop: '16px', borderTop: '1px dashed var(--border-dim)' }}>
                   <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#64748b', marginBottom: '10px', textTransform: 'uppercase' }}>
-                    ONLINE CHANNELS:
+                    {t.contact.socialLabel || 'SOCIAL MEDIA:'}
                   </div>
                   <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-                    <span style={{
-                      backgroundColor: 'var(--lampag-green-subtle)',
-                      color: 'var(--lampag-green-dark)',
-                      fontSize: '0.78rem',
-                      fontWeight: 700,
-                      padding: '4px 10px',
-                      borderRadius: 'var(--radius-sm)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '6px'
-                    }}>
+                    <a
+                      href="https://linkedin.com/company/lampag-gmbh"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        backgroundColor: 'var(--lampag-green-subtle)',
+                        color: 'var(--lampag-green-dark)',
+                        fontSize: '0.78rem',
+                        fontWeight: 700,
+                        padding: '6px 12px',
+                        borderRadius: 'var(--radius-sm)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        textDecoration: 'none'
+                      }}
+                    >
                       <Globe size={13} /> linkedin.com/company/lampag-gmbh
-                    </span>
-                    <span style={{
-                      backgroundColor: 'var(--lampag-green-subtle)',
-                      color: 'var(--lampag-green-dark)',
-                      fontSize: '0.78rem',
-                      fontWeight: 700,
-                      padding: '4px 10px',
-                      borderRadius: 'var(--radius-sm)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '6px'
-                    }}>
+                    </a>
+                    <a
+                      href="https://instagram.com/lampagcom"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        backgroundColor: 'var(--lampag-green-subtle)',
+                        color: 'var(--lampag-green-dark)',
+                        fontSize: '0.78rem',
+                        fontWeight: 700,
+                        padding: '6px 12px',
+                        borderRadius: 'var(--radius-sm)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        textDecoration: 'none'
+                      }}
+                    >
                       <Share2 size={13} /> @lampagcom
-                    </span>
+                    </a>
                   </div>
                 </div>
               </div>
 
               {/* Map Wireframe Placeholder */}
               <WireframePlaceholder
-                title="GEOGRAPHIC LOCATION MAP WIREFRAME"
-                direction="Interactive map placeholder showing Hamburg headquarters."
+                title="GEOGRAPHIC LOCATION MAP"
+                direction="Map overview showing Strümpenbusch 3, 44357 Dortmund facility."
                 aspectRatio="16/9"
                 height="190px"
-                blueprintMode={blueprintMode}
               />
             </div>
           </div>
