@@ -3,12 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://doni-wahyudi.github.io/lampag_revamp",
+  "homepage": "https://lampag-revamp-review.web.id",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
+    "deploy": "gh-pages -d dist -c lampag-revamp-review.web.id",
     "lint": "oxlint",
     "preview": "vite preview"
   },
