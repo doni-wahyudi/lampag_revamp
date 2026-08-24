@@ -9,13 +9,13 @@ const Navbar = ({ activePage, setActivePage }) => {
   const { langCode, setLangCode, t } = useLanguage();
 
   const languages = [
-    { code: 'DE', name: 'Deutschland', flagComp: <FlagDE width={20} height={14} /> },
+    { code: 'DE', name: 'Deutsch', flagComp: <FlagDE width={20} height={14} /> },
     { code: 'EN', name: 'English', flagComp: <FlagEN width={20} height={14} /> }
   ];
 
   const navItems = [
     { id: 'about', label: t.nav.about, path: '/about' },
-    { id: 'whatweoffer', label: t.nav.whatweoffer, path: '/whatweoffer' },
+    { id: 'services', label: t.nav.services || t.nav.whatweoffer, path: '/services' },
     { id: 'product', label: t.nav.product, path: '/product' },
     { id: 'portfolio', label: t.nav.portfolio, path: '/portfolio' },
     { id: 'contact', label: t.nav.contact, path: '/contact' },
@@ -93,8 +93,8 @@ const Navbar = ({ activePage, setActivePage }) => {
             <button
               key={item.id}
               onClick={() => handleNavClick(item.id)}
-              className={`nav-link-item ${activePage === item.id ? 'active' : ''}`}
-              style={{ color: activePage === item.id ? '#ffffff' : '#cbd5e1' }}
+              className={`nav-link-item ${activePage === item.id || (item.id === 'services' && activePage === 'whatweoffer') ? 'active' : ''}`}
+              style={{ color: (activePage === item.id || (item.id === 'services' && activePage === 'whatweoffer')) ? '#ffffff' : '#cbd5e1' }}
             >
               {item.label}
             </button>
@@ -186,6 +186,7 @@ const Navbar = ({ activePage, setActivePage }) => {
               cursor: 'pointer'
             }}
             className="mobile-toggle"
+            aria-label="Toggle navigation menu"
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -213,7 +214,7 @@ const Navbar = ({ activePage, setActivePage }) => {
             <button
               key={item.id}
               onClick={() => handleNavClick(item.id)}
-              className={`nav-link-item ${activePage === item.id ? 'active' : ''}`}
+              className={`nav-link-item ${activePage === item.id || (item.id === 'services' && activePage === 'whatweoffer') ? 'active' : ''}`}
               style={{ textAlign: 'left', color: '#ffffff' }}
             >
               {item.label}

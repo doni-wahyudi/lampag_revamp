@@ -291,20 +291,69 @@ body.blueprint-mode .wf-box {
 /* Grid Layouts */
 .grid-2 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
 }
 
 .grid-3 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+}
+
+@media (max-width: 992px) {
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
 }
 
 .grid-4 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
+}
+
+@media (max-width: 1024px) {
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 5-Step Process Roadmap Pipeline (100% Horizontal Alignment with 0 Empty Space) */
+.process-roadmap-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+  width: 100%;
+  position: relative;
+  align-items: stretch;
+}
+
+@media (max-width: 1080px) {
+  .process-roadmap-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
 }
 
 /* ========================================================
@@ -374,9 +423,11 @@ body.blueprint-mode .wf-box {
 
 /* Layout Container */
 .container {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
+  box-sizing: border-box;
 }
 
 /* ========================================================
@@ -517,6 +568,24 @@ body.blueprint-mode .wf-box {
 }
 
 /* Responsive fixes */
+@media (max-width: 1080px) {
+  .product-category-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+@media (max-width: 680px) {
+  .product-category-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-category-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 @media (max-width: 768px) {
   .section-padding {
     padding: 36px 0;
@@ -526,3 +595,4 @@ body.blueprint-mode .wf-box {
     font-size: 1.5rem;
   }
 }
+

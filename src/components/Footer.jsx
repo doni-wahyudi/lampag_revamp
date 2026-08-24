@@ -5,6 +5,13 @@ import { useLanguage } from '../i18n/LanguageContext';
 const Footer = ({ setActivePage }) => {
   const { t } = useLanguage();
 
+  const handleNav = (pageId) => {
+    if (setActivePage) {
+      setActivePage(pageId);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer style={{
       backgroundColor: '#162a1c',
@@ -17,13 +24,16 @@ const Footer = ({ setActivePage }) => {
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: '48px',
+          gap: '40px',
           marginBottom: '40px'
         }}>
           {/* Left Column: Brand & PART OF Logos */}
           <div>
             {/* Logo Header */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+            <div 
+              onClick={() => handleNav('home')}
+              style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px', cursor: 'pointer' }}
+            >
               <div style={{
                 width: '38px',
                 height: '38px',
@@ -48,7 +58,7 @@ const Footer = ({ setActivePage }) => {
               {t.footer.aboutDesc}
             </p>
 
-            {/* PART OF Badges */}
+            {/* PART OF / CERTIFIED PARTNER BADGES */}
             <div>
               <div style={{
                 fontSize: '0.75rem',
@@ -56,42 +66,131 @@ const Footer = ({ setActivePage }) => {
                 fontWeight: 700,
                 color: 'var(--lampag-green)',
                 letterSpacing: '0.08em',
-                marginBottom: '10px',
+                marginBottom: '12px',
                 textTransform: 'uppercase'
               }}>
                 {t.footer.partOf}
               </div>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', alignItems: 'center' }}>
+                {/* Official Schüco Partner Styled Badge */}
                 <div style={{
-                  backgroundColor: 'var(--lampag-green)',
-                  color: '#ffffff',
-                  fontWeight: 700,
-                  fontSize: '0.85rem',
-                  fontFamily: 'var(--font-sans)',
-                  padding: '8px 18px',
+                  backgroundColor: '#0a140e',
+                  border: '1.5px solid var(--lampag-green)',
+                  padding: '8px 16px',
                   borderRadius: 'var(--radius-sm)',
-                  letterSpacing: '0.04em'
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.25)'
                 }}>
-                  LOGO SCHÜCO
+                  <div style={{
+                    fontFamily: 'var(--font-sans)',
+                    fontWeight: 900,
+                    fontSize: '1rem',
+                    color: '#ffffff',
+                    letterSpacing: '0.04em',
+                    lineHeight: 1
+                  }}>
+                    SCHÜCO
+                  </div>
+                  <div style={{
+                    backgroundColor: 'var(--lampag-green)',
+                    color: '#ffffff',
+                    fontSize: '0.68rem',
+                    fontWeight: 800,
+                    padding: '2px 6px',
+                    borderRadius: '2px',
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    lineHeight: 1.2
+                  }}>
+                    PARTNER
+                  </div>
                 </div>
+
+                {/* Official ALU Group Badge */}
                 <div style={{
-                  backgroundColor: 'var(--lampag-green)',
-                  color: '#ffffff',
-                  fontWeight: 700,
-                  fontSize: '0.85rem',
-                  fontFamily: 'var(--font-sans)',
-                  padding: '8px 18px',
+                  backgroundColor: '#0a140e',
+                  border: '1.5px solid #2d4a34',
+                  padding: '8px 16px',
                   borderRadius: 'var(--radius-sm)',
-                  letterSpacing: '0.04em'
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.25)'
                 }}>
-                  LOGO ALU
+                  <div style={{
+                    fontFamily: 'var(--font-sans)',
+                    fontWeight: 800,
+                    fontSize: '0.92rem',
+                    color: '#e2e8f0',
+                    letterSpacing: '0.04em'
+                  }}>
+                    ALU GROUP
+                  </div>
+                  <span style={{ fontSize: '0.65rem', color: 'var(--lampag-green)', fontWeight: 700, textTransform: 'uppercase' }}>
+                    MEMBER
+                  </span>
                 </div>
               </div>
             </div>
           </div>
 
+          {/* Center Column: Quick Navigation Links */}
+          <div>
+            <h4 style={{
+              fontFamily: 'var(--font-sans)',
+              fontSize: '0.9rem',
+              fontWeight: 800,
+              color: 'var(--lampag-green)',
+              textTransform: 'uppercase',
+              marginBottom: '18px',
+              letterSpacing: '0.06em'
+            }}>
+              {t.footer.linksTitle}
+            </h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.88rem' }}>
+              <button
+                onClick={() => handleNav('home')}
+                style={{ background: 'none', border: 'none', color: '#cbd5e1', cursor: 'pointer', textAlign: 'left', display: 'flex', alignItems: 'center', gap: '6px', padding: 0 }}
+              >
+                <span>{t.nav.home}</span>
+              </button>
+              <button
+                onClick={() => handleNav('about')}
+                style={{ background: 'none', border: 'none', color: '#cbd5e1', cursor: 'pointer', textAlign: 'left', display: 'flex', alignItems: 'center', gap: '6px', padding: 0 }}
+              >
+                <span>{t.nav.about}</span>
+              </button>
+              <button
+                onClick={() => handleNav('services')}
+                style={{ background: 'none', border: 'none', color: '#cbd5e1', cursor: 'pointer', textAlign: 'left', display: 'flex', alignItems: 'center', gap: '6px', padding: 0 }}
+              >
+                <span>{t.nav.services || t.nav.whatweoffer}</span>
+              </button>
+              <button
+                onClick={() => handleNav('product')}
+                style={{ background: 'none', border: 'none', color: '#cbd5e1', cursor: 'pointer', textAlign: 'left', display: 'flex', alignItems: 'center', gap: '6px', padding: 0 }}
+              >
+                <span>{t.nav.product}</span>
+              </button>
+              <button
+                onClick={() => handleNav('portfolio')}
+                style={{ background: 'none', border: 'none', color: '#cbd5e1', cursor: 'pointer', textAlign: 'left', display: 'flex', alignItems: 'center', gap: '6px', padding: 0 }}
+              >
+                <span>{t.nav.portfolio}</span>
+              </button>
+              <button
+                onClick={() => handleNav('contact')}
+                style={{ background: 'none', border: 'none', color: '#cbd5e1', cursor: 'pointer', textAlign: 'left', display: 'flex', alignItems: 'center', gap: '6px', padding: 0 }}
+              >
+                <span>{t.nav.contact}</span>
+              </button>
+            </div>
+          </div>
+
           {/* Right Column: CONTACT & LOCATION */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '32px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '28px' }}>
             {/* CONTACT block */}
             <div>
               <h4 style={{

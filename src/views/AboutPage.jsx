@@ -231,38 +231,64 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* SECTION 3: 8 CORE STRENGTHS - FULL SCREEN 4 */}
+      {/* SECTION 3: 8 CORE STRENGTHS - BALANCED 4x2 GRID (NO EMPTY SLOTS) */}
       <section className="screen-section" style={{ backgroundColor: '#ffffff', borderBottom: '1px solid var(--border-dim)' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '28px' }}>
-            <h2 style={{ fontSize: '2.1rem', fontWeight: 800, color: 'var(--text-main)' }}>{t.about.strengthsTitle}</h2>
-            <p style={{ color: '#64748b', marginTop: '6px', fontSize: '0.95rem' }}>Our core operational pillars ensuring reliability, precision, and building longevity.</p>
+          <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+            <span style={{ fontSize: '0.78rem', fontFamily: 'var(--font-mono)', fontWeight: 700, color: 'var(--lampag-green)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+              OUR EXPERTISE
+            </span>
+            <h2 style={{ fontSize: '2.1rem', fontWeight: 800, color: 'var(--text-main)', marginTop: '4px' }}>{t.about.strengthsTitle}</h2>
+            <p style={{ color: '#64748b', marginTop: '6px', fontSize: '0.95rem' }}>Our 8 core operational pillars ensuring reliability, precision, and building longevity.</p>
           </div>
 
-          <div className="grid-4" style={{ gap: '16px' }}>
+          {/* Perfectly Balanced 4-Column Grid on Desktop (4x2 = 8 items) */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: '16px'
+          }}>
             {strengths.map((item, index) => (
               <div key={index} style={{
-                padding: '18px',
+                padding: '20px',
                 backgroundColor: '#ffffff',
                 border: '1px solid var(--border-dim)',
                 borderRadius: 'var(--radius-md)',
-                transition: 'border-color 0.2s ease',
-                boxShadow: 'var(--shadow-wf)'
-              }}>
+                transition: 'all 0.2s ease',
+                boxShadow: 'var(--shadow-wf)',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'flex-start'
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.borderColor = 'var(--lampag-green)';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 8px 20px rgba(57, 158, 82, 0.12)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.borderColor = 'var(--border-dim)';
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = 'var(--shadow-wf)';
+              }}
+              >
                 <div style={{
-                  width: '38px',
-                  height: '38px',
-                  borderRadius: 'var(--radius-md)',
+                  width: '42px',
+                  height: '42px',
+                  borderRadius: 'var(--radius-sm)',
                   backgroundColor: 'var(--lampag-green-subtle)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  marginBottom: '10px'
+                  marginBottom: '12px'
                 }}>
                   {item.icon}
                 </div>
-                <h4 style={{ fontSize: '0.96rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '6px', minHeight: '2.2rem', lineHeight: 1.25 }}>{item.title}</h4>
-                <p style={{ fontSize: '0.82rem', color: '#64748b', lineHeight: 1.45 }}>{item.desc}</p>
+                <h4 style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '8px', minHeight: '2.4rem', lineHeight: 1.3 }}>
+                  {item.title}
+                </h4>
+                <p style={{ fontSize: '0.84rem', color: '#64748b', lineHeight: 1.5 }}>
+                  {item.desc}
+                </p>
               </div>
             ))}
           </div>

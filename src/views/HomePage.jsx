@@ -2,78 +2,107 @@ import React, { useState } from 'react';
 import WireframePlaceholder from '../components/WireframePlaceholder';
 import { ShieldCheck, Cpu, Layers, ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
+import { productsCatalog } from '../data/productsData';
 
 const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => {
-  const { t } = useLanguage();
+  const { langCode, t } = useLanguage();
+  const isGerman = langCode === 'DE';
   const [portfolioIndex, setPortfolioIndex] = useState(0);
+
+  const winProduct = productsCatalog.find(p => p.id === 'aws-75-si') || productsCatalog[0];
+  const doorProduct = productsCatalog.find(p => p.id === 'ase-80-hi') || productsCatalog[7];
+  const facadeProduct = productsCatalog.find(p => p.id === 'fws-50') || productsCatalog[13];
+  const customProduct = productsCatalog.find(p => p.id === 'glass-roofs') || productsCatalog[22];
 
   const solutions = [
     {
+      ...winProduct,
       id: 'windows',
-      title: t.home.sol1,
-      desc: t.home.sol1Desc,
-      bgImg: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80',
+      title: t.home?.sol1 || (isGerman ? 'Aluminium-Fenster' : 'Aluminium Windows'),
+      desc: isGerman ? winProduct.specDE : (t.home?.sol1Desc || winProduct.spec),
+      bgImg: winProduct.imageUrl,
       specs: 'Schüco AWS 75.SI+ & AWS 90.SI+'
     },
     {
+      ...doorProduct,
       id: 'doors',
-      title: t.home.sol2,
-      desc: t.home.sol2Desc,
-      bgImg: 'https://images.unsplash.com/photo-1509644851169-2acc08aa25b5?auto=format&fit=crop&w=800&q=80',
-      specs: 'Schüco ADS 75.SI & AD UP 90'
+      title: t.home?.sol2 || (isGerman ? 'Aluminium-Türen' : 'Aluminium Doors'),
+      desc: isGerman ? doorProduct.specDE : (t.home?.sol2Desc || doorProduct.spec),
+      bgImg: doorProduct.imageUrl,
+      specs: 'Schüco AD 75 FD & ASE 80.HI'
     },
     {
+      ...facadeProduct,
       id: 'facades',
-      title: t.home.sol3,
-      desc: t.home.sol3Desc,
-      bgImg: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
-      specs: 'Schüco FWS 50 / FWS 60'
+      title: t.home?.sol3 || (isGerman ? 'Vorhangfassaden & Systeme' : 'Curtain Wall & Façades'),
+      desc: isGerman ? facadeProduct.specDE : (t.home?.sol3Desc || facadeProduct.spec),
+      bgImg: facadeProduct.imageUrl,
+      specs: 'Schüco FWS 50 & AF UDC 80'
     },
     {
-      id: 'sliding',
-      title: t.home.sol4,
-      desc: t.home.sol4Desc,
-      bgImg: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
-      specs: 'Schüco ASE 60 / ASE 80.HI'
+      ...customProduct,
+      id: 'custom',
+      title: isGerman ? 'Maßgeschneiderte Sonderlösungen' : 'Customized Solutions',
+      desc: isGerman ? customProduct.specDE : (customProduct.spec || customProduct.description),
+      bgImg: customProduct.imageUrl,
+      specs: 'Glass Roofs, ACM & Custom Balustrades'
     }
   ];
 
   const portfolioProjects = [
     {
       id: 1,
-      title: 'Hamburg Commercial Hub',
+      title: 'Hamburg Commercial Office Hub',
+      location: 'Hamburg, Germany',
       sector: t.portfolio.tabCom,
-      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80'
+      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
+      systems: 'Schüco UCC 65 SG Curtain Wall & Sliding Doors',
+      summary: 'Slim profile sliding doors maximizing natural light while maintaining high thermal performance.'
     },
     {
       id: 2,
-      title: 'Dortmund Residential Complex',
+      title: 'Dortmund Modern Residential Complex',
+      location: 'Dortmund, Germany',
       sector: t.portfolio.tabRes,
-      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'
+      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
+      systems: 'Schüco AWS 75.SI+ & AD 75 FD Folding Doors',
+      summary: 'Energy-efficient triple-glazed aluminium window profiles engineered for acoustic sound insulation.'
     },
     {
       id: 3,
-      title: 'Frankfurt Hospitality Tower',
+      title: 'Frankfurt Grand Hospitality Tower',
+      location: 'Frankfurt, Germany',
       sector: t.portfolio.tabHosp,
-      image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80'
+      image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80',
+      systems: 'Schüco AF UDC 80 Unitized Façade & AWS 75.PD',
+      summary: 'Panoramic all-glass unitized façade panels pre-assembled offsite for fast architectural cladding.'
     },
     {
       id: 4,
-      title: 'Bremen Technical Institute',
+      title: 'Bremen Municipal Technical Institute',
+      location: 'Bremen, Germany',
       sector: t.portfolio.tabHosp,
-      image: 'https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=800&q=80'
+      image: 'https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=800&q=80',
+      systems: 'Schüco FWS 60.SG & AWS 70.HI Windows',
+      summary: 'High-durability structural glazing curtain wall installed with automated ventilation actuators.'
     },
     {
       id: 5,
       title: 'Munich Luxury Villa Residence',
+      location: 'Munich, Germany',
       sector: t.portfolio.tabRes,
-      image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80'
+      image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80',
+      systems: 'Schüco ASE 67 PD Sliding Doors & Glass Railings',
+      summary: 'Floor-to-ceiling panoramic sliding doors with flush sill thresholds creating seamless transitions.'
     },
     {
       id: 6,
       title: 'Cologne Corporate Headquarters',
+      location: 'Cologne, Germany',
       sector: t.portfolio.tabCom,
-      image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80'
+      image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
+      systems: 'Schüco FWS 50.SG & ADS 75.SI Entrance Systems',
+      summary: 'Custom heavy-traffic entrance system with burglar resistance RC3 and structural glazing glass fins.'
     }
   ];
 
@@ -83,6 +112,11 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
 
   const handleNextProject = () => {
     setPortfolioIndex((prev) => (prev + 1) % portfolioProjects.length);
+  };
+
+  const handleNavigate = (pageId) => {
+    setActivePage(pageId);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -105,7 +139,7 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
                 textTransform: 'uppercase',
                 fontFamily: 'var(--font-mono)'
               }}>
-                {t.hero.tag}
+                {t.hero.tag || 'PRECISION ALUMINIUM SYSTEMS'}
               </span>
               <h1 style={{
                 fontSize: '3rem',
@@ -130,15 +164,15 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
               <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
                 <button 
                   className="btn-pill-green"
-                  onClick={() => setActivePage('contact')}
+                  onClick={() => handleNavigate('contact')}
                 >
                   {t.hero.btnContact} <ArrowUpRight size={18} />
                 </button>
                 <button 
                   className="btn-pill-green-outline"
-                  onClick={() => setActivePage('portfolio')}
+                  onClick={() => handleNavigate('portfolio')}
                 >
-                  {t.hero.btnPortfolio}
+                  {t.hero.btnPortfolio || 'View Portfolio'}
                 </button>
               </div>
             </div>
@@ -186,7 +220,7 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
           <p style={{ fontSize: '0.98rem', color: '#475569', lineHeight: 1.65, marginBottom: '20px' }}>
             {t.home.aboutDesc}
           </p>
-          <button className="btn-pill-green-outline" onClick={() => setActivePage('about')}>
+          <button className="btn-pill-green-outline" onClick={() => handleNavigate('about')}>
             {t.home.aboutBtn} <ArrowUpRight size={16} />
           </button>
         </div>
@@ -225,7 +259,7 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
               </p>
               <button
                 className="btn-pill-green"
-                onClick={() => setActivePage('product')}
+                onClick={() => handleNavigate('product')}
               >
                 Explore Product Catalog <ArrowUpRight size={18} />
               </button>
@@ -243,7 +277,7 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
                   className="product-card-container"
                   onClick={() => {
                     setSelectedProduct(item);
-                    setActivePage('product');
+                    handleNavigate('product');
                   }}
                   style={{
                     backgroundColor: '#ffffff',
@@ -326,9 +360,10 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
               {t.home.lifecycleDesc}
             </p>
 
+            {/* Navigates smoothly to Services view */}
             <button
               className="btn-pill-green"
-              onClick={() => setActivePage('services')}
+              onClick={() => handleNavigate('services')}
               style={{ fontSize: '0.88rem', padding: '10px 20px' }}
             >
               Explore Full Engineering Services <ArrowUpRight size={16} />
@@ -429,8 +464,7 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
                     className="btn-pill-green"
                     onClick={() => {
                       if (setSelectedProject) setSelectedProject(proj);
-                      setActivePage('portfolio');
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                      handleNavigate('portfolio');
                     }}
                     style={{ width: '100%', fontSize: '0.82rem', padding: '6px 12px' }}
                   >
@@ -490,10 +524,7 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
 
             <button
               className="btn-pill-green"
-              onClick={() => {
-                setActivePage('portfolio');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
+              onClick={() => handleNavigate('portfolio')}
               style={{ fontSize: '0.88rem', padding: '8px 18px' }}
             >
               {t.home.portfolioBtn} <ArrowUpRight size={16} />
@@ -617,7 +648,7 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
               </p>
               <button
                 className="btn-pill-green"
-                onClick={() => setActivePage('about')}
+                onClick={() => handleNavigate('about')}
                 style={{ alignSelf: 'flex-start', fontSize: '0.88rem', padding: '10px 22px' }}
               >
                 {t.home.aboutBtn} <ArrowUpRight size={16} />
@@ -657,7 +688,7 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
           </p>
           <button
             className="btn-pill-green"
-            onClick={() => setActivePage('contact')}
+            onClick={() => handleNavigate('contact')}
             style={{ fontSize: '1rem', padding: '12px 28px' }}
           >
             {t.home.ctaBtn} <ArrowUpRight size={18} />

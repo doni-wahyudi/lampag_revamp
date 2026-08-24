@@ -29,9 +29,11 @@ function AppContent() {
         );
       case 'about':
         return <AboutPage />;
+      case 'services':
       case 'whatweoffer':
         return <WhatWeOfferPage setActivePage={setActivePage} />;
       case 'product':
+      case 'products':
         return <ProductsPage setSelectedProduct={setSelectedProduct} />;
       case 'portfolio':
         return <PortfolioPage setSelectedProject={setSelectedProject} />;

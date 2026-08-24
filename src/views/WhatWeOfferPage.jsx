@@ -1,6 +1,23 @@
 import React from 'react';
 import WireframePlaceholder from '../components/WireframePlaceholder';
-import { Ruler, FileText, CheckCircle2, ShieldCheck, Truck, Headphones, Layers, Building, Factory, Home, Store, Landmark, ArrowUpRight } from 'lucide-react';
+import { 
+  Ruler, 
+  FileText, 
+  CheckCircle2, 
+  ShieldCheck, 
+  Truck, 
+  Layers, 
+  Building, 
+  Factory, 
+  Home, 
+  Store, 
+  Landmark, 
+  ArrowUpRight,
+  MessageSquare,
+  Compass,
+  ClipboardCheck,
+  ChevronRight
+} from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 
 const WhatWeOfferPage = ({ setActivePage }) => {
@@ -72,13 +89,46 @@ const WhatWeOfferPage = ({ setActivePage }) => {
     }
   ];
 
+  // 5-Stage Project Delivery Roadmap (Aligned 100% horizontally in 1 row on desktop)
   const deliveryProcess = [
-    { step: '01', title: t.services.step1, desc: t.services.step1Desc },
-    { step: '02', title: t.services.step2, desc: t.services.step2Desc },
-    { step: '03', title: t.services.step3, desc: t.services.step3Desc },
-    { step: '04', title: t.services.step4, desc: t.services.step4Desc },
-    { step: '05', title: t.services.step5, desc: t.services.step5Desc }
+    { 
+      step: '01', 
+      title: t.services.step1, 
+      desc: t.services.step1Desc,
+      icon: <MessageSquare size={20} color="var(--lampag-green)" />
+    },
+    { 
+      step: '02', 
+      title: t.services.step2, 
+      desc: t.services.step2Desc,
+      icon: <Compass size={20} color="var(--lampag-green)" />
+    },
+    { 
+      step: '03', 
+      title: t.services.step3, 
+      desc: t.services.step3Desc,
+      icon: <Layers size={20} color="var(--lampag-green)" />
+    },
+    { 
+      step: '04', 
+      title: t.services.step4, 
+      desc: t.services.step4Desc,
+      icon: <ClipboardCheck size={20} color="var(--lampag-green)" />
+    },
+    { 
+      step: '05', 
+      title: t.services.step5, 
+      desc: t.services.step5Desc,
+      icon: <Factory size={20} color="var(--lampag-green)" />
+    }
   ];
+
+  const handleContact = () => {
+    if (setActivePage) {
+      setActivePage('contact');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   return (
     <div>
@@ -136,8 +186,8 @@ const WhatWeOfferPage = ({ setActivePage }) => {
 
             <div>
               <WireframePlaceholder
-                title="WHAT WE OFFER VISUAL"
-                direction="Architectural drawing board & profile engineering visual."
+                title="SERVICES & ENGINEERING VISUAL"
+                direction="Architectural drawing board & profile engineering visual showing CAD modeling and structural façade planning."
                 aspectRatio="4/3"
                 height="320px"
               />
@@ -166,8 +216,20 @@ const WhatWeOfferPage = ({ setActivePage }) => {
                 backgroundColor: '#ffffff',
                 border: '1px solid var(--border-dim)',
                 borderRadius: 'var(--radius-md)',
-                boxShadow: 'var(--shadow-wf)'
-              }}>
+                boxShadow: 'var(--shadow-wf)',
+                transition: 'all 0.2s ease'
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.borderColor = 'var(--lampag-green)';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 8px 20px rgba(57, 158, 82, 0.12)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.borderColor = 'var(--border-dim)';
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = 'var(--shadow-wf)';
+              }}
+              >
                 <div style={{
                   width: '40px',
                   height: '40px',
@@ -206,8 +268,20 @@ const WhatWeOfferPage = ({ setActivePage }) => {
                 backgroundColor: '#ffffff',
                 border: '1px solid var(--border-dim)',
                 borderRadius: 'var(--radius-md)',
-                boxShadow: 'var(--shadow-wf)'
-              }}>
+                boxShadow: 'var(--shadow-wf)',
+                transition: 'all 0.2s ease'
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.borderColor = 'var(--lampag-green)';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 8px 20px rgba(57, 158, 82, 0.12)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.borderColor = 'var(--border-dim)';
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = 'var(--shadow-wf)';
+              }}
+              >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
                   <div style={{
                     width: '36px',
@@ -230,52 +304,123 @@ const WhatWeOfferPage = ({ setActivePage }) => {
         </div>
       </section>
 
-      {/* PROJECT DELIVERY PROCESS - FULL SCREEN 4 */}
+      {/* PROJECT DELIVERY PROCESS - 5-STEP HORIZONTAL ROADMAP (100% BALANCED WITH ZERO VOID) */}
       <section className="screen-section" style={{ backgroundColor: '#ffffff' }}>
         <div className="container">
-          <div className="section-header" style={{ marginBottom: '24px', textAlign: 'center' }}>
+          <div className="section-header" style={{ marginBottom: '36px', textAlign: 'center' }}>
             <span style={{ fontSize: '0.78rem', fontFamily: 'var(--font-mono)', fontWeight: 700, color: 'var(--lampag-green)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
               ENGINEERING ROADMAP
             </span>
-            <h2 style={{ fontSize: '2.1rem', fontWeight: 800, color: 'var(--text-main)', marginTop: '4px' }}>Our Project Delivery Process</h2>
-            <p style={{ color: '#64748b', fontSize: '0.95rem', marginTop: '6px' }}>Structured, transparent engineering workflow from initial consultation to manufacturing delivery.</p>
+            <h2 style={{ fontSize: '2.2rem', fontWeight: 900, color: 'var(--text-main)', marginTop: '4px' }}>
+              Our Project Delivery Process
+            </h2>
+            <p style={{ color: '#64748b', fontSize: '0.96rem', marginTop: '6px', maxWidth: '640px', margin: '6px auto 0 auto' }}>
+              Structured, transparent 5-stage engineering workflow from initial consultation to precision manufacturing delivery.
+            </p>
           </div>
 
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))',
-            gap: '16px'
-          }}>
+          {/* 5-Step Horizontal Connected Pipeline (1 row on desktop, vertical on mobile/tablet) */}
+          <div className="process-roadmap-grid" style={{ marginBottom: '40px' }}>
             {deliveryProcess.map((proc, idx) => (
-              <div key={idx} style={{
-                padding: '20px 16px',
-                backgroundColor: '#f8fafc',
-                border: '1px solid var(--border-dim)',
-                borderRadius: 'var(--radius-md)',
-                boxShadow: 'var(--shadow-wf)',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between'
-              }}>
+              <div 
+                key={idx} 
+                style={{
+                  padding: '22px 18px',
+                  backgroundColor: '#ffffff',
+                  border: '1.5px solid var(--border-dim)',
+                  borderRadius: 'var(--radius-md)',
+                  boxShadow: 'var(--shadow-wf)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  transition: 'all 0.25s ease',
+                  position: 'relative'
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.borderColor = 'var(--lampag-green)';
+                  e.currentTarget.style.transform = 'translateY(-3px)';
+                  e.currentTarget.style.boxShadow = '0 12px 28px rgba(57, 158, 82, 0.14)';
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.borderColor = 'var(--border-dim)';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = 'var(--shadow-wf)';
+                }}
+              >
                 <div>
+                  {/* Top Step Badge & Icon */}
                   <div style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '1.8rem',
-                    fontWeight: 900,
-                    color: 'var(--lampag-green)',
-                    marginBottom: '8px'
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    marginBottom: '16px'
                   }}>
-                    {proc.step}
+                    <div style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      backgroundColor: 'var(--lampag-green-subtle)',
+                      padding: '3px 8px',
+                      borderRadius: 'var(--radius-sm)',
+                      border: '1px solid #c6e6cd'
+                    }}>
+                      <span style={{
+                        fontFamily: 'var(--font-mono)',
+                        fontSize: '1.15rem',
+                        fontWeight: 900,
+                        color: 'var(--lampag-green)',
+                        lineHeight: 1
+                      }}>
+                        {proc.step}
+                      </span>
+                    </div>
+
+                    <div style={{
+                      width: '36px',
+                      height: '36px',
+                      borderRadius: '50%',
+                      backgroundColor: '#f8fafc',
+                      border: '1px solid var(--border-dim)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center'
+                    }}>
+                      {proc.icon}
+                    </div>
                   </div>
-                  <h4 style={{ fontSize: '1.02rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '6px', lineHeight: 1.3 }}>{proc.title}</h4>
-                  <p style={{ fontSize: '0.82rem', color: '#64748b', lineHeight: 1.45 }}>{proc.desc}</p>
+
+                  <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '8px', lineHeight: 1.3 }}>
+                    {proc.title}
+                  </h3>
+                  <p style={{ fontSize: '0.82rem', color: '#64748b', lineHeight: 1.5 }}>
+                    {proc.desc}
+                  </p>
+                </div>
+
+                {/* Subtle Step Bottom Bar */}
+                <div style={{
+                  marginTop: '16px',
+                  paddingTop: '10px',
+                  borderTop: '1px dashed var(--border-dim)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  fontSize: '0.72rem',
+                  fontFamily: 'var(--font-mono)',
+                  color: '#94a3b8'
+                }}>
+                  <span>STAGE {proc.step}/05</span>
+                  {idx < deliveryProcess.length - 1 && (
+                    <ChevronRight size={14} color="var(--lampag-green)" />
+                  )}
                 </div>
               </div>
             ))}
           </div>
 
-          <div style={{ marginTop: '32px', textAlign: 'center' }}>
-            <button className="btn-pill-green" onClick={() => setActivePage('contact')} style={{ fontSize: '0.92rem', padding: '10px 24px' }}>
+          {/* CTA Action Button */}
+          <div style={{ textAlign: 'center' }}>
+            <button className="btn-pill-green" onClick={handleContact} style={{ fontSize: '0.95rem', padding: '12px 28px' }}>
               Contact Us <ArrowUpRight size={16} />
             </button>
           </div>
