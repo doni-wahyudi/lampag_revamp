@@ -24,7 +24,7 @@ const PortfolioPage = ({ setSelectedProject }) => {
       location: 'Hamburg, Germany',
       sectorId: 'commercial',
       sector: t.portfolio.tabCom,
-      systems: 'Schüco UCC 65 SG Curtain Wall & Sliding Doors',
+      systems: 'Schüco AF UDC 80 Curtain Wall & Sliding Doors',
       summary: 'Slim profile sliding doors maximizing natural light while maintaining high thermal performance and structural rigidity.'
     },
     {
@@ -114,7 +114,7 @@ const PortfolioPage = ({ setSelectedProject }) => {
       location: 'Nuremberg, Germany',
       sectorId: 'commercial',
       sector: t.portfolio.tabCom,
-      systems: 'Schüco UCC 65 SG & Integrated Photovoltaic BIPV',
+      systems: 'Schüco FWS 50 & Integrated Photovoltaic BIPV',
       summary: 'Sustainable unitized glass envelope with custom BAPV panels achieving net-zero building energy targets.'
     },
     {

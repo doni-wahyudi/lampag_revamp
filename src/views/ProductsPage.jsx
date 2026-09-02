@@ -208,7 +208,9 @@ const ProductsPage = ({ setSelectedProduct }) => {
               }}>
                 <ShieldCheck size={18} color="var(--lampag-green)" />
                 <span style={{ fontSize: '0.85rem', fontWeight: 800, color: 'var(--lampag-green-dark)' }}>
-                  {isGerman ? '29 Zertifizierte Schüco- & Sonderprofilsysteme' : '29 Certified Schüco & Custom Profile Systems'}
+                  {isGerman 
+                    ? `${productsCatalog.length} Zertifizierte Schüco- & Sonderprofilsysteme` 
+                    : `${productsCatalog.length} Certified Schüco & Custom Profile Systems`}
                 </span>
               </div>
             </div>
@@ -416,7 +418,15 @@ const ProductsPage = ({ setSelectedProduct }) => {
                               borderRadius: 'var(--radius-sm)',
                               border: '1px solid rgba(57, 158, 82, 0.5)'
                             }}>
-                              <ShieldCheck size={13} color="var(--lampag-green)" /> SCHÜCO SPEC
+                              {product.isCustom ? (
+                                <>
+                                  <Layers size={13} color="var(--lampag-green)" /> {isGerman ? 'SONDERLÖSUNG' : 'CUSTOM SOLUTION'}
+                                </>
+                              ) : (
+                                <>
+                                  <ShieldCheck size={13} color="var(--lampag-green)" /> SCHÜCO SPEC
+                                </>
+                              )}
                             </div>
 
                             {product.images && product.images.length > 1 && (
@@ -454,7 +464,7 @@ const ProductsPage = ({ setSelectedProduct }) => {
                         <div style={{ padding: '18px', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'space-between' }}>
                           <div>
                             <h4 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '6px' }}>
-                              {product.name}
+                              {isGerman && product.nameDE ? product.nameDE : product.name}
                             </h4>
                             <p style={{ fontSize: '0.82rem', color: 'var(--lampag-green-dark)', fontWeight: 700, marginBottom: '8px', lineHeight: 1.3 }}>
                               {taglineText}
@@ -465,31 +475,48 @@ const ProductsPage = ({ setSelectedProduct }) => {
 
                             {/* Key Parameters Chips */}
                             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: '12px' }}>
-                              {product.depth && (
+                              {product.isCustom ? (
                                 <span style={{
-                                  fontSize: '0.7rem',
+                                  fontSize: '0.72rem',
                                   fontFamily: 'var(--font-mono)',
-                                  backgroundColor: '#f1f5f9',
-                                  color: '#334155',
-                                  padding: '2px 6px',
-                                  borderRadius: 'var(--radius-sm)',
-                                  border: '1px solid #e2e8f0'
-                                }}>
-                                  Depth: {product.depth}
-                                </span>
-                              )}
-                              {product.uValue && product.uValue !== 'Non-insulated' && (
-                                <span style={{
-                                  fontSize: '0.7rem',
-                                  fontFamily: 'var(--font-mono)',
-                                  backgroundColor: 'var(--lampag-green-subtle)',
+                                  backgroundColor: 'rgba(57, 158, 82, 0.12)',
                                   color: 'var(--lampag-green-dark)',
                                   fontWeight: 700,
-                                  padding: '2px 6px',
-                                  borderRadius: 'var(--radius-sm)'
+                                  padding: '3px 8px',
+                                  borderRadius: 'var(--radius-sm)',
+                                  border: '1px solid rgba(57, 158, 82, 0.3)'
                                 }}>
-                                  {product.uValue}
+                                  {isGerman ? '✨ Individuell nach Projektanfrage' : '✨ Custom Engineered Per Request'}
                                 </span>
+                              ) : (
+                                <>
+                                  {product.depth && (
+                                    <span style={{
+                                      fontSize: '0.7rem',
+                                      fontFamily: 'var(--font-mono)',
+                                      backgroundColor: '#f1f5f9',
+                                      color: '#334155',
+                                      padding: '2px 6px',
+                                      borderRadius: 'var(--radius-sm)',
+                                      border: '1px solid #e2e8f0'
+                                    }}>
+                                      Depth: {product.depth}
+                                    </span>
+                                  )}
+                                  {product.uValue && product.uValue !== 'Non-insulated' && (
+                                    <span style={{
+                                      fontSize: '0.7rem',
+                                      fontFamily: 'var(--font-mono)',
+                                      backgroundColor: 'var(--lampag-green-subtle)',
+                                      color: 'var(--lampag-green-dark)',
+                                      fontWeight: 700,
+                                      padding: '2px 6px',
+                                      borderRadius: 'var(--radius-sm)'
+                                    }}>
+                                      {product.uValue}
+                                    </span>
+                                  )}
+                                </>
                               )}
                             </div>
                           </div>
@@ -511,7 +538,9 @@ const ProductsPage = ({ setSelectedProduct }) => {
                               alignItems: 'center',
                               gap: '4px'
                             }}>
-                              {isGerman ? 'Spezifikationen & CAD' : 'View Specifications & CAD'} <ArrowUpRight size={14} />
+                              {product.isCustom 
+                                ? (isGerman ? 'Projektanfrage & Details' : 'Custom Details & Inquiry')
+                                : (isGerman ? 'Spezifikationen & CAD' : 'View Specifications & CAD')} <ArrowUpRight size={14} />
                             </span>
 
                             <span style={{

@@ -12,7 +12,7 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
   const winProduct = productsCatalog.find(p => p.id === 'aws-75-si') || productsCatalog[0];
   const doorProduct = productsCatalog.find(p => p.id === 'ase-80-hi') || productsCatalog[7];
   const facadeProduct = productsCatalog.find(p => p.id === 'fws-50') || productsCatalog[13];
-  const customProduct = productsCatalog.find(p => p.id === 'glass-roofs') || productsCatalog[22];
+  const customProduct = productsCatalog.find(p => p.id === 'aluminum-sheet-metal') || productsCatalog.find(p => p.categoryKey === 'custom') || productsCatalog[productsCatalog.length - 1];
 
   const solutions = [
     {
@@ -45,7 +45,7 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
       title: isGerman ? 'Maßgeschneiderte Sonderlösungen' : 'Customized Solutions',
       desc: isGerman ? customProduct.specDE : (customProduct.spec || customProduct.description),
       bgImg: customProduct.imageUrl,
-      specs: 'Glass Roofs, ACM & Custom Balustrades'
+      specs: isGerman ? 'Alu-Blechfassaden & Verbundplatten (ACM)' : 'Sheet Metal & Composite Panels (ACM)'
     }
   ];
 
@@ -56,7 +56,7 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
       location: 'Hamburg, Germany',
       sector: t.portfolio.tabCom,
       image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
-      systems: 'Schüco UCC 65 SG Curtain Wall & Sliding Doors',
+      systems: 'Schüco AF UDC 80 Curtain Wall & Sliding Doors',
       summary: 'Slim profile sliding doors maximizing natural light while maintaining high thermal performance.'
     },
     {

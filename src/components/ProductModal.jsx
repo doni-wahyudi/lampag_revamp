@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, ShieldCheck, CheckCircle, FileText, ExternalLink, ChevronLeft, ChevronRight, Sliders } from 'lucide-react';
+import { X, ShieldCheck, CheckCircle, FileText, ExternalLink, ChevronLeft, ChevronRight, Sliders, Send, Layers } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 
 const ProductModal = ({ product, onClose }) => {
@@ -44,10 +44,11 @@ const ProductModal = ({ product, onClose }) => {
             fontFamily: 'var(--font-mono)',
             fontWeight: 700,
             color: 'var(--lampag-green)',
-            letterSpacing: '0.06em',
-            textTransform: 'uppercase'
+            letterSpacing: '0.04em'
           }}>
-            [OFFICIAL SCHÜCO PROFILE SPECIFICATION]
+            {product.isCustom 
+              ? (isGerman ? '[SONDERKONSTRUKTION / MASSANFERTIGUNG]' : '[CUSTOM ARCHITECTURAL SOLUTION]')
+              : '[OFFICIAL SCHÜCO PROFILE SPECIFICATION]'}
           </span>
           {product.series && (
             <span style={{
@@ -64,7 +65,7 @@ const ProductModal = ({ product, onClose }) => {
         </div>
 
         <h3 style={{ fontSize: '1.75rem', fontWeight: 900, marginBottom: '6px', color: 'var(--text-main)', letterSpacing: '-0.02em' }}>
-          {product.name}
+          {isGerman && product.nameDE ? product.nameDE : product.name}
         </h3>
         
         <div style={{ 
@@ -76,7 +77,15 @@ const ProductModal = ({ product, onClose }) => {
           fontSize: '0.86rem',
           marginBottom: '18px' 
         }}>
-          <ShieldCheck size={16} color="var(--lampag-green)" /> {product.categoryName || product.category || 'Aluminium Profile System'} | Certified Schüco Partner
+          {product.isCustom ? (
+            <>
+              <Layers size={16} color="var(--lampag-green)" /> {isGerman ? 'Maßgeschneiderte Sonderlösung | LAMPAG Ingenieurbau' : 'Custom Architectural Solution | LAMPAG Engineering'}
+            </>
+          ) : (
+            <>
+              <ShieldCheck size={16} color="var(--lampag-green)" /> {product.categoryName || product.category || 'Aluminium Profile System'} | Certified Schüco Partner
+            </>
+          )}
         </div>
 
         {/* Product Image & Gallery View */}
@@ -126,7 +135,7 @@ const ProductModal = ({ product, onClose }) => {
                   </button>
 
                   <button
-                    onClick={() => setActiveImageIndex((prev) => (prev + 1) % imagesList.length)}
+                    onClick={() => setActiveImageIndex((prev) => (prev === imagesList.length - 1 ? 0 : prev + 1))}
                     style={{
                       position: 'absolute',
                       right: '10px',
@@ -173,7 +182,7 @@ const ProductModal = ({ product, onClose }) => {
                   padding: '2px 6px',
                   borderRadius: '2px'
                 }}>
-                  SCHÜCO ORIGINAL ASSET
+                  {product.isCustom ? (isGerman ? 'LAMPAG SONDERFERTIGUNG' : 'CUSTOM FABRICATION') : 'SCHÜCO ORIGINAL ASSET'}
                 </span>
               </div>
             </div>
@@ -192,24 +201,18 @@ const ProductModal = ({ product, onClose }) => {
                     key={idx}
                     onClick={() => setActiveImageIndex(idx)}
                     style={{
-                      width: '60px',
-                      height: '60px',
+                      border: activeImageIndex === idx ? '2px solid var(--lampag-green)' : '1px solid #cbd5e1',
                       borderRadius: 'var(--radius-sm)',
-                      overflow: 'hidden',
-                      border: activeImageIndex === idx ? '2px solid var(--lampag-green)' : '1px solid var(--border-dim)',
                       padding: 0,
-                      backgroundColor: '#0d1a12',
+                      width: '56px',
+                      height: '56px',
+                      overflow: 'hidden',
+                      backgroundColor: '#f8fafc',
                       cursor: 'pointer',
-                      flexShrink: 0,
-                      opacity: activeImageIndex === idx ? 1 : 0.65,
-                      transition: 'all 0.2s ease'
+                      flexShrink: 0
                     }}
                   >
-                    <img 
-                      src={imgUrl} 
-                      alt={`Thumbnail ${idx + 1}`} 
-                      style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-                    />
+                    <img src={imgUrl} alt={`Thumbnail ${idx + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   </button>
                 ))}
               </div>
@@ -243,58 +246,90 @@ const ProductModal = ({ product, onClose }) => {
           {specText}
         </p>
 
-        {/* Technical Key Parameters Grid */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
-          gap: '10px',
-          marginBottom: '18px'
-        }}>
-          {product.depth && (
-            <div style={{ backgroundColor: '#f1f5f9', padding: '8px 12px', borderRadius: 'var(--radius-sm)', border: '1px solid #e2e8f0' }}>
-              <div style={{ fontSize: '0.7rem', color: '#64748b', fontFamily: 'var(--font-mono)' }}>{isGerman ? 'BAUTIEFE' : 'BASIC DEPTH'}</div>
-              <div style={{ fontSize: '0.86rem', fontWeight: 800, color: 'var(--text-main)' }}>{product.depth}</div>
+        {/* Technical Key Parameters Grid or Custom Engineering Notice */}
+        {product.isCustom ? (
+          <div style={{
+            backgroundColor: '#f8fafc',
+            border: '1.5px dashed var(--lampag-green)',
+            borderRadius: 'var(--radius-md)',
+            padding: '18px 20px',
+            marginBottom: '20px'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+              <span style={{
+                fontSize: '0.72rem',
+                fontFamily: 'var(--font-mono)',
+                fontWeight: 800,
+                color: 'var(--lampag-green-dark)',
+                backgroundColor: 'rgba(57, 158, 82, 0.12)',
+                padding: '3px 10px',
+                borderRadius: 'var(--radius-pill)',
+                letterSpacing: '0.04em',
+                textTransform: 'uppercase'
+              }}>
+                {isGerman ? 'PROJEKTBEZOGENE SPEZIFIKATION' : 'INDIVIDUAL PROJECT SPECIFICATION'}
+              </span>
             </div>
-          )}
+            <h4 style={{ fontSize: '0.98rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '6px' }}>
+              {isGerman ? 'Abstimmung nach Kunden- & Architekturanforderung' : 'Engineered & Discussed Per Customer Request'}
+            </h4>
+            <p style={{ fontSize: '0.88rem', color: '#475569', lineHeight: 1.6, margin: 0 }}>
+              {isGerman ? product.customSpecNoteDE : product.customSpecNote}
+            </p>
+          </div>
+        ) : (
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
+            gap: '10px',
+            marginBottom: '18px'
+          }}>
+            {product.depth && (
+              <div style={{ backgroundColor: '#f1f5f9', padding: '8px 12px', borderRadius: 'var(--radius-sm)', border: '1px solid #e2e8f0' }}>
+                <div style={{ fontSize: '0.7rem', color: '#64748b', fontFamily: 'var(--font-mono)' }}>{isGerman ? 'BAUTIEFE' : 'BASIC DEPTH'}</div>
+                <div style={{ fontSize: '0.86rem', fontWeight: 800, color: 'var(--text-main)' }}>{product.depth}</div>
+              </div>
+            )}
 
-          {product.faceWidth && (
-            <div style={{ backgroundColor: '#f1f5f9', padding: '8px 12px', borderRadius: 'var(--radius-sm)', border: '1px solid #e2e8f0' }}>
-              <div style={{ fontSize: '0.7rem', color: '#64748b', fontFamily: 'var(--font-mono)' }}>{isGerman ? 'ANSICHTSBREITE' : 'FACE WIDTH'}</div>
-              <div style={{ fontSize: '0.86rem', fontWeight: 800, color: 'var(--text-main)' }}>{product.faceWidth}</div>
-            </div>
-          )}
+            {product.faceWidth && (
+              <div style={{ backgroundColor: '#f1f5f9', padding: '8px 12px', borderRadius: 'var(--radius-sm)', border: '1px solid #e2e8f0' }}>
+                <div style={{ fontSize: '0.7rem', color: '#64748b', fontFamily: 'var(--font-mono)' }}>{isGerman ? 'ANSICHTSBREITE' : 'FACE WIDTH'}</div>
+                <div style={{ fontSize: '0.86rem', fontWeight: 800, color: 'var(--text-main)' }}>{product.faceWidth}</div>
+              </div>
+            )}
 
-          {product.uValue && (
-            <div style={{ backgroundColor: 'var(--lampag-green-subtle)', padding: '8px 12px', borderRadius: 'var(--radius-sm)', border: '1px solid #c6e6cd' }}>
-              <div style={{ fontSize: '0.7rem', color: 'var(--lampag-green-dark)', fontFamily: 'var(--font-mono)' }}>{isGerman ? 'WÄRMEDÄMMUNG' : 'THERMAL VALUE'}</div>
-              <div style={{ fontSize: '0.86rem', fontWeight: 800, color: 'var(--lampag-green-dark)' }}>{product.uValue}</div>
-            </div>
-          )}
+            {product.uValue && (
+              <div style={{ backgroundColor: 'var(--lampag-green-subtle)', padding: '8px 12px', borderRadius: 'var(--radius-sm)', border: '1px solid #c6e6cd' }}>
+                <div style={{ fontSize: '0.7rem', color: 'var(--lampag-green-dark)', fontFamily: 'var(--font-mono)' }}>{isGerman ? 'WÄRMEDÄMMUNG' : 'THERMAL VALUE'}</div>
+                <div style={{ fontSize: '0.86rem', fontWeight: 800, color: 'var(--lampag-green-dark)' }}>{product.uValue}</div>
+              </div>
+            )}
 
-          {product.soundReduction && (
-            <div style={{ backgroundColor: '#f1f5f9', padding: '8px 12px', borderRadius: 'var(--radius-sm)', border: '1px solid #e2e8f0' }}>
-              <div style={{ fontSize: '0.7rem', color: '#64748b', fontFamily: 'var(--font-mono)' }}>{isGerman ? 'SCHALLSCHUTZ' : 'SOUND REDUCTION'}</div>
-              <div style={{ fontSize: '0.86rem', fontWeight: 800, color: 'var(--text-main)' }}>{product.soundReduction}</div>
-            </div>
-          )}
+            {product.soundReduction && (
+              <div style={{ backgroundColor: '#f1f5f9', padding: '8px 12px', borderRadius: 'var(--radius-sm)', border: '1px solid #e2e8f0' }}>
+                <div style={{ fontSize: '0.7rem', color: '#64748b', fontFamily: 'var(--font-mono)' }}>{isGerman ? 'SCHALLSCHUTZ' : 'SOUND REDUCTION'}</div>
+                <div style={{ fontSize: '0.86rem', fontWeight: 800, color: 'var(--text-main)' }}>{product.soundReduction}</div>
+              </div>
+            )}
 
-          {product.burglarResistance && (
-            <div style={{ backgroundColor: '#f1f5f9', padding: '8px 12px', borderRadius: 'var(--radius-sm)', border: '1px solid #e2e8f0' }}>
-              <div style={{ fontSize: '0.7rem', color: '#64748b', fontFamily: 'var(--font-mono)' }}>{isGerman ? 'EINBRUCHSCHUTZ' : 'SECURITY'}</div>
-              <div style={{ fontSize: '0.86rem', fontWeight: 800, color: 'var(--text-main)' }}>{product.burglarResistance}</div>
-            </div>
-          )}
+            {product.burglarResistance && (
+              <div style={{ backgroundColor: '#f1f5f9', padding: '8px 12px', borderRadius: 'var(--radius-sm)', border: '1px solid #e2e8f0' }}>
+                <div style={{ fontSize: '0.7rem', color: '#64748b', fontFamily: 'var(--font-mono)' }}>{isGerman ? 'EINBRUCHSCHUTZ' : 'SECURITY'}</div>
+                <div style={{ fontSize: '0.86rem', fontWeight: 800, color: 'var(--text-main)' }}>{product.burglarResistance}</div>
+              </div>
+            )}
 
-          {product.glassThickness && (
-            <div style={{ backgroundColor: '#f1f5f9', padding: '8px 12px', borderRadius: 'var(--radius-sm)', border: '1px solid #e2e8f0' }}>
-              <div style={{ fontSize: '0.7rem', color: '#64748b', fontFamily: 'var(--font-mono)' }}>{isGerman ? 'GLASDICKE' : 'MAX GLAZING'}</div>
-              <div style={{ fontSize: '0.86rem', fontWeight: 800, color: 'var(--text-main)' }}>{product.glassThickness}</div>
-            </div>
-          )}
-        </div>
+            {product.glassThickness && (
+              <div style={{ backgroundColor: '#f1f5f9', padding: '8px 12px', borderRadius: 'var(--radius-sm)', border: '1px solid #e2e8f0' }}>
+                <div style={{ fontSize: '0.7rem', color: '#64748b', fontFamily: 'var(--font-mono)' }}>{isGerman ? 'GLASDICKE' : 'MAX GLAZING'}</div>
+                <div style={{ fontSize: '0.86rem', fontWeight: 800, color: 'var(--text-main)' }}>{product.glassThickness}</div>
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Technical Features Checklist */}
-        {product.features && product.features.length > 0 && (
+        {((isGerman && product.featuresDE) || product.features) && (
           <div style={{ 
             border: '1px solid #c6e6cd', 
             borderRadius: 'var(--radius-md)', 
@@ -306,7 +341,7 @@ const ProductModal = ({ product, onClose }) => {
               <FileText size={16} color="var(--lampag-green)" /> {isGerman ? 'Wesentliche Leistungsmerkmale:' : 'Key Engineering Features:'}
             </h4>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.86rem', color: '#1b3323' }}>
-              {product.features.map((feat, fIdx) => (
+              {((isGerman && product.featuresDE) || product.features).map((feat, fIdx) => (
                 <li key={fIdx} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
                   <CheckCircle size={15} color="var(--lampag-green)" style={{ flexShrink: 0, marginTop: '3px' }} />
                   <span>{feat}</span>
@@ -316,29 +351,49 @@ const ProductModal = ({ product, onClose }) => {
           </div>
         )}
 
-        {/* Action Buttons: Direct Hyperlink to Schüco Official Page */}
+        {/* Action Buttons */}
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-end', gap: '10px' }}>
           <button className="btn-pill-green-outline" onClick={onClose} style={{ padding: '9px 20px', fontSize: '0.88rem' }}>
             {isGerman ? 'Schließen' : 'Close Specification'}
           </button>
           
-          <a
-            href={targetUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-pill-green"
-            style={{ 
-              padding: '9px 20px', 
-              fontSize: '0.88rem',
-              textDecoration: 'none',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px'
-            }}
-          >
-            <span>{isGerman ? 'Offizielle Schüco Produktseite öffnen' : 'Open Schüco Product Page'}</span>
-            <ExternalLink size={15} />
-          </a>
+          {product.isCustom ? (
+            <a
+              href={`mailto:info@lampag.de?subject=${encodeURIComponent(isGerman ? `Projektanfrage: ${product.nameDE || product.name}` : `Custom Project Inquiry: ${product.name}`)}`}
+              className="btn-pill-green"
+              style={{ 
+                padding: '9px 22px', 
+                fontSize: '0.88rem',
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                boxShadow: '0 4px 14px rgba(57, 158, 82, 0.35)',
+                cursor: 'pointer'
+              }}
+            >
+              <Send size={15} />
+              <span>{isGerman ? 'Projektanfrage stellen' : 'Inquire for Custom Project'}</span>
+            </a>
+          ) : (
+            <a
+              href={targetUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-pill-green"
+              style={{ 
+                padding: '9px 20px', 
+                fontSize: '0.88rem',
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px'
+              }}
+            >
+              <span>{isGerman ? 'Offizielle Schüco Produktseite öffnen' : 'Open Schüco Product Page'}</span>
+              <ExternalLink size={15} />
+            </a>
+          )}
         </div>
       </div>
     </div>
