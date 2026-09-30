@@ -133,13 +133,13 @@ const AboutPage = () => {
                 ABOUT LAMPAG
               </span>
               <h2 style={{ fontSize: '2.2rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '14px', lineHeight: 1.2 }}>{t.about.whoTitle}</h2>
-              <p style={{ fontSize: '0.96rem', lineHeight: 1.65, color: 'var(--text-main)', marginBottom: '12px' }}>
+              <p style={{ fontSize: '0.94rem', lineHeight: 1.65, color: '#334155', marginBottom: '12px' }}>
                 {t.about.whoP1}
               </p>
-              <p style={{ fontSize: '0.92rem', lineHeight: 1.6, color: '#64748b', marginBottom: '12px' }}>
+              <p style={{ fontSize: '0.94rem', lineHeight: 1.65, color: '#334155', marginBottom: '12px' }}>
                 {t.about.whoP2}
               </p>
-              <p style={{ fontSize: '0.92rem', lineHeight: 1.6, color: '#64748b' }}>
+              <p style={{ fontSize: '0.94rem', lineHeight: 1.65, color: '#334155' }}>
                 {t.about.whoP3}
               </p>
             </div>
@@ -308,13 +308,19 @@ const AboutPage = () => {
           </div>
           <div className="grid-2" style={{ gap: '28px' }}>
             <div style={{ padding: '28px', backgroundColor: '#ffffff', border: '1px solid #c6e6cd', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-wf)' }}>
-              <p style={{ fontSize: '0.96rem', color: '#334155', lineHeight: 1.65 }}>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--lampag-green-dark)', marginBottom: '10px' }}>
+                {t.about.sustainabilitySub1 || 'Sustainability'}
+              </h3>
+              <p style={{ fontSize: '0.94rem', color: '#334155', lineHeight: 1.65 }}>
                 {t.about.sustainabilityP1}
               </p>
             </div>
 
             <div style={{ padding: '28px', backgroundColor: '#ffffff', border: '1px solid #c6e6cd', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-wf)' }}>
-              <p style={{ fontSize: '0.96rem', color: '#334155', lineHeight: 1.65 }}>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--lampag-green-dark)', marginBottom: '10px' }}>
+                {t.about.sustainabilitySub2 || 'Our Commitment'}
+              </h3>
+              <p style={{ fontSize: '0.94rem', color: '#334155', lineHeight: 1.65 }}>
                 {t.about.sustainabilityP2}
               </p>
             </div>

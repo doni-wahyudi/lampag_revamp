@@ -104,7 +104,7 @@ const ProductModal = ({ product, onClose }) => {
             }}>
               <img
                 src={currentImage}
-                alt={product.name}
+                alt={`${product.name} - ${product.category || 'Aluminium System'} technical profile cross-section and specification`}
                 style={{ width: '100%', height: '100%', objectFit: 'contain' }}
               />
 
@@ -212,7 +212,7 @@ const ProductModal = ({ product, onClose }) => {
                       flexShrink: 0
                     }}
                   >
-                    <img src={imgUrl} alt={`Thumbnail ${idx + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <img src={imgUrl} alt={`${product.name} architectural detail view ${idx + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   </button>
                 ))}
               </div>

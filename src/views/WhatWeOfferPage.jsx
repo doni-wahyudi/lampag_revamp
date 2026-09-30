@@ -1,5 +1,4 @@
 import React from 'react';
-import WireframePlaceholder from '../components/WireframePlaceholder';
 import { 
   Ruler, 
   FileText, 
@@ -25,67 +24,79 @@ const WhatWeOfferPage = ({ setActivePage }) => {
 
   const services = [
     {
-      icon: <Ruler size={22} color="var(--lampag-green)" />,
+      icon: <Ruler size={20} color="var(--lampag-green)" />,
       title: t.services.s1,
-      desc: t.services.s1Desc
+      desc: t.services.s1Desc,
+      image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=600&q=80'
     },
     {
-      icon: <FileText size={22} color="var(--lampag-green)" />,
+      icon: <FileText size={20} color="var(--lampag-green)" />,
       title: t.services.s2,
-      desc: t.services.s2Desc
+      desc: t.services.s2Desc,
+      image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=600&q=80'
     },
     {
-      icon: <Layers size={22} color="var(--lampag-green)" />,
+      icon: <Layers size={20} color="var(--lampag-green)" />,
       title: t.services.s3,
-      desc: t.services.s3Desc
+      desc: t.services.s3Desc,
+      image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80'
     },
     {
-      icon: <ShieldCheck size={22} color="var(--lampag-green)" />,
+      icon: <ShieldCheck size={20} color="var(--lampag-green)" />,
       title: t.services.s4,
-      desc: t.services.s4Desc
+      desc: t.services.s4Desc,
+      image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80'
     },
     {
-      icon: <Truck size={22} color="var(--lampag-green)" />,
+      icon: <Truck size={20} color="var(--lampag-green)" />,
       title: t.services.s5,
-      desc: t.services.s5Desc
+      desc: t.services.s5Desc,
+      image: 'https://images.unsplash.com/photo-1541888946425-d0fbb18f156f?auto=format&fit=crop&w=600&q=80'
     },
     {
-      icon: <CheckCircle2 size={22} color="var(--lampag-green)" />,
+      icon: <CheckCircle2 size={20} color="var(--lampag-green)" />,
       title: t.services.s6,
-      desc: t.services.s6Desc
+      desc: t.services.s6Desc,
+      image: 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=600&q=80'
     }
   ];
 
   const industries = [
     {
-      icon: <Building size={20} color="var(--lampag-green)" />,
+      icon: <Building size={18} />,
       title: t.services.ind1,
-      desc: t.services.ind1Desc
+      desc: t.services.ind1Desc,
+      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80'
     },
     {
-      icon: <Home size={20} color="var(--lampag-green)" />,
+      icon: <Home size={18} />,
       title: t.services.ind2,
-      desc: t.services.ind2Desc
+      desc: t.services.ind2Desc,
+      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80'
     },
     {
-      icon: <Store size={20} color="var(--lampag-green)" />,
+      icon: <Store size={18} />,
       title: t.services.ind3,
-      desc: t.services.ind3Desc
+      desc: t.services.ind3Desc,
+      image: 'https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=600&q=80'
     },
     {
-      icon: <Landmark size={20} color="var(--lampag-green)" />,
+      icon: <Landmark size={18} />,
       title: t.services.ind4,
-      desc: t.services.ind4Desc
+      desc: t.services.ind4Desc,
+      image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80'
     },
     {
-      icon: <Factory size={20} color="var(--lampag-green)" />,
+      icon: <Factory size={18} />,
       title: t.services.ind5,
-      desc: t.services.ind5Desc
+      desc: t.services.ind5Desc,
+      image: 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=600&q=80'
     },
     {
-      icon: <Layers size={20} color="var(--lampag-green)" />,
+      icon: <Layers size={18} />,
       title: t.services.ind6,
-      desc: t.services.ind6Desc
+      desc: t.services.ind6Desc,
+      image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80'
     }
   ];
 
@@ -95,31 +106,36 @@ const WhatWeOfferPage = ({ setActivePage }) => {
       step: '01', 
       title: t.services.step1, 
       desc: t.services.step1Desc,
-      icon: <MessageSquare size={20} color="var(--lampag-green)" />
+      icon: <MessageSquare size={18} color="var(--lampag-green)" />,
+      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80'
     },
     { 
       step: '02', 
       title: t.services.step2, 
       desc: t.services.step2Desc,
-      icon: <Compass size={20} color="var(--lampag-green)" />
+      icon: <Compass size={18} color="var(--lampag-green)" />,
+      image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=600&q=80'
     },
     { 
       step: '03', 
       title: t.services.step3, 
       desc: t.services.step3Desc,
-      icon: <Layers size={20} color="var(--lampag-green)" />
+      icon: <Layers size={18} color="var(--lampag-green)" />,
+      image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80'
     },
     { 
       step: '04', 
       title: t.services.step4, 
       desc: t.services.step4Desc,
-      icon: <ClipboardCheck size={20} color="var(--lampag-green)" />
+      icon: <ClipboardCheck size={18} color="var(--lampag-green)" />,
+      image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80'
     },
     { 
       step: '05', 
       title: t.services.step5, 
       desc: t.services.step5Desc,
-      icon: <Factory size={20} color="var(--lampag-green)" />
+      icon: <Factory size={18} color="var(--lampag-green)" />,
+      image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80'
     }
   ];
 
@@ -184,13 +200,44 @@ const WhatWeOfferPage = ({ setActivePage }) => {
               </div>
             </div>
 
-            <div>
-              <WireframePlaceholder
-                title="SERVICES & ENGINEERING VISUAL"
-                direction="Architectural drawing board & profile engineering visual showing CAD modeling and structural façade planning."
-                aspectRatio="4/3"
-                height="320px"
+            <div style={{
+              position: 'relative',
+              borderRadius: 'var(--radius-md)',
+              overflow: 'hidden',
+              boxShadow: '0 20px 40px rgba(0,0,0,0.35)',
+              border: '1px solid rgba(57, 158, 82, 0.4)'
+            }}>
+              <img 
+                src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80" 
+                alt="Precision-engineered aluminium curtain wall and façade CAD BIM structural modeling" 
+                style={{ width: '100%', height: '320px', objectFit: 'cover', display: 'block' }}
               />
+              <div style={{
+                position: 'absolute',
+                bottom: 0,
+                left: 0,
+                right: 0,
+                background: 'linear-gradient(transparent, rgba(10, 20, 14, 0.95))',
+                padding: '16px 20px',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center'
+              }}>
+                <div>
+                  <div style={{ color: '#ffffff', fontSize: '0.88rem', fontWeight: 800 }}>CAD & BIM Structural Modeling</div>
+                  <div style={{ color: '#94a3b8', fontSize: '0.72rem', fontFamily: 'var(--font-mono)' }}>German Precision Façade Planning</div>
+                </div>
+                <div style={{
+                  backgroundColor: 'var(--lampag-green)',
+                  color: '#ffffff',
+                  fontSize: '0.7rem',
+                  fontWeight: 800,
+                  padding: '3px 8px',
+                  borderRadius: 'var(--radius-sm)'
+                }}>
+                  SCHÜCO PARTNER
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -212,12 +259,14 @@ const WhatWeOfferPage = ({ setActivePage }) => {
           <div className="grid-3" style={{ gap: '18px' }}>
             {services.map((item, idx) => (
               <div key={idx} style={{
-                padding: '20px',
                 backgroundColor: '#ffffff',
                 border: '1px solid var(--border-dim)',
                 borderRadius: 'var(--radius-md)',
                 boxShadow: 'var(--shadow-wf)',
-                transition: 'all 0.2s ease'
+                transition: 'all 0.2s ease',
+                overflow: 'hidden',
+                display: 'flex',
+                flexDirection: 'column'
               }}
               onMouseEnter={e => {
                 e.currentTarget.style.borderColor = 'var(--lampag-green)';
@@ -230,20 +279,33 @@ const WhatWeOfferPage = ({ setActivePage }) => {
                 e.currentTarget.style.boxShadow = 'var(--shadow-wf)';
               }}
               >
-                <div style={{
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: 'var(--radius-md)',
-                  backgroundColor: 'var(--lampag-green-subtle)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginBottom: '12px'
-                }}>
-                  {item.icon}
+                <div style={{ position: 'relative', height: '120px', width: '100%', overflow: 'hidden' }}>
+                  <img 
+                    src={item.image} 
+                    alt={`${item.title} - Precision aluminium engineering and technical consultation service`} 
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                  />
+                  <div style={{
+                    position: 'absolute',
+                    bottom: '8px',
+                    left: '10px',
+                    width: '34px',
+                    height: '34px',
+                    borderRadius: 'var(--radius-sm)',
+                    backgroundColor: '#ffffff',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    boxShadow: '0 3px 8px rgba(0,0,0,0.18)',
+                    border: '1px solid #c6e6cd'
+                  }}>
+                    {item.icon}
+                  </div>
                 </div>
-                <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '6px' }}>{item.title}</h3>
-                <p style={{ fontSize: '0.86rem', color: '#64748b', lineHeight: 1.48 }}>{item.desc}</p>
+                <div style={{ padding: '14px 16px', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                  <h3 style={{ fontSize: '1.02rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '6px' }}>{item.title}</h3>
+                  <p style={{ fontSize: '0.84rem', color: '#64748b', lineHeight: 1.48 }}>{item.desc}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -264,12 +326,14 @@ const WhatWeOfferPage = ({ setActivePage }) => {
           <div className="grid-3" style={{ gap: '18px' }}>
             {industries.map((ind, idx) => (
               <div key={idx} style={{
-                padding: '20px',
                 backgroundColor: '#ffffff',
                 border: '1px solid var(--border-dim)',
                 borderRadius: 'var(--radius-md)',
                 boxShadow: 'var(--shadow-wf)',
-                transition: 'all 0.2s ease'
+                transition: 'all 0.2s ease',
+                overflow: 'hidden',
+                display: 'flex',
+                flexDirection: 'column'
               }}
               onMouseEnter={e => {
                 e.currentTarget.style.borderColor = 'var(--lampag-green)';
@@ -282,22 +346,33 @@ const WhatWeOfferPage = ({ setActivePage }) => {
                 e.currentTarget.style.boxShadow = 'var(--shadow-wf)';
               }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
+                <div style={{ position: 'relative', height: '120px', width: '100%', overflow: 'hidden' }}>
+                  <img 
+                    src={ind.image} 
+                    alt={`${ind.title} - Architectural aluminium systems and building façade application`} 
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                  />
                   <div style={{
-                    width: '36px',
-                    height: '36px',
-                    backgroundColor: 'var(--lampag-green-subtle)',
+                    position: 'absolute',
+                    top: '8px',
+                    right: '8px',
+                    width: '32px',
+                    height: '32px',
                     borderRadius: 'var(--radius-sm)',
+                    backgroundColor: 'rgba(13, 26, 18, 0.85)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    flexShrink: 0
+                    color: 'var(--lampag-green)',
+                    boxShadow: '0 2px 6px rgba(0,0,0,0.2)'
                   }}>
                     {ind.icon}
                   </div>
-                  <h4 style={{ fontSize: '1.02rem', fontWeight: 800, color: 'var(--text-main)' }}>{ind.title}</h4>
                 </div>
-                <p style={{ fontSize: '0.84rem', color: '#64748b', lineHeight: 1.5 }}>{ind.desc}</p>
+                <div style={{ padding: '14px 16px', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                  <h4 style={{ fontSize: '1.02rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '6px' }}>{ind.title}</h4>
+                  <p style={{ fontSize: '0.84rem', color: '#64748b', lineHeight: 1.48 }}>{ind.desc}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -325,7 +400,6 @@ const WhatWeOfferPage = ({ setActivePage }) => {
               <div 
                 key={idx} 
                 style={{
-                  padding: '22px 18px',
                   backgroundColor: '#ffffff',
                   border: '1.5px solid var(--border-dim)',
                   borderRadius: 'var(--radius-md)',
@@ -334,7 +408,7 @@ const WhatWeOfferPage = ({ setActivePage }) => {
                   flexDirection: 'column',
                   justifyContent: 'space-between',
                   transition: 'all 0.25s ease',
-                  position: 'relative'
+                  overflow: 'hidden'
                 }}
                 onMouseEnter={e => {
                   e.currentTarget.style.borderColor = 'var(--lampag-green)';
@@ -348,64 +422,70 @@ const WhatWeOfferPage = ({ setActivePage }) => {
                 }}
               >
                 <div>
-                  {/* Top Step Badge & Icon */}
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    marginBottom: '16px'
-                  }}>
+                  {/* Step Image Header with Phase Badge */}
+                  <div style={{ position: 'relative', height: '90px', width: '100%', overflow: 'hidden' }}>
+                    <img 
+                      src={proc.image} 
+                      alt={`${proc.title} - LAMPAG engineering and fabrication milestone`} 
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                    />
                     <div style={{
+                      position: 'absolute',
+                      inset: 0,
+                      background: 'linear-gradient(to bottom, rgba(10, 20, 14, 0.25), rgba(10, 20, 14, 0.85))'
+                    }} />
+                    <div style={{
+                      position: 'absolute',
+                      bottom: '8px',
+                      left: '8px',
                       display: 'inline-flex',
                       alignItems: 'center',
-                      gap: '6px',
-                      backgroundColor: 'var(--lampag-green-subtle)',
-                      padding: '3px 8px',
+                      gap: '5px',
+                      backgroundColor: 'var(--lampag-green)',
+                      color: '#ffffff',
+                      padding: '2px 8px',
                       borderRadius: 'var(--radius-sm)',
-                      border: '1px solid #c6e6cd'
+                      fontSize: '0.72rem',
+                      fontFamily: 'var(--font-mono)',
+                      fontWeight: 800
                     }}>
-                      <span style={{
-                        fontFamily: 'var(--font-mono)',
-                        fontSize: '1.15rem',
-                        fontWeight: 900,
-                        color: 'var(--lampag-green)',
-                        lineHeight: 1
-                      }}>
-                        {proc.step}
-                      </span>
-                    </div>
-
-                    <div style={{
-                      width: '36px',
-                      height: '36px',
-                      borderRadius: '50%',
-                      backgroundColor: '#f8fafc',
-                      border: '1px solid var(--border-dim)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}>
-                      {proc.icon}
+                      PHASE {proc.step}
                     </div>
                   </div>
 
-                  <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '8px', lineHeight: 1.3 }}>
-                    {proc.title}
-                  </h3>
-                  <p style={{ fontSize: '0.82rem', color: '#64748b', lineHeight: 1.5 }}>
-                    {proc.desc}
-                  </p>
+                  <div style={{ padding: '14px 14px 10px 14px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                      <div style={{
+                        width: '28px',
+                        height: '28px',
+                        borderRadius: 'var(--radius-sm)',
+                        backgroundColor: 'var(--lampag-green-subtle)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0
+                      }}>
+                        {proc.icon}
+                      </div>
+                      <h3 style={{ fontSize: '0.96rem', fontWeight: 800, color: 'var(--text-main)', lineHeight: 1.25 }}>
+                        {proc.title}
+                      </h3>
+                    </div>
+
+                    <p style={{ fontSize: '0.8rem', color: '#64748b', lineHeight: 1.45 }}>
+                      {proc.desc}
+                    </p>
+                  </div>
                 </div>
 
                 {/* Subtle Step Bottom Bar */}
                 <div style={{
-                  marginTop: '16px',
-                  paddingTop: '10px',
+                  padding: '8px 14px',
                   borderTop: '1px dashed var(--border-dim)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
-                  fontSize: '0.72rem',
+                  fontSize: '0.7rem',
                   fontFamily: 'var(--font-mono)',
                   color: '#94a3b8'
                 }}>

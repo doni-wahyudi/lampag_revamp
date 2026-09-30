@@ -12,7 +12,7 @@ export const translations = {
     hero: {
       tag: 'PRECISION ALUMINIUM SYSTEMS',
       subtitle: 'Precision Aluminium Systems for Modern Architecture',
-      title: 'Willkommen in der Zukunft des Bauens',
+      title: 'Precision Aluminium Systems for Modern Buildings',
       desc: 'Precision-engineered windows, doors, and curtain wall systems delivering energy efficiency, durability, and lasting performance.',
       btnExplore: 'Explore Our Solutions',
       btnPortfolio: 'View Portfolio',
@@ -34,8 +34,8 @@ export const translations = {
       sol2Desc: 'Entrance, sliding, folding, and commercial door systems combining safety, ease of operation, and sleek design.',
       sol3: 'Curtain Wall & Façades',
       sol3Desc: 'Modern façade solutions maximizing natural light while delivering structural performance and energy efficiency.',
-      sol4: 'Panoramic Sliding Doors',
-      sol4Desc: 'Seamless indoor-outdoor transitions with zero-threshold accessibility and automated mechatronic drive.',
+      sol4: 'Customized Solutions',
+      sol4Desc: 'A comprehensive line of functional and decorative aluminum solutions that elevate building design both aesthetically and technically, including sheet cladding, break metal applications, and ACM panels.',
 
       catWindows: 'Aluminium Windows',
       catWindowsDesc: 'High-performance window systems designed to provide excellent thermal insulation, durability, security, and contemporary aesthetics.',
@@ -106,8 +106,10 @@ export const translations = {
       pillar8Desc: 'Dedicated technical support and enduring partnerships built on proven reliability.',
 
       sustainabilityTitle: 'Sustainable Construction & Our Commitment',
-      sustainabilityP1: 'Sustainability: Lampag is committed to supporting sustainable construction through durable, energy-efficient aluminium systems that contribute to long-lasting building performance. By combining modern engineering with high-quality materials, we help create buildings that are both functional and future-ready.',
-      sustainabilityP2: 'Our Commitment: Quality, precision, and trust are at the core of everything we do. Whether supporting a residential development or a large-scale commercial project, Lampag is committed to delivering innovative aluminium solutions that meet the highest expectations of our clients and partners. Our objective is to build lasting relationships through dependable service, technical excellence, and successful project delivery.'
+      sustainabilitySub1: 'Sustainability',
+      sustainabilityP1: 'Lampag is committed to supporting sustainable construction through durable, energy-efficient aluminium systems that contribute to long-lasting building performance. By combining modern engineering with high-quality materials, we help create buildings that are both functional and future-ready.',
+      sustainabilitySub2: 'Our Commitment',
+      sustainabilityP2: 'Quality, precision, and trust are at the core of everything we do. Whether supporting a residential development or a large-scale commercial project, Lampag is committed to delivering innovative aluminium solutions that meet the highest expectations of our clients and partners. Our objective is to build lasting relationships through dependable service, technical excellence, and successful project delivery.'
     },
     services: {
       heroTag: 'SERVICES & EXPERTISE',
@@ -277,6 +279,7 @@ export const translations = {
     footer: {
       aboutTitle: 'LAMPAG GmbH',
       aboutDesc: 'Sustainable products for the future. Trust in quality through certified partnerships with leading system suppliers.',
+      certifiedPartner: 'CERTIFIED PARTNER',
       partOf: 'PART OF',
       schucoPartner: 'SCHÜCO PARTNER',
       aluGroup: 'ALU GROUP',
@@ -284,6 +287,32 @@ export const translations = {
       contactTitle: 'CONTACT',
       dortmund: 'Strümpenbusch 3, 44357 Dortmund',
       rights: '© 2026 Lampag. All Rights Reserved. | Imprint | Privacy Policy'
+    },
+    seo: {
+      home: {
+        title: 'Precision Aluminium Systems | LAMPAG GmbH',
+        desc: "Discover LAMPAG's precision-engineered aluminium windows, doors, and curtain wall systems, designed for energy efficiency, durability, and performance."
+      },
+      about: {
+        title: 'About Us | Precision Aluminium Engineering | LAMPAG GmbH',
+        desc: 'Learn about LAMPAG GmbH, certified Schüco partner and Alu Group member delivering German engineering precision across 700+ architectural projects.'
+      },
+      services: {
+        title: 'Engineering Services & Consultation | LAMPAG GmbH',
+        desc: 'End-to-end aluminium engineering services: CAD/BIM design, structural optimization, technical consultation, and turnkey architectural project support.'
+      },
+      products: {
+        title: 'Aluminium Windows, Doors & Façades | LAMPAG GmbH',
+        desc: 'Explore certified Schüco aluminium windows, commercial entrance doors, sliding systems, curtain walls, and custom architectural sheet metal solutions.'
+      },
+      portfolio: {
+        title: 'Project Portfolio & Architectural References | LAMPAG GmbH',
+        desc: 'View selected architectural references and completed projects featuring LAMPAG aluminium window, door, and curtain wall systems across Europe.'
+      },
+      contact: {
+        title: 'Contact Technical Desk & Request a Quote | LAMPAG GmbH',
+        desc: 'Contact LAMPAG GmbH in Dortmund for technical consultations, project inquiries, CAD drawings, and specifications for aluminium architectural systems.'
+      }
     }
   },
 
@@ -322,8 +351,8 @@ export const translations = {
       sol2Desc: 'Eingangs-, Schiebe-, Falt- und Objekttürsysteme, die Sicherheit, Bedienkomfort und elegantes Design vereinen.',
       sol3: 'Vorhangfassaden & Systeme',
       sol3Desc: 'Moderne Fassadenlösungen für maximalen Lichteinfall bei hoher statischer Belastbarkeit und Energieeffizienz.',
-      sol4: 'Panorama-Schiebetüren',
-      sol4Desc: 'Nahtlose Übergänge zwischen Innen- und Außenbereich mit schwellenloser Barrierefreiheit und Mechatronik-Antrieb.',
+      sol4: 'Maßgeschneiderte Sonderlösungen',
+      sol4Desc: 'Umfassende funktionale und dekorative Aluminiumlösungen, die Gebäude sowohl ästhetisch als auch technisch aufwerten, einschließlich Blechfassaden, Kantblechanwendungen und ACM-Verbundplatten.',
 
       catWindows: 'Aluminium-Fenster',
       catWindowsDesc: 'Hochleistungs-Fenstersysteme entwickelt für hervorragende Wärmedämmung, Langlebigkeit, Sicherheit und zeitgemäße Ästhetik.',
@@ -394,8 +423,10 @@ export const translations = {
       pillar8Desc: 'Aufbau vertrauensvoller Partnerschaften basierend auf Verlässlichkeit und dauerhafter Qualität.',
 
       sustainabilityTitle: 'Nachhaltiges Bauen & Unser Versprechen',
-      sustainabilityP1: 'Nachhaltigkeit: Lampag setzt auf langlebige, hochwärmegedämmte Aluminiumsysteme, die einen wertvollen Beitrag zur Gesamtenergieeffizienz moderner Gebäude leisten.',
-      sustainabilityP2: 'Unser Versprechen: Qualität, Präzision und Verlässlichkeit stehen im Mittelpunkt unseres Handelns. Wir schaffen dauerhafte Partnerschaften durch erstklassigen Service und erfolgreiche Projektabwicklung.'
+      sustainabilitySub1: 'Nachhaltigkeit',
+      sustainabilityP1: 'Lampag setzt auf langlebige, hochwärmegedämmte Aluminiumsysteme, die einen wertvollen Beitrag zur Gesamtenergieeffizienz moderner Gebäude leisten. Durch die Kombination moderner Ingenieurkunst mit erstklassigen Materialien schaffen wir Bauwerke, die funktional und zukunftssicher sind.',
+      sustainabilitySub2: 'Unser Versprechen',
+      sustainabilityP2: 'Qualität, Präzision und Verlässlichkeit stehen im Mittelpunkt unseres Handelns. Ob Wohnbau oder gewerbliches Großprojekt – Lampag liefert innovative Aluminiumlösungen, die höchste Ansprüche erfüllen. Unser Ziel sind langfristige Partnerschaften durch verlässlichen Service, technische Exzellenz und erfolgreiche Projektabwicklung.'
     },
     services: {
       heroTag: 'LEISTUNGEN & EXPERTISE',
@@ -565,6 +596,7 @@ export const translations = {
     footer: {
       aboutTitle: 'LAMPAG GmbH',
       aboutDesc: 'Nachhaltige Produkte für die Zukunft. Vertrauen in Qualität durch zertifizierte Partnerschaften mit führenden Systemanbietern.',
+      certifiedPartner: 'ZERTIFIZIERTER PARTNER',
       partOf: 'MITGLIED DER',
       schucoPartner: 'SCHÜCO PARTNER',
       aluGroup: 'ALU GROUP',
@@ -572,6 +604,32 @@ export const translations = {
       contactTitle: 'KONTAKT',
       dortmund: 'Strümpenbusch 3, 44357 Dortmund',
       rights: '© 2026 Lampag. Alle Rechte vorbehalten. | Impressum | Datenschutz'
+    },
+    seo: {
+      home: {
+        title: 'Präzisions-Aluminiumsysteme | LAMPAG GmbH',
+        desc: 'Entdecken Sie präzisionsgefertigte Aluminiumfenster, -türen und Vorhangfassaden von LAMPAG – energieeffizient, langlebig und architektonisch anspruchsvoll.'
+      },
+      about: {
+        title: 'Über uns | Präzisions-Aluminiumbau | LAMPAG GmbH',
+        desc: 'Erfahren Sie mehr über die LAMPAG GmbH, zertifizierter Schüco-Partner und Alu Group-Mitglied mit über 700 realisierten Projekten und deutscher Ingenieurskunst.'
+      },
+      services: {
+        title: 'Engineering & Serviceleistungen | LAMPAG GmbH',
+        desc: 'Ganzheitliche Ingenieurdienstleistungen für Aluminiumsysteme: CAD/BIM-Planung, statische Optimierung, Beratung und professionelle Montagebegleitung.'
+      },
+      products: {
+        title: 'Aluminiumfenster, -türen & Fassaden | LAMPAG GmbH',
+        desc: 'Entdecken Sie zertifizierte Schüco Aluminiumfenster, Haustüren, Hebeschiebesysteme, Vorhangfassaden und maßgeschneiderte Blech- und Verbundplatten.'
+      },
+      portfolio: {
+        title: 'Referenzen & Bauprojekte | LAMPAG GmbH',
+        desc: 'Entdecken Sie ausgewählte Architekturprojekte und Referenzen mit hochleistungsfähigen LAMPAG Aluminiumfenstern, -türen und Fassaden in ganz Europa.'
+      },
+      contact: {
+        title: 'Kontakt & Technische Beratung | LAMPAG GmbH',
+        desc: 'Kontaktieren Sie die LAMPAG GmbH in Dortmund für technische Beratung, Ausschreibungen, CAD-Pläne und Projektanfragen zu modernen Aluminiumsystemen.'
+      }
     }
   }
 };

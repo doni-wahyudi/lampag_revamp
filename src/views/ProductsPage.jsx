@@ -155,8 +155,8 @@ const ProductsPage = ({ setSelectedProduct }) => {
                     {isGerman ? 'Offizieller Schüco-Partner:' : 'Official Certified Schüco Partner:'}
                   </strong>{' '}
                   {isGerman 
-                    ? '26 zertifizierte Profilsysteme für Fenster, Türen, Schiebetüren und Fassaden aus deutscher Präzisionsfertigung.'
-                    : '26 certified profile systems for windows, doors, sliding systems, and façades with German precision engineering.'}
+                    ? 'Zertifizierte Profilsysteme für Fenster, Türen, Schiebetüren und Fassaden aus deutscher Präzisionsfertigung.'
+                    : 'Certified profile systems for windows, doors, sliding systems, and façades with German precision engineering.'}
                 </div>
               </div>
             </div>
@@ -209,8 +209,8 @@ const ProductsPage = ({ setSelectedProduct }) => {
                 <ShieldCheck size={18} color="var(--lampag-green)" />
                 <span style={{ fontSize: '0.85rem', fontWeight: 800, color: 'var(--lampag-green-dark)' }}>
                   {isGerman 
-                    ? `${productsCatalog.length} Zertifizierte Schüco- & Sonderprofilsysteme` 
-                    : `${productsCatalog.length} Certified Schüco & Custom Profile Systems`}
+                    ? 'Zertifizierte Schüco- & Sonderprofilsysteme' 
+                    : 'Certified Schüco & Custom Profile Systems'}
                 </span>
               </div>
             </div>
@@ -381,7 +381,7 @@ const ProductsPage = ({ setSelectedProduct }) => {
                           {primaryImage ? (
                             <img
                               src={primaryImage}
-                              alt={product.name}
+                              alt={`${product.name} - ${product.category || 'Aluminium System'} precision architectural profile`}
                               style={{
                                 width: '100%',
                                 height: '100%',
@@ -548,7 +548,7 @@ const ProductsPage = ({ setSelectedProduct }) => {
                               fontFamily: 'var(--font-mono)',
                               color: '#94a3b8'
                             }}>
-                              SCHÜCO
+                              {product.isCustom ? 'LAMPAG CUSTOM' : 'SCHÜCO'}
                             </span>
                           </div>
                         </div>

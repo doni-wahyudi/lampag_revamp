@@ -42,8 +42,8 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
     {
       ...customProduct,
       id: 'custom',
-      title: isGerman ? 'Maßgeschneiderte Sonderlösungen' : 'Customized Solutions',
-      desc: isGerman ? customProduct.specDE : (customProduct.spec || customProduct.description),
+      title: t.home?.sol4 || (isGerman ? 'Maßgeschneiderte Sonderlösungen' : 'Customized Solutions'),
+      desc: (isGerman ? t.home?.sol4Desc : t.home?.sol4Desc) || (isGerman ? customProduct.specDE : customProduct.spec),
       bgImg: customProduct.imageUrl,
       specs: isGerman ? 'Alu-Blechfassaden & Verbundplatten (ACM)' : 'Sheet Metal & Composite Panels (ACM)'
     }
@@ -420,11 +420,14 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
               >
                 <div style={{
                   height: '140px',
-                  backgroundImage: `url("${proj.image}")`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  position: 'relative'
+                  position: 'relative',
+                  overflow: 'hidden'
                 }}>
+                  <img
+                    src={proj.image}
+                    alt={`${proj.title} - ${proj.systems} architectural aluminium installation in ${proj.location}`}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  />
                   {idx === 0 && (
                     <span style={{
                       position: 'absolute',

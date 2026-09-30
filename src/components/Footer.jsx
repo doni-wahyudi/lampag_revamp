@@ -58,20 +58,20 @@ const Footer = ({ setActivePage }) => {
               {t.footer.aboutDesc}
             </p>
 
-            {/* PART OF / CERTIFIED PARTNER BADGES */}
-            <div>
-              <div style={{
-                fontSize: '0.75rem',
-                fontFamily: 'var(--font-mono)',
-                fontWeight: 700,
-                color: 'var(--lampag-green)',
-                letterSpacing: '0.08em',
-                marginBottom: '12px',
-                textTransform: 'uppercase'
-              }}>
-                {t.footer.partOf}
-              </div>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', alignItems: 'center' }}>
+            {/* CERTIFIED PARTNER & PART OF / NETWORK BADGES */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', alignItems: 'flex-start' }}>
+              <div>
+                <div style={{
+                  fontSize: '0.72rem',
+                  fontFamily: 'var(--font-mono)',
+                  fontWeight: 700,
+                  color: 'var(--lampag-green)',
+                  letterSpacing: '0.08em',
+                  marginBottom: '8px',
+                  textTransform: 'uppercase'
+                }}>
+                  {t.footer.certifiedPartner || 'CERTIFIED PARTNER'}
+                </div>
                 {/* Official Schüco Partner Styled Badge */}
                 <div style={{
                   backgroundColor: '#0a140e',
@@ -107,7 +107,20 @@ const Footer = ({ setActivePage }) => {
                     PARTNER
                   </div>
                 </div>
+              </div>
 
+              <div>
+                <div style={{
+                  fontSize: '0.72rem',
+                  fontFamily: 'var(--font-mono)',
+                  fontWeight: 700,
+                  color: 'var(--lampag-green)',
+                  letterSpacing: '0.08em',
+                  marginBottom: '8px',
+                  textTransform: 'uppercase'
+                }}>
+                  {t.footer.partOf || 'PART OF'}
+                </div>
                 {/* Official ALU Group Badge */}
                 <div style={{
                   backgroundColor: '#0a140e',
