@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import WireframePlaceholder from '../components/WireframePlaceholder';
 import { Mail, Phone, Printer, MapPin, Globe, Share2, Upload, CheckCircle2, Send } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
+import contactHeroImg from '../assets/hero/contact_hero.webp';
 
 const ContactPage = () => {
-  const { t } = useLanguage();
+  const { langCode, t } = useLanguage();
+  const isGerman = langCode === 'DE';
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -27,7 +28,7 @@ const ContactPage = () => {
       <section 
         className="hero-full-banner"
         style={{
-          backgroundImage: 'linear-gradient(rgba(10, 20, 14, 0.82), rgba(10, 20, 14, 0.92)), url("https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2000&q=85")'
+          backgroundImage: `linear-gradient(rgba(10, 20, 14, 0.84), rgba(10, 20, 14, 0.94)), url("${contactHeroImg}")`
         }}
       >
         <div className="container">
@@ -77,12 +78,53 @@ const ContactPage = () => {
             </div>
 
             <div>
-              <WireframePlaceholder
-                title="CONTACT HERO BRANDING"
-                direction="Clean, welcoming contact hero banner with subtle branding elements and structural profile cross-section."
-                aspectRatio="4/3"
-                height="360px"
-              />
+              <div style={{
+                position: 'relative',
+                borderRadius: 'var(--radius-md)',
+                overflow: 'hidden',
+                boxShadow: '0 20px 45px rgba(0,0,0,0.45)',
+                border: '1px solid rgba(57, 158, 82, 0.45)'
+              }}>
+                <img 
+                  src={contactHeroImg} 
+                  alt={isGerman 
+                    ? "Moderner Unternehmenshauptsitz und Architekturgebäude am Neuen Wall Hamburg" 
+                    : "Modern architectural corporate headquarters building entrance on Neuer Wall Hamburg"} 
+                  style={{ width: '100%', height: '340px', objectFit: 'cover', display: 'block' }}
+                />
+                <div style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  background: 'linear-gradient(transparent, rgba(10, 20, 14, 0.95))',
+                  padding: '16px 20px',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center'
+                }}>
+                  <div>
+                    <div style={{ color: '#ffffff', fontSize: '0.92rem', fontWeight: 800 }}>
+                      {isGerman ? 'LAMPAG Zentrale Neuer Wall Hamburg' : 'LAMPAG Headquarters Neuer Wall Hamburg'}
+                    </div>
+                    <div style={{ color: '#94a3b8', fontSize: '0.74rem', fontFamily: 'var(--font-mono)' }}>
+                      {isGerman ? 'Persönliche Beratung & Technische Kalkulation' : 'Personal Consultation & Estimations'}
+                    </div>
+                  </div>
+                  <div style={{
+                    backgroundColor: 'var(--lampag-green)',
+                    color: '#ffffff',
+                    fontSize: '0.72rem',
+                    fontWeight: 800,
+                    padding: '4px 10px',
+                    borderRadius: 'var(--radius-sm)',
+                    letterSpacing: '0.04em',
+                    textTransform: 'uppercase'
+                  }}>
+                    {isGerman ? 'Zentrale' : 'Hamburg HQ'}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -291,8 +333,18 @@ const ContactPage = () => {
                       <MapPin size={16} color="#ffffff" />
                     </div>
                     <div>
-                      <strong style={{ color: 'var(--text-main)' }}>{t.contact.locationLabel}</strong><br />
-                      Strümpenbusch 3, 44357 Dortmund
+                      <strong style={{ color: 'var(--text-main)' }}>Hamburg Office:</strong><br />
+                      Neuer Wall 2-6, 20354 Hamburg, Germany
+                    </div>
+                  </div>
+
+                  <div style={{ display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
+                    <div style={{ width: '32px', height: '32px', backgroundColor: 'var(--lampag-green)', borderRadius: 'var(--radius-sm)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
+                      <MapPin size={16} color="#ffffff" />
+                    </div>
+                    <div>
+                      <strong style={{ color: 'var(--text-main)' }}>Dortmund Facility:</strong><br />
+                      Strümpenbusch 3, 44357 Dortmund, Germany
                     </div>
                   </div>
 
@@ -301,7 +353,7 @@ const ContactPage = () => {
                       <Phone size={16} color="#ffffff" />
                     </div>
                     <div>
-                      <strong style={{ color: 'var(--text-main)' }}>{t.contact.phoneLabel}</strong> WIP
+                      <strong style={{ color: 'var(--text-main)' }}>{t.contact.phoneLabel || 'Phone:'}</strong> +49 040 571 996 390
                     </div>
                   </div>
 
@@ -310,7 +362,7 @@ const ContactPage = () => {
                       <Printer size={16} color="#ffffff" />
                     </div>
                     <div>
-                      <strong style={{ color: 'var(--text-main)' }}>{t.contact.faxLabel}</strong> WIP
+                      <strong style={{ color: 'var(--text-main)' }}>{t.contact.faxLabel || 'Fax:'}</strong> +49 040 571 996 381
                     </div>
                   </div>
 
@@ -319,7 +371,7 @@ const ContactPage = () => {
                       <Mail size={16} color="#ffffff" />
                     </div>
                     <div>
-                      <strong style={{ color: 'var(--text-main)' }}>{t.contact.emailLabel}</strong> info@lampag.com
+                      <strong style={{ color: 'var(--text-main)' }}>{t.contact.emailLabel || 'Email:'}</strong> info@lampag.com
                     </div>
                   </div>
                 </div>
@@ -371,13 +423,24 @@ const ContactPage = () => {
                 </div>
               </div>
 
-              {/* Map Wireframe Placeholder */}
-              <WireframePlaceholder
-                title="GEOGRAPHIC LOCATION MAP"
-                direction="Map overview showing Strümpenbusch 3, 44357 Dortmund facility."
-                aspectRatio="16/9"
-                height="190px"
-              />
+              {/* Interactive Location Map */}
+              <div style={{
+                borderRadius: 'var(--radius-sm)',
+                overflow: 'hidden',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
+                border: '1px solid var(--border-dim)',
+                height: '190px'
+              }}>
+                <iframe
+                  title="LAMPAG GmbH Neuer Wall Hamburg Location"
+                  src="https://maps.google.com/maps?q=Neuer%20Wall%202-6,%2020354%20Hamburg,%20Germany&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, display: 'block' }}
+                  allowFullScreen=""
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
         </div>

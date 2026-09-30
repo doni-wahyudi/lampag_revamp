@@ -1,0 +1,6 @@
+# robots.txt for LAMPAG GmbH
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://lampag.com/sitemap.xml

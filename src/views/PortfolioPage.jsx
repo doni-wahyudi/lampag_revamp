@@ -1,10 +1,12 @@
 import React, { useState, useRef } from 'react';
-import WireframePlaceholder from '../components/WireframePlaceholder';
-import { MapPin, ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { MapPin, ArrowUpRight, ChevronLeft, ChevronRight, ShieldCheck } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
+import { portfolioProjects } from '../data/portfolioData';
+import portfolioHeroImg from '../assets/hero/portfolio_hero.webp';
 
 const PortfolioPage = ({ setSelectedProject }) => {
-  const { t } = useLanguage();
+  const { langCode, t } = useLanguage();
+  const isGerman = langCode === 'DE';
   const [filter, setFilter] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
@@ -17,116 +19,7 @@ const PortfolioPage = ({ setSelectedProject }) => {
     { id: 'hospitality', label: t.portfolio.tabHosp }
   ];
 
-  const projects = [
-    {
-      id: 1,
-      title: 'Hamburg Commercial Office Hub',
-      location: 'Hamburg, Germany',
-      sectorId: 'commercial',
-      sector: t.portfolio.tabCom,
-      systems: 'Schüco AF UDC 80 Curtain Wall & Sliding Doors',
-      summary: 'Slim profile sliding doors maximizing natural light while maintaining high thermal performance and structural rigidity.'
-    },
-    {
-      id: 2,
-      title: 'Dortmund Modern Residential Complex',
-      location: 'Dortmund, Germany',
-      sectorId: 'residential',
-      sector: t.portfolio.tabRes,
-      systems: 'Schüco AWS 75.SI+ & AD 75 FD Folding Doors',
-      summary: 'Energy-efficient triple-glazed aluminium window profiles engineered for acoustic sound insulation and Passive House efficiency.'
-    },
-    {
-      id: 3,
-      title: 'Frankfurt Grand Hospitality Tower',
-      location: 'Frankfurt, Germany',
-      sectorId: 'hospitality',
-      sector: t.portfolio.tabHosp,
-      systems: 'Schüco AF UDC 80 Unitized Façade & AWS 75.PD',
-      summary: 'Panoramic all-glass unitized façade panels pre-assembled offsite for fast architectural cladding in central business district.'
-    },
-    {
-      id: 4,
-      title: 'Bremen Municipal Technical Institute',
-      location: 'Bremen, Germany',
-      sectorId: 'hospitality',
-      sector: t.portfolio.tabHosp,
-      systems: 'Schüco FWS 60.SG & AWS 70.HI Windows',
-      summary: 'High-durability structural glazing curtain wall installed with automated ventilation actuators and solar shading integration.'
-    },
-    {
-      id: 5,
-      title: 'Munich Luxury Villa Residence',
-      location: 'Munich, Germany',
-      sectorId: 'residential',
-      sector: t.portfolio.tabRes,
-      systems: 'Schüco ASE 67 PD Sliding Doors & Glass Railings',
-      summary: 'Floor-to-ceiling panoramic sliding doors with flush sill thresholds creating seamless indoor-outdoor transitions.'
-    },
-    {
-      id: 6,
-      title: 'Cologne Corporate Headquarters',
-      location: 'Cologne, Germany',
-      sectorId: 'commercial',
-      sector: t.portfolio.tabCom,
-      systems: 'Schüco FWS 50.SG & ADS 75.SI Entrance Systems',
-      summary: 'Custom heavy-traffic entrance system with burglar resistance RC3 and structural glazing glass fins.'
-    },
-    {
-      id: 7,
-      title: 'Stuttgart Innovation & Tech Campus',
-      location: 'Stuttgart, Germany',
-      sectorId: 'commercial',
-      sector: t.portfolio.tabCom,
-      systems: 'Schüco FWS 60.CV & AWS 90.SI+ Windows',
-      summary: 'Concealed vent façade elements delivering architectural transparency, thermal acoustic comfort, and integrated automation.'
-    },
-    {
-      id: 8,
-      title: 'Düsseldorf Lakeside Luxury Penthouse',
-      location: 'Düsseldorf, Germany',
-      sectorId: 'residential',
-      sector: t.portfolio.tabRes,
-      systems: 'Schüco ASE 80.HI & Panoramic Glass Balustrades',
-      summary: 'High thermal insulation sliding systems with motorized drive and zero-threshold flush accessibility facing open water views.'
-    },
-    {
-      id: 9,
-      title: 'Berlin Central Boutique Hotel',
-      location: 'Berlin, Germany',
-      sectorId: 'hospitality',
-      sector: t.portfolio.tabHosp,
-      systems: 'Schüco AWS 75 BS.SI+ & ADS 90.SI Doors',
-      summary: 'Acoustic-rated soundproof block window systems engineered for urban center tranquility and Class RC3 security.'
-    },
-    {
-      id: 10,
-      title: 'Hanover Medical Research Pavilion',
-      location: 'Hanover, Germany',
-      sectorId: 'hospitality',
-      sector: t.portfolio.tabHosp,
-      systems: 'Schüco FWS 50 & AWS 70.HI Antibacterial Profiles',
-      summary: 'Hygienic structural glazing façade with custom solar shading louvres and precision thermal insulation.'
-    },
-    {
-      id: 11,
-      title: 'Nuremberg Green Energy Headquarters',
-      location: 'Nuremberg, Germany',
-      sectorId: 'commercial',
-      sector: t.portfolio.tabCom,
-      systems: 'Schüco FWS 50 & Integrated Photovoltaic BIPV',
-      summary: 'Sustainable unitized glass envelope with custom BAPV panels achieving net-zero building energy targets.'
-    },
-    {
-      id: 12,
-      title: 'Leipzig Urban Residential Quarter',
-      location: 'Leipzig, Germany',
-      sectorId: 'residential',
-      sector: t.portfolio.tabRes,
-      systems: 'Schüco AWS 65 & ADS 65 Entry Systems',
-      summary: 'Modern multi-family residential development featuring durable aluminium balcony doors and energy-efficient double glazing.'
-    }
-  ];
+  const projects = portfolioProjects;
 
   const filteredProjects = filter === 'all' 
     ? projects 
@@ -157,7 +50,7 @@ const PortfolioPage = ({ setSelectedProject }) => {
       <section 
         className="hero-full-banner"
         style={{
-          backgroundImage: 'linear-gradient(rgba(10, 20, 14, 0.82), rgba(10, 20, 14, 0.92)), url("https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=2000&q=85")'
+          backgroundImage: `linear-gradient(rgba(10, 20, 14, 0.84), rgba(10, 20, 14, 0.94)), url("${portfolioHeroImg}")`
         }}
       >
         <div className="container">
@@ -206,12 +99,53 @@ const PortfolioPage = ({ setSelectedProject }) => {
             </div>
 
             <div>
-              <WireframePlaceholder
-                title="PORTFOLIO HERO PHOTO GRID"
-                direction="Grid or hero photo showcasing completed residential & commercial building projects."
-                aspectRatio="4/3"
-                height="320px"
-              />
+              <div style={{
+                position: 'relative',
+                borderRadius: 'var(--radius-md)',
+                overflow: 'hidden',
+                boxShadow: '0 20px 45px rgba(0,0,0,0.45)',
+                border: '1px solid rgba(57, 158, 82, 0.45)'
+              }}>
+                <img 
+                  src={portfolioHeroImg} 
+                  alt={isGerman 
+                    ? "Ausgewählte Referenzprojekte mit hochwertigen Aluminiumfenstern und Fassadensystemen" 
+                    : "Architectural luxury residential and commercial showcase of completed projects"} 
+                  style={{ width: '100%', height: '340px', objectFit: 'cover', display: 'block' }}
+                />
+                <div style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  background: 'linear-gradient(transparent, rgba(10, 20, 14, 0.95))',
+                  padding: '16px 20px',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center'
+                }}>
+                  <div>
+                    <div style={{ color: '#ffffff', fontSize: '0.92rem', fontWeight: 800 }}>
+                      {isGerman ? 'Realisierte Architektur & Fassadenprojekte' : 'Delivered Architectural Landmark Projects'}
+                    </div>
+                    <div style={{ color: '#94a3b8', fontSize: '0.74rem', fontFamily: 'var(--font-mono)' }}>
+                      {isGerman ? '700+ Internationale Referenzen // Hamburg bis USA' : '700+ Global References // Hamburg to USA'}
+                    </div>
+                  </div>
+                  <div style={{
+                    backgroundColor: 'var(--lampag-green)',
+                    color: '#ffffff',
+                    fontSize: '0.72rem',
+                    fontWeight: 800,
+                    padding: '4px 10px',
+                    borderRadius: 'var(--radius-sm)',
+                    letterSpacing: '0.04em',
+                    textTransform: 'uppercase'
+                  }}>
+                    {isGerman ? 'Referenzen' : '700+ Projects'}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -220,6 +154,29 @@ const PortfolioPage = ({ setSelectedProject }) => {
       {/* PORTFOLIO GRID SHOWCASE - FULL SCREEN 2 */}
       <section className="screen-section" style={{ backgroundColor: '#ffffff' }} ref={gridTopRef}>
         <div className="container">
+          {/* Section Heading for SEO Hierarchy */}
+          <div style={{ marginBottom: '20px' }}>
+            <span style={{
+              color: 'var(--lampag-green)',
+              fontWeight: 700,
+              fontSize: '0.82rem',
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              fontFamily: 'var(--font-mono)'
+            }}>
+              {isGerman ? 'REFERENZEN & PROJEKTE' : 'ARCHITECTURAL PORTFOLIO'}
+            </span>
+            <h2 style={{
+              fontSize: '2rem',
+              fontWeight: 800,
+              color: 'var(--text-main)',
+              margin: '6px 0 0 0',
+              letterSpacing: '-0.02em'
+            }}>
+              {isGerman ? 'Ausgewählte Referenzen & Bauprojekte' : 'Featured Architectural References'}
+            </h2>
+          </div>
+
           {/* Header Controls: Filters + Count */}
           <div style={{
             display: 'flex',
@@ -291,13 +248,36 @@ const PortfolioPage = ({ setSelectedProject }) => {
                 }}
                 onClick={() => setSelectedProject(proj)}
               >
-                <div style={{ width: '100%', height: '140px', overflow: 'hidden', borderRadius: 'var(--radius-sm)' }}>
-                  <WireframePlaceholder
-                    title={`PROJECT: ${proj.title}`}
-                    direction="High-quality photo of completed project."
-                    aspectRatio="16/9"
-                    height="140px"
+                <div style={{ width: '100%', height: '150px', overflow: 'hidden', borderRadius: 'var(--radius-sm)', position: 'relative' }}>
+                  <img 
+                    src={proj.image} 
+                    alt={isGerman ? (proj.titleDE || proj.title) : proj.title} 
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                    onError={(e) => {
+                      e.currentTarget.src = 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80';
+                    }}
                   />
+                  {proj.isOfficialLampag && (
+                    <span style={{
+                      position: 'absolute',
+                      top: '8px',
+                      left: '8px',
+                      backgroundColor: 'var(--lampag-green)',
+                      color: '#ffffff',
+                      fontSize: '0.64rem',
+                      fontWeight: 800,
+                      padding: '2px 8px',
+                      borderRadius: 'var(--radius-sm)',
+                      textTransform: 'uppercase',
+                      boxShadow: '0 2px 6px rgba(0,0,0,0.25)',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '4px'
+                    }}>
+                      <ShieldCheck size={11} />
+                      {isGerman ? 'LAMPAG-Referenz' : 'LAMPAG Project'}
+                    </span>
+                  )}
                 </div>
 
                 <div style={{ marginTop: '14px', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'space-between' }}>
@@ -311,19 +291,19 @@ const PortfolioPage = ({ setSelectedProject }) => {
                         padding: '2px 8px',
                         borderRadius: 'var(--radius-sm)'
                       }}>
-                        {proj.sector}
+                        {isGerman ? (proj.sectorDE || proj.sector) : proj.sector}
                       </span>
                       <span style={{ fontSize: '0.78rem', color: '#64748b', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                        <MapPin size={12} color="var(--lampag-green)" /> {proj.location}
+                        <MapPin size={12} color="var(--lampag-green)" /> {isGerman ? (proj.locationDE || proj.location) : proj.location}
                       </span>
                     </div>
 
                     <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '6px', minHeight: '2.6rem', lineHeight: 1.25 }}>
-                      {proj.title}
+                      {isGerman ? (proj.titleDE || proj.title) : proj.title}
                     </h3>
 
                     <p style={{ fontSize: '0.82rem', color: '#64748b', lineHeight: 1.45, marginBottom: '10px', minHeight: '48px' }}>
-                      {proj.summary}
+                      {isGerman ? (proj.summaryDE || proj.summary) : proj.summary}
                     </p>
 
                     <div style={{ 
@@ -339,7 +319,7 @@ const PortfolioPage = ({ setSelectedProject }) => {
                     }}>
                       <div>
                         <strong style={{ color: 'var(--text-main)' }}>Systems:</strong>{' '}
-                        <span style={{ color: 'var(--lampag-green-dark)', fontWeight: 700 }}>{proj.systems}</span>
+                        <span style={{ color: 'var(--lampag-green-dark)', fontWeight: 700 }}>{isGerman ? (proj.systemsDE || proj.systems) : proj.systems}</span>
                       </div>
                     </div>
                   </div>

@@ -6,13 +6,14 @@ export const translations = {
       services: 'SERVICES',
       whatweoffer: 'SERVICES',
       product: 'PRODUCTS',
+      products: 'PRODUCTS',
       portfolio: 'PORTFOLIO',
       contact: 'CONTACT'
     },
     hero: {
       tag: 'PRECISION ALUMINIUM SYSTEMS',
       subtitle: 'Precision Aluminium Systems for Modern Architecture',
-      title: 'Precision Aluminium Systems for Modern Buildings',
+      title: 'Welcome to the Future of Construction',
       desc: 'Precision-engineered windows, doors, and curtain wall systems delivering energy efficiency, durability, and lasting performance.',
       btnExplore: 'Explore Our Solutions',
       btnPortfolio: 'View Portfolio',
@@ -290,8 +291,8 @@ export const translations = {
     },
     seo: {
       home: {
-        title: 'Precision Aluminium Systems | LAMPAG GmbH',
-        desc: "Discover LAMPAG's precision-engineered aluminium windows, doors, and curtain wall systems, designed for energy efficiency, durability, and performance."
+        title: 'Welcome to the Future of Construction | LAMPAG GmbH',
+        desc: "Welcome to the Future of Construction: Discover LAMPAG's precision-engineered aluminium windows, doors, and curtain wall systems in Germany."
       },
       about: {
         title: 'About Us | Precision Aluminium Engineering | LAMPAG GmbH',
@@ -323,6 +324,7 @@ export const translations = {
       services: 'LEISTUNGEN',
       whatweoffer: 'LEISTUNGEN',
       product: 'PRODUKTE',
+      products: 'PRODUKTE',
       portfolio: 'REFERENZEN',
       contact: 'KONTAKT'
     },
@@ -607,8 +609,8 @@ export const translations = {
     },
     seo: {
       home: {
-        title: 'Präzisions-Aluminiumsysteme | LAMPAG GmbH',
-        desc: 'Entdecken Sie präzisionsgefertigte Aluminiumfenster, -türen und Vorhangfassaden von LAMPAG – energieeffizient, langlebig und architektonisch anspruchsvoll.'
+        title: 'Willkommen in der Zukunft des Bauens | LAMPAG GmbH',
+        desc: 'Willkommen in der Zukunft des Bauens: Präzisionsgefertigte Aluminiumfenster, -türen und Fassaden von LAMPAG – energieeffizient, modern und langlebig.'
       },
       about: {
         title: 'Über uns | Präzisions-Aluminiumbau | LAMPAG GmbH',

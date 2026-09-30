@@ -18,9 +18,11 @@ import {
   ChevronRight
 } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
+import servicesHeroImg from '../assets/hero/services_hero.webp';
 
 const WhatWeOfferPage = ({ setActivePage }) => {
-  const { t } = useLanguage();
+  const { langCode, t } = useLanguage();
+  const isGerman = langCode === 'DE';
 
   const services = [
     {
@@ -45,13 +47,13 @@ const WhatWeOfferPage = ({ setActivePage }) => {
       icon: <ShieldCheck size={20} color="var(--lampag-green)" />,
       title: t.services.s4,
       desc: t.services.s4Desc,
-      image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80'
+      image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=600&q=80'
     },
     {
       icon: <Truck size={20} color="var(--lampag-green)" />,
       title: t.services.s5,
       desc: t.services.s5Desc,
-      image: 'https://images.unsplash.com/photo-1541888946425-d0fbb18f156f?auto=format&fit=crop&w=600&q=80'
+      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80'
     },
     {
       icon: <CheckCircle2 size={20} color="var(--lampag-green)" />,
@@ -128,7 +130,7 @@ const WhatWeOfferPage = ({ setActivePage }) => {
       title: t.services.step4, 
       desc: t.services.step4Desc,
       icon: <ClipboardCheck size={18} color="var(--lampag-green)" />,
-      image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80'
+      image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=600&q=80'
     },
     { 
       step: '05', 
@@ -152,7 +154,7 @@ const WhatWeOfferPage = ({ setActivePage }) => {
       <section 
         className="hero-full-banner"
         style={{
-          backgroundImage: 'linear-gradient(rgba(10, 20, 14, 0.82), rgba(10, 20, 14, 0.92)), url("https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=2000&q=85")'
+          backgroundImage: `linear-gradient(rgba(10, 20, 14, 0.84), rgba(10, 20, 14, 0.94)), url("${servicesHeroImg}")`
         }}
       >
         <div className="container">
@@ -204,13 +206,15 @@ const WhatWeOfferPage = ({ setActivePage }) => {
               position: 'relative',
               borderRadius: 'var(--radius-md)',
               overflow: 'hidden',
-              boxShadow: '0 20px 40px rgba(0,0,0,0.35)',
-              border: '1px solid rgba(57, 158, 82, 0.4)'
+              boxShadow: '0 20px 45px rgba(0,0,0,0.45)',
+              border: '1px solid rgba(57, 158, 82, 0.45)'
             }}>
               <img 
-                src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80" 
-                alt="Precision-engineered aluminium curtain wall and façade CAD BIM structural modeling" 
-                style={{ width: '100%', height: '320px', objectFit: 'cover', display: 'block' }}
+                src={servicesHeroImg} 
+                alt={isGerman 
+                  ? "CAD- und BIM-Planungsstudio für Schüco Aluminium-Vorhangfassaden und Fenstersysteme" 
+                  : "Precision-engineered aluminium curtain wall and façade CAD BIM structural modeling studio"} 
+                style={{ width: '100%', height: '340px', objectFit: 'cover', display: 'block' }}
               />
               <div style={{
                 position: 'absolute',
@@ -224,18 +228,24 @@ const WhatWeOfferPage = ({ setActivePage }) => {
                 alignItems: 'center'
               }}>
                 <div>
-                  <div style={{ color: '#ffffff', fontSize: '0.88rem', fontWeight: 800 }}>CAD & BIM Structural Modeling</div>
-                  <div style={{ color: '#94a3b8', fontSize: '0.72rem', fontFamily: 'var(--font-mono)' }}>German Precision Façade Planning</div>
+                  <div style={{ color: '#ffffff', fontSize: '0.92rem', fontWeight: 800 }}>
+                    {isGerman ? 'CAD / BIM Fassadenstatik & Werkplanung' : 'CAD / BIM Façade Statics & Shop Drawings'}
+                  </div>
+                  <div style={{ color: '#94a3b8', fontSize: '0.74rem', fontFamily: 'var(--font-mono)' }}>
+                    {isGerman ? '20+ Ingenieure & Architekten // Hamburg & Dortmund' : '20+ Architects & Engineers // Hamburg & Dortmund'}
+                  </div>
                 </div>
                 <div style={{
                   backgroundColor: 'var(--lampag-green)',
                   color: '#ffffff',
-                  fontSize: '0.7rem',
+                  fontSize: '0.72rem',
                   fontWeight: 800,
-                  padding: '3px 8px',
-                  borderRadius: 'var(--radius-sm)'
+                  padding: '4px 10px',
+                  borderRadius: 'var(--radius-sm)',
+                  letterSpacing: '0.04em',
+                  textTransform: 'uppercase'
                 }}>
-                  SCHÜCO PARTNER
+                  {isGerman ? 'Planungsbüro' : 'Engineering'}
                 </div>
               </div>
             </div>
@@ -284,6 +294,7 @@ const WhatWeOfferPage = ({ setActivePage }) => {
                     src={item.image} 
                     alt={`${item.title} - Precision aluminium engineering and technical consultation service`} 
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                    onError={(e) => { e.currentTarget.src = 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=600&q=80'; }}
                   />
                   <div style={{
                     position: 'absolute',
@@ -351,6 +362,7 @@ const WhatWeOfferPage = ({ setActivePage }) => {
                     src={ind.image} 
                     alt={`${ind.title} - Architectural aluminium systems and building façade application`} 
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                    onError={(e) => { e.currentTarget.src = 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=600&q=80'; }}
                   />
                   <div style={{
                     position: 'absolute',
@@ -428,6 +440,7 @@ const WhatWeOfferPage = ({ setActivePage }) => {
                       src={proc.image} 
                       alt={`${proc.title} - LAMPAG engineering and fabrication milestone`} 
                       style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                      onError={(e) => { e.currentTarget.src = 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=600&q=80'; }}
                     />
                     <div style={{
                       position: 'absolute',

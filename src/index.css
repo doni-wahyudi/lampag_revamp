@@ -1,5 +1,7 @@
 :root {
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Myriad Pro', 'Myriad', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-body: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif;
+  --font-sans: var(--font-body);
   --font-mono: 'Space Mono', monospace;
 
   /* Architectural Wireframe Color Tokens */
@@ -10,7 +12,7 @@
   
   --border-dim: #cbd5e1;
   --border-strong: #64748b;
-  --border-accent: #399e52;
+  --border-accent: #68b824;
   
   --text-main: #0f172a;
   --text-muted: #64748b;
@@ -20,11 +22,13 @@
   --blueprint-bg: #f0f9ff;
   --blueprint-line: rgba(2, 132, 199, 0.15);
   
-  /* Lampag Brand Green Color Palette */
-  --lampag-green: #399e52;
-  --lampag-green-hover: #2e8243;
+  /* Lampag Official Brand Palette (Pantone 368 C & Pantone 446 Anthracite) */
+  --lampag-green: #68b824;
+  --lampag-green-hover: #589e1e;
   --lampag-green-dark: #1b3323;
-  --lampag-green-subtle: #ebf7ee;
+  --lampag-green-subtle: #f0f9ed;
+  --lampag-anthracite: #424244;
+  --lampag-anthracite-dark: #2c2c2e;
   
   --radius-sm: 4px;
   --radius-md: 8px;
@@ -42,12 +46,16 @@
 }
 
 body {
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   background-color: var(--bg-primary);
   color: var(--text-main);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
 }
 
 /* Blueprint Grid Mode Background */

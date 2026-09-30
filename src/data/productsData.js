@@ -599,9 +599,43 @@ export const productsCatalog = [
       'Factory pre-fabrication options for rapid site mounting'
     ]
   },
+  {
+    id: 'ucc-65-sg',
+    folder: 'UCC 65 SG',
+    name: 'Schüco UCC 65 SG',
+    categoryKey: 'facades',
+    categoryName: 'Curtain Wall & Façade Systems',
+    categoryNameDE: 'Vorhang- & Elementfassaden',
+    series: 'Unitized Custom Construction (Structural Glazing)',
+    tagline: 'High-performance unitized structural glazing façade system for fast, weather-independent installation',
+    taglineDE: 'Hochleistungsfähige Elementfassade mit Ganzglas-Optik (SG) für schnelle und witterungsunabhängige Montage',
+    spec: 'The Schüco UCC 65 SG (Unitised Customised Construction) combines the expansive, all-glass appearance of a structural glazing façade on the exterior with narrow interior face widths of 65 mm. As a unitised modular system, large-format panels are pre-assembled and glazed offsite in factory-controlled conditions, drastically reducing installation time on-site and eliminating external scaffolding requirements. Tested to comply with EN and ASTM standards, it seamlessly integrates large insert units like Schüco AWS 114 / AWS 114 SG with vent weights up to 250 kg.',
+    specDE: 'Die Schüco UCC 65 SG (Unitised Customised Construction) vereint die repräsentative Ganzglas-Optik einer Structural Glazing-Fassade auf der Außenseite mit filigranen 65 mm Ansichtsbreiten im Innenbereich. Als modular aufgebautes Elementfassadensystem werden die Bauelemente witterungsunabhängig im Werk vorgefertigt und verglast, was die Bauzeit vor Ort drastisch verkürzt und den Gerüstaufwand minimiert. Geprüft nach europäischen und amerikanischen Normen (EN & ASTM) ermöglicht das System die nahtlose Integration großformatiger Einsatzelemente wie Schüco AWS 114 / AWS 114 SG bis 250 kg Flügelgewicht.',
+    depth: '125 mm – 175 mm',
+    faceWidth: '65 mm (Internal) / All-Glass (Exterior)',
+    uValue: 'Uf from 2.4 to 2.7 W/(m²K)',
+    soundReduction: 'Up to 47 dB (Rw)',
+    burglarResistance: 'Up to RC2 (DIN EN 1627)',
+    schuecoUrlDE: 'https://alugp.com/de/schueco-ucc-65-sg/',
+    schuecoUrlEN: 'https://alugp.com/schueco-ucc-65-sg/',
+    features: [
+      'Modular prefabrication for rapid, scaffolding-free crane installation on high-rise structures',
+      'Exterior structural silicone flush glazing creating an uninterrupted glass curtain envelope',
+      'Slim 65 mm interior sightline maximizing architectural openness and natural daylighting',
+      'Integration of motorized or manual Schüco AWS 114 projected top-hung and parallel-opening vents',
+      'Tested and certified to EN and ASTM building envelope structural, air, and water tightness standards'
+    ],
+    featuresDE: [
+      'Werkseitige Vorfertigung für schnelle, gerüstlose Kranmontage im Geschoss- und Hochhausbau',
+      'Außenbündige Structural-Glazing-Verglasung für eine homogene, unterbrechungsfreie Glasarchitektur',
+      'Filigrane 65 mm Innenansichtsbreite für maximale Transparenz und optimalen Tageslichteinfall',
+      'Voll integrierbare Schüco AWS 114 Senkklapp- oder Parallel-Ausstell-Fenster bis 250 kg Flügelgewicht',
+      'Geprüfte Systemqualität nach europäischen und internationalen Baustandards (EN & ASTM)'
+    ]
+  },
 
   // =========================================================================
-  // 4.4 CUSTOMIZED ALUMINIUM SOLUTIONS (/product/custom) - 2 Products
+  // 4.4 CUSTOMIZED ALUMINIUM SOLUTIONS (/product/custom) - 4 Products
   // =========================================================================
   {
     id: 'aluminum-sheet-metal',
@@ -683,6 +717,84 @@ export const productsCatalog = [
       'Leicht & extrem biegesteif: Aluminium-Deckschichten mit schwer entflammbarem mineralischem Kern für optimale Statik',
       'Hohe Planheit & Formbarkeit: Perfekt geeignet für großformatige Fassadenkassetten und anspruchsvolle 3D-Formen',
       'Komplette Systemintegration: Statisch bemessene Unterkonstruktionen für zügige Montage und exakte Justierung'
+    ]
+  },
+  {
+    id: 'active-louvers',
+    folder: 'Active Louver',
+    name: 'Active Louver Systems',
+    nameDE: 'Verstellbare Lamellensysteme',
+    categoryKey: 'custom',
+    categoryName: 'Customized Aluminium Solutions',
+    categoryNameDE: 'Maßgeschneiderte Sonderlösungen',
+    series: 'Dynamic Solar Shading & Ventilation',
+    isCustom: true,
+    tagline: 'Engineered adjustable louver systems providing active solar shading, natural ventilation, and building energy efficiency.',
+    taglineDE: 'Funktionale, verstellbare Lamellensysteme für wirksamen Sonnenschutz, geregelte Lüftung und optimierte Energieeffizienz.',
+    spec: 'Engineered for high functionality and environmental performance, our active louver systems combine adjustable aluminium blades with manual or motorized building automation controls. Designed to actively manage solar heat gain, glare, and natural airflow, these systems significantly reduce HVAC cooling loads while contributing to building sustainability standards (DGNB, LEED, BREEAM). Profiles and brackets are custom-engineered for vertical, horizontal, or projected facade integration.',
+    specDE: 'Unsere aktiven Lamellensysteme verbinden funktionale Raffinesse mit energetischer Effizienz. Die verstellbaren Aluminiumlamellen können manuell oder über moderne Gebäudeleittechnik motorisch gesteuert werden. Sie regulieren solare Wärmeeinträge, Blendschutz und natürliche Belüftung, senken nachhaltig Kühllasten und unterstützen Zertifizierungen nach DGNB, LEED und BREEAM. Profile und Unterkonstruktionen werden exakt für vertikale, horizontale oder auskragende Fassadenanwendungen projektspezifisch gefertigt.',
+    depth: null,
+    faceWidth: null,
+    uValue: null,
+    soundReduction: null,
+    burglarResistance: null,
+    glassThickness: null,
+    customSpecNote: 'Blade profiles from 100 mm up to 450 mm. Manual, mechanical, or BMS-integrated motorized actuators with wind/sun automation sensors.',
+    customSpecNoteDE: 'Lamellenbreiten von 100 mm bis 450 mm lieferbar. Manuelle oder GLT-integrierte motorische Antriebe mit Wind- und Sonnenwächtern.',
+    schuecoUrlDE: null,
+    schuecoUrlEN: null,
+    features: [
+      'Dynamic solar shading reducing building cooling demand by up to 35%',
+      'Integrated motorized actuators compatible with smart building management systems (BMS)',
+      'High wind-load resistance and heavy-duty extruded aluminium alloy construction',
+      'Custom blade profiles including aerofoil, rectangular, and parabolic geometries',
+      'Durable architectural powder-coated (RAL) or anodized surface finishes'
+    ],
+    featuresDE: [
+      'Dynamischer Sonnenschutz mit Reduzierung des sommerlichen Kühlbedarfs um bis zu 35%',
+      'Integrierte Motorantriebe, kompatibel mit modernen Gebäudeleitsystemen (GLT/BMS)',
+      'Hohe Windlaststabilität durch stranggepresste Aluminiumlegierungen nach EN AW-6063',
+      'Flexible Lamellengeometrien: Tragflächen-, Rechteck- und Parabolprofile',
+      'Hochwetterfeste Pulverbeschichtung in allen RAL-Farben oder Eloxalqualität'
+    ]
+  },
+  {
+    id: 'architectural-louvers',
+    folder: 'Architectural Louver',
+    name: 'Architectural Louver Cladding',
+    nameDE: 'Architektonische Lamellenfassaden',
+    categoryKey: 'custom',
+    categoryName: 'Customized Aluminium Solutions',
+    categoryNameDE: 'Maßgeschneiderte Sonderlösungen',
+    series: 'Fixed Architectural Louvers & Brise-Soleil',
+    isCustom: true,
+    tagline: 'Fixed-profile architectural louver systems delivering distinct facade texture, rhythmic visual identity, and passive solar protection.',
+    taglineDE: 'Feststehende architektonische Lamellensysteme für prägnante Fassadentexturen, visuelle Rhythmen und passiven Sonnenschutz.',
+    spec: 'Architectural and decorative louvers are fixed-profile extruded aluminum elements engineered to elevate building facades with rich texture, rhythm, and distinct visual identity. In addition to aesthetic expression, these systems deliver permanent passive solar shading, privacy screening, and mechanical equipment concealment (rooftop plant enclosures, parking garage ventilation screens). Fabricated with concealed fasteners and structural substructures for flawless continuity.',
+    specDE: 'Architektonische und dekorative Lamellensysteme sind feststehende stranggepresste Aluminiumelemente, die Gebäudefassaden Tiefe, Rhythmus und eine unverwechselbare architektonische Identität verleihen. Neben der visuellen Gestaltung bieten sie wirksamen passiven Sonnenschutz, Sichtschutz sowie die optische Verkleidung von Technikaufbauten, Parkhäusern und Lüftungszentralen. Die Montage erfolgt über nicht sichtbare Befestigungen auf statisch bemessenen Unterkonstruktionen.',
+    depth: null,
+    faceWidth: null,
+    uValue: null,
+    soundReduction: null,
+    burglarResistance: null,
+    glassThickness: null,
+    customSpecNote: 'Continuous or segmented blade configurations with variable pitch angles and spacing tailored to solar orientation and airflow needs.',
+    customSpecNoteDE: 'Horizontale oder vertikale Lamellenanordnung mit flexiblen Neigungswinkeln und Lamellenabständen, abgestimmt auf Sonnenstand und Lüftungsanforderungen.',
+    schuecoUrlDE: null,
+    schuecoUrlEN: null,
+    features: [
+      'Architectural visual accentuation with crisp shadow lines and linear depth',
+      'Passive solar shading reducing solar heat gain coefficients on glazed facades',
+      'Effective ventilation screening for technical plant rooms, cooling towers, and carparks',
+      'Concealed bracket fixing systems ensuring clean, unobstructed facade appearances',
+      'Corrosion-resistant aluminium construction suited for extreme weather and coastal environments'
+    ],
+    featuresDE: [
+      'Prägnanter architektonischer Akzent mit klaren Schattenfugen und Tiefenwirkung',
+      'Passiver baulicher Sonnenschutz zur Reduzierung des g-Wertes verglaster Fassaden',
+      'Effektiver Wetterschutz und Belüftung für Lüftungszentralen, Rückkühlwerke und Parkdecks',
+      'Verdeckte Befestigungssysteme für ein sauberes, schraubenloses Fugenbild',
+      'Witterungs- und meerwasserbeständige Legierungen für langlebige Fassadenqualität'
     ]
   }
 ];

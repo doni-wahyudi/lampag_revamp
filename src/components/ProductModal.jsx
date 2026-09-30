@@ -359,7 +359,7 @@ const ProductModal = ({ product, onClose }) => {
           
           {product.isCustom ? (
             <a
-              href={`mailto:info@lampag.de?subject=${encodeURIComponent(isGerman ? `Projektanfrage: ${product.nameDE || product.name}` : `Custom Project Inquiry: ${product.name}`)}`}
+              href={`mailto:info@lampag.com?subject=${encodeURIComponent(isGerman ? `Projektanfrage: ${product.nameDE || product.name}` : `Custom Project Inquiry: ${product.name}`)}`}
               className="btn-pill-green"
               style={{ 
                 padding: '9px 22px', 
@@ -390,7 +390,11 @@ const ProductModal = ({ product, onClose }) => {
                 gap: '8px'
               }}
             >
-              <span>{isGerman ? 'Offizielle Schüco Produktseite öffnen' : 'Open Schüco Product Page'}</span>
+              <span>
+                {product.id === 'ucc-65-sg'
+                  ? (isGerman ? 'Offizielle UCC 65 SG Systemseite öffnen' : 'Open UCC 65 SG System Page')
+                  : (isGerman ? 'Offizielle Schüco Produktseite öffnen' : 'Open Schüco Product Page')}
+              </span>
               <ExternalLink size={15} />
             </a>
           )}

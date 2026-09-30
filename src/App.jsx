@@ -12,11 +12,44 @@ import ProductsPage from './views/ProductsPage';
 import PortfolioPage from './views/PortfolioPage';
 import ContactPage from './views/ContactPage';
 
+function getPageFromHash() {
+  if (typeof window === 'undefined') return 'home';
+  const raw = window.location.hash.replace('#', '').toLowerCase();
+  if (['home', 'about', 'services', 'whatweoffer', 'product', 'products', 'portfolio', 'contact'].includes(raw)) {
+    if (raw === 'whatweoffer') return 'services';
+    if (raw === 'product') return 'products';
+    return raw;
+  }
+  return 'home';
+}
+
 function AppContent() {
-  const [activePage, setActivePage] = useState('home');
+  const [activePage, setActivePageState] = useState(getPageFromHash);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedProject, setSelectedProject] = useState(null);
   const { langCode, t } = useLanguage();
+
+  // Helper to change page and sync hash in address bar
+  const setActivePage = (newPage) => {
+    setActivePageState(newPage);
+    if (newPage === 'home') {
+      if (window.location.hash) {
+        window.history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+    } else {
+      window.location.hash = newPage;
+    }
+  };
+
+  // Listen to browser hash changes (Back/Forward navigation)
+  React.useEffect(() => {
+    const handleHashChange = () => {
+      const page = getPageFromHash();
+      setActivePageState(page);
+    };
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
 
   // Dynamic SEO meta update per active page & selected language
   React.useEffect(() => {
@@ -27,10 +60,13 @@ function AppContent() {
     else if (activePage === 'portfolio') seoKey = 'portfolio';
     else if (activePage === 'contact') seoKey = 'contact';
 
-    const seoData = t.seo?.[seoKey] || {
-      title: 'Precision Aluminium Systems | LAMPAG GmbH',
-      desc: "Discover LAMPAG's precision-engineered aluminium windows, doors, and curtain wall systems, designed for energy efficiency, durability, and performance."
-    };
+    const seoData = t.seo?.[seoKey] || t.seo?.home || (langCode === 'DE' ? {
+      title: 'Willkommen in der Zukunft des Bauens | LAMPAG GmbH',
+      desc: 'Willkommen in der Zukunft des Bauens: Präzisionsgefertigte Aluminiumfenster, -türen und Fassaden von LAMPAG – energieeffizient, modern und langlebig.'
+    } : {
+      title: 'Welcome to the Future of Construction | LAMPAG GmbH',
+      desc: "Welcome to the Future of Construction: Discover LAMPAG's precision-engineered aluminium windows, doors, and curtain wall systems in Germany."
+    });
 
     // Update document title
     document.title = seoData.title;
@@ -48,6 +84,10 @@ function AppContent() {
     metaDesc.setAttribute('content', seoData.desc);
 
     // Update Open Graph tags
+    const pageUrl = `https://lampag.com/${seoKey === 'home' ? '' : '#' + seoKey}`;
+    const ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogUrl) ogUrl.setAttribute('content', pageUrl);
+
     const ogTitle = document.querySelector('meta[property="og:title"]');
     if (ogTitle) ogTitle.setAttribute('content', seoData.title);
 
@@ -61,6 +101,22 @@ function AppContent() {
       document.head.appendChild(ogLocale);
     }
     ogLocale.setAttribute('content', langCode === 'DE' ? 'de_DE' : 'en_US');
+
+    // Update Twitter Card tags
+    const twTitle = document.querySelector('meta[name="twitter:title"]');
+    if (twTitle) twTitle.setAttribute('content', seoData.title);
+
+    const twDesc = document.querySelector('meta[name="twitter:description"]');
+    if (twDesc) twDesc.setAttribute('content', seoData.desc);
+
+    // Update Canonical Tag
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', pageUrl);
   }, [activePage, langCode, t]);
 
   const renderView = () => {

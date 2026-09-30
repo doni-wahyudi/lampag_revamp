@@ -1,10 +1,12 @@
 import React from 'react';
-import WireframePlaceholder from '../components/WireframePlaceholder';
 import { ShieldCheck, CheckCircle2, Factory, Award, Building, Wrench, RefreshCw, Handshake } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
+import schuecoPartnerBlack from '../assets/brand/schueco_partner_black.webp';
+import aboutHeroImg from '../assets/hero/about_hero.webp';
 
 const AboutPage = () => {
-  const { t } = useLanguage();
+  const { langCode, t } = useLanguage();
+  const isGerman = langCode === 'DE';
 
   const strengths = [
     {
@@ -55,7 +57,7 @@ const AboutPage = () => {
       <section 
         className="hero-full-banner"
         style={{
-          backgroundImage: 'linear-gradient(rgba(10, 20, 14, 0.82), rgba(10, 20, 14, 0.92)), url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=85")'
+          backgroundImage: `linear-gradient(rgba(10, 20, 14, 0.84), rgba(10, 20, 14, 0.94)), url("${aboutHeroImg}")`
         }}
       >
         <div className="container">
@@ -104,12 +106,53 @@ const AboutPage = () => {
             </div>
 
             <div>
-              <WireframePlaceholder
-                title="ABOUT HERO ARCHITECTURAL CLOSE-UP"
-                direction="Architectural close-up highlighting precision engineering, curtain wall glass joints, and clean structural lines."
-                aspectRatio="4/3"
-                height="320px"
-              />
+              <div style={{
+                position: 'relative',
+                borderRadius: 'var(--radius-md)',
+                overflow: 'hidden',
+                boxShadow: '0 20px 45px rgba(0,0,0,0.45)',
+                border: '1px solid rgba(57, 158, 82, 0.45)'
+              }}>
+                <img 
+                  src={aboutHeroImg} 
+                  alt={isGerman 
+                    ? "Präzisionsgefertigtes Aluminium-Fassadenprofil und strukturelle Glasfassade" 
+                    : "Precision-engineered aluminium curtain wall profile joint and structural glass façade"}
+                  style={{ width: '100%', height: '340px', objectFit: 'cover', display: 'block' }}
+                />
+                <div style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  background: 'linear-gradient(transparent, rgba(10, 20, 14, 0.95))',
+                  padding: '16px 20px',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center'
+                }}>
+                  <div>
+                    <div style={{ color: '#ffffff', fontSize: '0.92rem', fontWeight: 800 }}>
+                      {isGerman ? 'Präzisions-Profilgeometrie & Glastechnik' : 'Precision Profile Geometry & Glazing'}
+                    </div>
+                    <div style={{ color: '#94a3b8', fontSize: '0.74rem', fontFamily: 'var(--font-mono)' }}>
+                      {isGerman ? 'Alu Group Partnerschaft // 70.000 m² Kapazität' : 'Alu Group Network // 70,000 m² Capacity'}
+                    </div>
+                  </div>
+                  <div style={{
+                    backgroundColor: 'var(--lampag-green)',
+                    color: '#ffffff',
+                    fontSize: '0.72rem',
+                    fontWeight: 800,
+                    padding: '4px 10px',
+                    borderRadius: 'var(--radius-sm)',
+                    letterSpacing: '0.04em',
+                    textTransform: 'uppercase'
+                  }}>
+                    {isGerman ? 'Präzision' : 'In-House'}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -176,6 +219,17 @@ const AboutPage = () => {
                   <div style={{ fontSize: '0.86rem', color: '#64748b' }}>Regional team engineering expertise in aluminium construction.</div>
                 </li>
               </ul>
+
+              <div style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid var(--border-dim)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', flexWrap: 'wrap' }}>
+                <img 
+                  src={schuecoPartnerBlack} 
+                  alt="Schüco Partner" 
+                  style={{ height: '24px', width: 'auto', display: 'block', opacity: 0.85 }}
+                />
+                <div style={{ fontSize: '0.74rem', fontWeight: 800, color: 'var(--lampag-anthracite)', letterSpacing: '0.04em' }}>
+                  ALU GROUP <span style={{ color: 'var(--lampag-green)' }}>MEMBER</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

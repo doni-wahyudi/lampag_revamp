@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import WireframePlaceholder from '../components/WireframePlaceholder';
 import { 
   ShieldCheck, 
   ArrowUpRight, 
@@ -11,6 +10,7 @@ import {
 } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 import { productsCatalog } from '../data/productsData';
+import productsHeroImg from '../assets/hero/products_hero.webp';
 
 const ProductsPage = ({ setSelectedProduct }) => {
   const { langCode, t } = useLanguage();
@@ -100,7 +100,7 @@ const ProductsPage = ({ setSelectedProduct }) => {
       <section 
         className="hero-full-banner"
         style={{
-          backgroundImage: 'linear-gradient(rgba(10, 20, 14, 0.82), rgba(10, 20, 14, 0.92)), url("https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=2000&q=85")'
+          backgroundImage: `linear-gradient(rgba(10, 20, 14, 0.84), rgba(10, 20, 14, 0.94)), url("${productsHeroImg}")`
         }}
       >
         <div className="container">
@@ -162,12 +162,53 @@ const ProductsPage = ({ setSelectedProduct }) => {
             </div>
 
             <div>
-              <WireframePlaceholder
-                title="ALUMINIUM PRODUCTION FACILITY VISUAL"
-                direction="Modern aluminium CNC production facility showcasing precision manufacturing and technician assembly of Schüco profile systems."
-                aspectRatio="4/3"
-                height="320px"
-              />
+              <div style={{
+                position: 'relative',
+                borderRadius: 'var(--radius-md)',
+                overflow: 'hidden',
+                boxShadow: '0 20px 45px rgba(0,0,0,0.45)',
+                border: '1px solid rgba(57, 158, 82, 0.45)'
+              }}>
+                <img 
+                  src={productsHeroImg} 
+                  alt={isGerman 
+                    ? "Modernes CNC-Bearbeitungs- und Fertigungszentrum für Aluminiumprofile" 
+                    : "State-of-the-art CNC machining and assembly center for architectural aluminium profiles"} 
+                  style={{ width: '100%', height: '340px', objectFit: 'cover', display: 'block' }}
+                />
+                <div style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  background: 'linear-gradient(transparent, rgba(10, 20, 14, 0.95))',
+                  padding: '16px 20px',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center'
+                }}>
+                  <div>
+                    <div style={{ color: '#ffffff', fontSize: '0.92rem', fontWeight: 800 }}>
+                      {isGerman ? 'CNC-Profilbearbeitung & Schüco-Fertigung' : 'Automated CNC Milling & Profile Assembly'}
+                    </div>
+                    <div style={{ color: '#94a3b8', fontSize: '0.74rem', fontFamily: 'var(--font-mono)' }}>
+                      {isGerman ? 'Industrielle Maßanfertigung nach DIN EN 1090' : 'Certified Schüco Fabrication to DIN EN 1090'}
+                    </div>
+                  </div>
+                  <div style={{
+                    backgroundColor: 'var(--lampag-green)',
+                    color: '#ffffff',
+                    fontSize: '0.72rem',
+                    fontWeight: 800,
+                    padding: '4px 10px',
+                    borderRadius: 'var(--radius-sm)',
+                    letterSpacing: '0.04em',
+                    textTransform: 'uppercase'
+                  }}>
+                    {isGerman ? 'Präzision' : 'CNC Precision'}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

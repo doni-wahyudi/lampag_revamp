@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import WireframePlaceholder from '../components/WireframePlaceholder';
 import { ShieldCheck, Cpu, Layers, ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 import { productsCatalog } from '../data/productsData';
+import { portfolioProjects } from '../data/portfolioData';
+import homeHeroImg from '../assets/hero/home_hero.webp';
+import aboutHeroImg from '../assets/hero/about_hero.webp';
 
 const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => {
   const { langCode, t } = useLanguage();
@@ -45,66 +47,10 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
       title: t.home?.sol4 || (isGerman ? 'Maßgeschneiderte Sonderlösungen' : 'Customized Solutions'),
       desc: (isGerman ? t.home?.sol4Desc : t.home?.sol4Desc) || (isGerman ? customProduct.specDE : customProduct.spec),
       bgImg: customProduct.imageUrl,
-      specs: isGerman ? 'Alu-Blechfassaden & Verbundplatten (ACM)' : 'Sheet Metal & Composite Panels (ACM)'
+      specs: isGerman ? 'Blechfassaden, ACM-Platten & Lamellensysteme' : 'Sheet Metal, ACM Panels & Louvers'
     }
   ];
 
-  const portfolioProjects = [
-    {
-      id: 1,
-      title: 'Hamburg Commercial Office Hub',
-      location: 'Hamburg, Germany',
-      sector: t.portfolio.tabCom,
-      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
-      systems: 'Schüco AF UDC 80 Curtain Wall & Sliding Doors',
-      summary: 'Slim profile sliding doors maximizing natural light while maintaining high thermal performance.'
-    },
-    {
-      id: 2,
-      title: 'Dortmund Modern Residential Complex',
-      location: 'Dortmund, Germany',
-      sector: t.portfolio.tabRes,
-      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
-      systems: 'Schüco AWS 75.SI+ & AD 75 FD Folding Doors',
-      summary: 'Energy-efficient triple-glazed aluminium window profiles engineered for acoustic sound insulation.'
-    },
-    {
-      id: 3,
-      title: 'Frankfurt Grand Hospitality Tower',
-      location: 'Frankfurt, Germany',
-      sector: t.portfolio.tabHosp,
-      image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80',
-      systems: 'Schüco AF UDC 80 Unitized Façade & AWS 75.PD',
-      summary: 'Panoramic all-glass unitized façade panels pre-assembled offsite for fast architectural cladding.'
-    },
-    {
-      id: 4,
-      title: 'Bremen Municipal Technical Institute',
-      location: 'Bremen, Germany',
-      sector: t.portfolio.tabHosp,
-      image: 'https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=800&q=80',
-      systems: 'Schüco FWS 60.SG & AWS 70.HI Windows',
-      summary: 'High-durability structural glazing curtain wall installed with automated ventilation actuators.'
-    },
-    {
-      id: 5,
-      title: 'Munich Luxury Villa Residence',
-      location: 'Munich, Germany',
-      sector: t.portfolio.tabRes,
-      image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80',
-      systems: 'Schüco ASE 67 PD Sliding Doors & Glass Railings',
-      summary: 'Floor-to-ceiling panoramic sliding doors with flush sill thresholds creating seamless transitions.'
-    },
-    {
-      id: 6,
-      title: 'Cologne Corporate Headquarters',
-      location: 'Cologne, Germany',
-      sector: t.portfolio.tabCom,
-      image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
-      systems: 'Schüco FWS 50.SG & ADS 75.SI Entrance Systems',
-      summary: 'Custom heavy-traffic entrance system with burglar resistance RC3 and structural glazing glass fins.'
-    }
-  ];
 
   const handlePrevProject = () => {
     setPortfolioIndex((prev) => (prev === 0 ? portfolioProjects.length - 1 : prev - 1));
@@ -125,7 +71,7 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
       <section 
         className="hero-full-banner"
         style={{
-          backgroundImage: 'linear-gradient(rgba(10, 20, 14, 0.82), rgba(10, 20, 14, 0.92)), url("https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=2000&q=85")'
+          backgroundImage: `linear-gradient(rgba(10, 20, 14, 0.84), rgba(10, 20, 14, 0.94)), url("${homeHeroImg}")`
         }}
       >
         <div className="container">
@@ -178,12 +124,53 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
             </div>
 
             <div>
-              <WireframePlaceholder
-                title="HERO FACADE MOCKUP"
-                direction="Curtain wall / commercial glass exterior visual showing precision engineered aluminium systems."
-                aspectRatio="4/3"
-                height="320px"
-              />
+              <div style={{
+                position: 'relative',
+                borderRadius: 'var(--radius-md)',
+                overflow: 'hidden',
+                boxShadow: '0 20px 45px rgba(0,0,0,0.45)',
+                border: '1px solid rgba(57, 158, 82, 0.45)'
+              }}>
+                <img 
+                  src={homeHeroImg} 
+                  alt={isGerman 
+                    ? "Präzisions-Vorhangfassade mit Schüco Aluminium-Systemen für moderne Gewerbegebäude" 
+                    : "Precision-engineered aluminium curtain wall system with Schüco profiles for modern commercial buildings"}
+                  style={{ width: '100%', height: '340px', objectFit: 'cover', display: 'block' }}
+                />
+                <div style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  background: 'linear-gradient(transparent, rgba(10, 20, 14, 0.95))',
+                  padding: '16px 20px',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center'
+                }}>
+                  <div>
+                    <div style={{ color: '#ffffff', fontSize: '0.92rem', fontWeight: 800 }}>
+                      {isGerman ? 'Schüco Fassadenbau & Fensterwerke' : 'Schüco Façade & Window Engineering'}
+                    </div>
+                    <div style={{ color: '#94a3b8', fontSize: '0.74rem', fontFamily: 'var(--font-mono)' }}>
+                      {isGerman ? 'Deutsche Ingenieurskunst // Neuer Wall Hamburg' : 'German Engineering // Hamburg, DE'}
+                    </div>
+                  </div>
+                  <div style={{
+                    backgroundColor: 'var(--lampag-green)',
+                    color: '#ffffff',
+                    fontSize: '0.72rem',
+                    fontWeight: 800,
+                    padding: '4px 10px',
+                    borderRadius: 'var(--radius-sm)',
+                    letterSpacing: '0.04em',
+                    textTransform: 'uppercase'
+                  }}>
+                    {isGerman ? 'Zertifiziert' : 'Certified'}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -205,13 +192,48 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
             {t.home.aboutTag}
           </span>
 
-          <div style={{ margin: '0 auto 20px auto', maxWidth: '640px' }}>
-            <WireframePlaceholder
-              title="ABOUT LAMPAG ARCHITECTURAL COMPLEX"
-              direction="High quality architectural exterior photo showing aluminium systems."
-              aspectRatio="16/9"
-              height="200px"
+          <div style={{
+            margin: '0 auto 24px auto',
+            maxWidth: '680px',
+            borderRadius: 'var(--radius-md)',
+            overflow: 'hidden',
+            boxShadow: '0 12px 30px rgba(0,0,0,0.12)',
+            border: '1px solid var(--border-dim)',
+            position: 'relative'
+          }}>
+            <img 
+              src={aboutHeroImg}
+              alt={isGerman 
+                ? "LAMPAG deutsche Ingenieurskunst und hochpräzise Aluminium-Fassadensysteme" 
+                : "LAMPAG German engineering and precision aluminium architectural façade systems"}
+              style={{ width: '100%', height: '240px', objectFit: 'cover', display: 'block' }}
             />
+            <div style={{
+              position: 'absolute',
+              bottom: 0,
+              left: 0,
+              right: 0,
+              background: 'linear-gradient(transparent, rgba(10, 20, 14, 0.88))',
+              padding: '12px 18px',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center'
+            }}>
+              <span style={{ color: '#ffffff', fontSize: '0.85rem', fontWeight: 700 }}>
+                {isGerman ? 'Präzisionsfertigung & Fassadenbau' : 'Precision Engineering & Façade Construction'}
+              </span>
+              <span style={{
+                backgroundColor: 'var(--lampag-green)',
+                color: '#ffffff',
+                fontSize: '0.68rem',
+                fontWeight: 800,
+                padding: '2px 8px',
+                borderRadius: 'var(--radius-sm)',
+                textTransform: 'uppercase'
+              }}>
+                {isGerman ? 'Schüco Partner' : 'Schüco Partner'}
+              </span>
+            </div>
           </div>
 
           <h2 style={{ fontSize: '1.9rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '10px' }}>
@@ -428,20 +450,36 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
                     alt={`${proj.title} - ${proj.systems} architectural aluminium installation in ${proj.location}`}
                     style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                   />
-                  {idx === 0 && (
+                  {proj.isOfficialLampag ? (
                     <span style={{
                       position: 'absolute',
                       top: '8px',
                       left: '8px',
                       backgroundColor: 'var(--lampag-green)',
                       color: '#ffffff',
-                      fontSize: '0.68rem',
+                      fontSize: '0.66rem',
+                      fontWeight: 800,
+                      padding: '2px 8px',
+                      borderRadius: 'var(--radius-sm)',
+                      textTransform: 'uppercase',
+                      boxShadow: '0 2px 6px rgba(0,0,0,0.2)'
+                    }}>
+                      {isGerman ? 'LAMPAG-Referenz' : 'LAMPAG Project'}
+                    </span>
+                  ) : idx === 0 && (
+                    <span style={{
+                      position: 'absolute',
+                      top: '8px',
+                      left: '8px',
+                      backgroundColor: 'var(--lampag-green)',
+                      color: '#ffffff',
+                      fontSize: '0.66rem',
                       fontWeight: 800,
                       padding: '2px 8px',
                       borderRadius: 'var(--radius-sm)',
                       textTransform: 'uppercase'
                     }}>
-                      Featured
+                      {isGerman ? 'Highlight' : 'Featured'}
                     </span>
                   )}
                 </div>
@@ -457,10 +495,10 @@ const HomePage = ({ setActivePage, setSelectedProduct, setSelectedProject }) => 
                       display: 'inline-block',
                       marginBottom: '6px'
                     }}>
-                      {proj.sector}
+                      {isGerman ? (proj.sectorDE || proj.sector) : proj.sector}
                     </span>
                     <h4 style={{ fontSize: '0.88rem', fontWeight: 800, color: 'var(--text-main)', lineHeight: 1.3, marginBottom: '12px', minHeight: '2.2rem' }}>
-                      {proj.title}
+                      {isGerman ? (proj.titleDE || proj.title) : proj.title}
                     </h4>
                   </div>
                   <button

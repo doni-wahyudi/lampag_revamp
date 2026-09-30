@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 import { FlagDE, FlagEN } from './FlagIcons';
+import lampagLogoWhite from '../assets/brand/lampag_logo_white.webp';
 
 const Navbar = ({ activePage, setActivePage }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -16,10 +17,17 @@ const Navbar = ({ activePage, setActivePage }) => {
   const navItems = [
     { id: 'about', label: t.nav.about, path: '/about' },
     { id: 'services', label: t.nav.services || t.nav.whatweoffer, path: '/services' },
-    { id: 'product', label: t.nav.product, path: '/product' },
+    { id: 'products', label: t.nav.products || t.nav.product, path: '/products' },
     { id: 'portfolio', label: t.nav.portfolio, path: '/portfolio' },
     { id: 'contact', label: t.nav.contact, path: '/contact' },
   ];
+
+  const isNavActive = (itemId) => {
+    if (activePage === itemId) return true;
+    if ((itemId === 'products' || itemId === 'product') && (activePage === 'products' || activePage === 'product')) return true;
+    if ((itemId === 'services' || itemId === 'whatweoffer') && (activePage === 'services' || activePage === 'whatweoffer')) return true;
+    return false;
+  };
 
   const currentLangObj = languages.find(l => l.code === langCode) || languages[0];
 
@@ -44,61 +52,58 @@ const Navbar = ({ activePage, setActivePage }) => {
         justifyContent: 'space-between',
         height: '76px'
       }}>
-        {/* Brand Logo with Green Polygon Shape */}
-        <div 
-          onClick={() => handleNavClick('home')}
+        {/* Official Brand Logo */}
+        <a 
+          href="#home"
+          onClick={(e) => { e.preventDefault(); handleNavClick('home'); }}
           style={{ 
             cursor: 'pointer', 
             display: 'flex', 
             alignItems: 'center', 
-            gap: '12px' 
+            gap: '12px',
+            textDecoration: 'none'
           }}
+          aria-label="LAMPAG Home"
         >
-          {/* Green Polygon Shape Logo */}
-          <div style={{
-            width: '42px',
-            height: '42px',
-            backgroundColor: 'var(--lampag-green)',
-            clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontWeight: 900,
-            color: '#ffffff',
-            fontSize: '1.25rem',
-            fontFamily: 'var(--font-mono)'
-          }}>
-            L
+          <img 
+            src={lampagLogoWhite} 
+            alt="LAMPAG - Precision Aluminium Systems" 
+            style={{ height: '34px', width: 'auto', display: 'block' }}
+          />
+          <div style={{ borderLeft: '1px solid #23422d', paddingLeft: '12px', display: 'flex', flexDirection: 'column' }} className="brand-subtext">
+            <span style={{ fontSize: '0.62rem', color: '#94a3b8', fontFamily: 'var(--font-mono)', letterSpacing: '0.12em', lineHeight: 1.2 }}>
+              PRECISION SYSTEMS
+            </span>
+            <span style={{ fontSize: '0.58rem', color: 'var(--lampag-green)', fontWeight: 700, letterSpacing: '0.08em', marginTop: '2px' }}>
+              SCHÜCO PARTNER
+            </span>
           </div>
-          <div>
-            <div style={{ fontWeight: 800, fontSize: '1.35rem', letterSpacing: '-0.02em', color: '#ffffff', lineHeight: 1 }}>
-              LAMPAG
-            </div>
-            <div style={{ fontSize: '0.62rem', color: '#829ab1', fontFamily: 'var(--font-mono)', letterSpacing: '0.1em', marginTop: '3px' }}>
-              PRECISION ALUMINIUM SYSTEMS
-            </div>
-          </div>
-        </div>
+        </a>
 
         {/* Desktop Navigation Links */}
         <nav style={{ display: 'flex', alignItems: 'center', gap: '8px' }} className="desktop-nav">
-          <button
-            onClick={() => handleNavClick('home')}
+          <a
+            href="#home"
+            onClick={(e) => { e.preventDefault(); handleNavClick('home'); }}
             className={`nav-link-item ${activePage === 'home' ? 'active' : ''}`}
-            style={{ color: activePage === 'home' ? '#ffffff' : '#cbd5e1' }}
+            style={{ color: activePage === 'home' ? '#ffffff' : '#cbd5e1', textDecoration: 'none' }}
           >
             {t.nav.home}
-          </button>
-          {navItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => handleNavClick(item.id)}
-              className={`nav-link-item ${activePage === item.id || (item.id === 'services' && activePage === 'whatweoffer') ? 'active' : ''}`}
-              style={{ color: (activePage === item.id || (item.id === 'services' && activePage === 'whatweoffer')) ? '#ffffff' : '#cbd5e1' }}
-            >
-              {item.label}
-            </button>
-          ))}
+          </a>
+          {navItems.map((item) => {
+            const active = isNavActive(item.id);
+            return (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                onClick={(e) => { e.preventDefault(); handleNavClick(item.id); }}
+                className={`nav-link-item ${active ? 'active' : ''}`}
+                style={{ color: active ? '#ffffff' : '#cbd5e1', textDecoration: 'none' }}
+              >
+                {item.label}
+              </a>
+            );
+          })}
         </nav>
 
         {/* Right Section: Language Switcher Dropdown */}
@@ -203,23 +208,28 @@ const Navbar = ({ activePage, setActivePage }) => {
           flexDirection: 'column',
           gap: '8px'
         }}>
-          <button
-            onClick={() => handleNavClick('home')}
+          <a
+            href="#home"
+            onClick={(e) => { e.preventDefault(); handleNavClick('home'); }}
             className={`nav-link-item ${activePage === 'home' ? 'active' : ''}`}
-            style={{ textAlign: 'left', color: '#ffffff' }}
+            style={{ textAlign: 'left', color: '#ffffff', textDecoration: 'none' }}
           >
             {t.nav.home}
-          </button>
-          {navItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => handleNavClick(item.id)}
-              className={`nav-link-item ${activePage === item.id || (item.id === 'services' && activePage === 'whatweoffer') ? 'active' : ''}`}
-              style={{ textAlign: 'left', color: '#ffffff' }}
-            >
-              {item.label}
-            </button>
-          ))}
+          </a>
+          {navItems.map((item) => {
+            const active = isNavActive(item.id);
+            return (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                onClick={(e) => { e.preventDefault(); handleNavClick(item.id); }}
+                className={`nav-link-item ${active ? 'active' : ''}`}
+                style={{ textAlign: 'left', color: '#ffffff', textDecoration: 'none' }}
+              >
+                {item.label}
+              </a>
+            );
+          })}
         </div>
       )}
 
